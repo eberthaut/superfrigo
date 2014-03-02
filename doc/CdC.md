@@ -11,6 +11,8 @@ Nous allons donc essayer de créer le programme que devrait contenir notre frigo
 Nous avons pensé créer un menu principal donnant accès à différents différents boutons nous permettant de réaliser les actions suivantes : ajouter ou retirer des aliments, savoir lesquels sont périmés ou encore faire la liste de courses (//Bouton recette?). Chaque bouton mènera une nouvelle fenêtre où nous pourrons réaliser l’action d’une façon simple et graphiquement compréhensible.
 Dans la suite, nous allons expliquer précisément ce qui se passe lorsque l’on appuie sur chaque bouton.
 
+![Use Case Diagram](export/UseCase.png)
+
 ## Interactions et Interface Utilisateur
 
 ### Menu Principal
