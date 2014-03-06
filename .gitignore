@@ -13,3 +13,8 @@ hs_err_pid*
 
 *.bak
 *.lock
+
+*.ipr
+*.iws
+*.iml
+*.iws
