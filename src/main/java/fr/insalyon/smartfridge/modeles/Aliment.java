@@ -8,8 +8,8 @@ import java.util.Date;
  */
 @Entity
 public class Aliment {
-    // @ManyToOne
-    // private Article article;
+    @ManyToOne
+    private Article article;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -27,9 +27,9 @@ public class Aliment {
         dateAjout = new Date(); // Initialisé à la date du moment de la création de l'objet
     }
 
-    public Aliment(/* Article article, */ Date datePeremption, int quantite) {
+    public Aliment(Article article, Date datePeremption, int quantite) {
         this();
-        // this.article = article;
+        this.article = article;
         this.datePeremption = datePeremption;
         this.quantite = quantite;
     }
