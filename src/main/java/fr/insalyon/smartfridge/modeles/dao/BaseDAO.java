@@ -20,8 +20,6 @@ public class BaseDAO {
         }
     };
 
-    protected static String nomClasse = "Object";
-
     /**
      * Cree le contexte de persistence
      */
@@ -34,7 +32,7 @@ public class BaseDAO {
      */
     public static void detruirePersistence() {
         EntityManager em = threadLocal.get();
-        em.close();
+        em.close(); // Coupe la connexion avec la base
         threadLocal.set(null);
     }
 
@@ -55,12 +53,12 @@ public class BaseDAO {
     /**
      * Valide une transaction
      */
-    public static void enregistrerTransaction() {
+    public static void faireTransaction() {
         threadLocal.get().getTransaction().commit();
     }
 
     /**
-     * Persiste un modele dans la base de donnees
+     * Persiste une entite dans la base de donnees
      * @param entity L'entite JPA a enregistrer
      */
     public static boolean persiste(Object entity) {
@@ -69,7 +67,7 @@ public class BaseDAO {
     }
 
     /**
-     * Persiste une mise a jour de modele dans la base de donnees
+     * Persiste une mise a jour d'entite dans la base de donnees
      * @param entity L'entite JPA a mettre a jour
      */
     public static boolean miseAJour(Object entity) {

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 /**
  * Represente un type d'article du frigo
  */
+
+// Ce mot clé signifie que cette classe définit en même temps une table dans la base de données.
 @Entity
 public class Type {
     @Id

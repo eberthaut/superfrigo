@@ -3,6 +3,7 @@
     <persistence-unit name="SmartFridgePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>fr.insalyon.smartfridge.modeles.Type</class>
+        <class>fr.insalyon.smartfridge.modeles.Aliment</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fridge"/>
             <property name="javax.persistence.jdbc.password" value="fridge"/>

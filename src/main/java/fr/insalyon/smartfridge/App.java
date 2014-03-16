@@ -18,12 +18,12 @@ public class App
         Type unType = new Type("WOW ! Je Persiste !");
         BaseDAO.creerTransaction();
         TypeDAO.persiste(unType);
-        BaseDAO.enregistrerTransaction();
+        BaseDAO.faireTransaction();
 
         Type leMemeType = TypeDAO.trouveId(unType.getId());
 
         System.out.println(leMemeType.getNom());
 
-        BaseDAO.detruirePersistence();
+        BaseDAO.detruirePersistence(); // Destruction de la connexion à la Base de données
     }
 }
