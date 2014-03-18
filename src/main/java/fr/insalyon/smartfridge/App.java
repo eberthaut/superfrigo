@@ -15,7 +15,7 @@ public class App
     {
         BaseDAO.initialiserPersistence();
 
-        Type unType = new Type("WOW ! Je Persiste !");
+        Type unType = new Type("Un Type");
         BaseDAO.creerTransaction();
         TypeDAO.persiste(unType);
         BaseDAO.faireTransaction();
