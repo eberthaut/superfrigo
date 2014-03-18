@@ -53,11 +53,11 @@ public class Article {
         this.type = type;
     }
 
-    public int gethabitude() {
+    public int getHabitude() {
         return habitude;
     }
 
-    public void sethabitude(int habitude) {
+    public void setHabitude(int habitude) {
         this.habitude = habitude;
     }
 }

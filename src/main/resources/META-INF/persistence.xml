@@ -7,10 +7,10 @@
         <class>fr.insalyon.smartfridge.modeles.Article</class>
         <class>fr.insalyon.smartfridge.modeles.Recette</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fridge"/>
-            <property name="javax.persistence.jdbc.password" value="fridge"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://cipcnet.insa-lyon.fr:3306/eberthaut"/>
+            <property name="javax.persistence.jdbc.password" value="refregiration"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="fridge"/>
+            <property name="javax.persistence.jdbc.user" value="eberthaut"/>
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
         </properties>
     </persistence-unit>

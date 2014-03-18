@@ -48,4 +48,8 @@ public class Recette {
     public boolean retirerArticle (Article article) {
         return this.articles.remove(article);
     }
+
+    public long getId() {
+        return id;
+    }
 }
