@@ -1,9 +1,13 @@
 package fr.insalyon.smartfridge;
 
 
+import fr.insalyon.smartfridge.modeles.Aliment;
+import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Type;
 import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 import fr.insalyon.smartfridge.modeles.dao.TypeDAO;
+
+import java.util.List;
 
 /**
  * Hello world!
@@ -25,5 +29,7 @@ public class App
         System.out.println(leMemeType.getNom());
 
         BaseDAO.detruirePersistence(); // Destruction de la connexion à la Base de données
+
+
     }
 }

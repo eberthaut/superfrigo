@@ -1,5 +1,6 @@
 package fr.insalyon.smartfridge.controleurs;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
@@ -26,6 +27,21 @@ public class ControleCourses {
         }
     }
 
+    public static boolean retraitRecette(String nom, List<Article> articles) {
+        Recette recette = new Recette(nom, articles);
+
+        BaseDAO.creerTransaction();
+        RecetteDAO.supprime(recette);
+        BaseDAO.faireTransaction();
+
+        if(recette.getId() != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public static boolean augmenterHabitude(Article article) {
         int modificationHabitude = 1;
 
@@ -40,13 +56,27 @@ public class ControleCourses {
         return true;
     }
 
+    public static boolean decrementerHabitude(Article article) {
+        int modificationHabitude = 1;
+
+        // TODO : Faire un algorithme
+
+        article.setHabitude(article.getHabitude() - modificationHabitude);
+
+        BaseDAO.creerTransaction();
+        ArticleDAO.miseAJour(article);
+        BaseDAO.faireTransaction();
+
+        return true;
+    }
+
     public static List<Recette> listerRecettes() {
         return RecetteDAO.tous();
     }
 
     public static boolean activerRecette(Recette recette) {
         if(recette.isActif()) {
-            return false;
+            return true;
         } else {
             recette.setActivite(true);
 
@@ -57,4 +87,25 @@ public class ControleCourses {
             return true;
         }
     }
+
+    public static boolean desactiverRecette(Recette recette) {
+        if(! recette.isActif()) {
+            return true;
+        } else {
+            recette.setActivite(true);
+
+            BaseDAO.creerTransaction();
+            RecetteDAO.miseAJour(recette);
+            BaseDAO.faireTransaction();
+
+            return true;
+        }
+    }
+
+    public static double calculPrixListe () {
+        double prixListe=0;
+        //TODO
+        return prixListe;
+    }
+
 }
