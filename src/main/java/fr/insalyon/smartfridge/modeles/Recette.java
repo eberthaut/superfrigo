@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Recette {
     @ManyToMany //définit la liste d'articles de la recette
-    private List<Article> articles = new ArrayList<Article>();
+    private List<Article> ingredients = new ArrayList<Article>();
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -26,7 +26,7 @@ public class Recette {
     public Recette(String nom, List<Article> articles) {
         this();
         this.nom = nom;
-        this.articles.addAll(articles);
+        this.ingredients.addAll(articles);
     }
 
     public boolean isActif () {
@@ -38,15 +38,15 @@ public class Recette {
     }
 
     public List<Article> getArticles() {
-        return articles;
+        return ingredients;
     }
 
     public boolean ajouterArticle (Article article) {
-        return this.articles.add(article);
+        return this.ingredients.add(article);
     }
 
     public boolean retirerArticle (Article article) {
-        return this.articles.remove(article);
+        return this.ingredients.remove(article);
     }
 
     public long getId() {
