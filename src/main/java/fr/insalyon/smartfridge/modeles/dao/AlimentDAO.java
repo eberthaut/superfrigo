@@ -3,6 +3,7 @@ package fr.insalyon.smartfridge.modeles.dao;
 import fr.insalyon.smartfridge.modeles.Aliment;
 
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,9 +28,9 @@ public class AlimentDAO extends BaseDAO {
     /**
      * @return Toutes les entites de Aliment classees par dates de peremption
      */
-    public static List<Aliment> tousTriesParPerememption() {
+    public static ArrayList<Aliment> tousTriesParPeremption() {
         Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment ORDER BY aliment.datePeremption");
         // SELECT * FROM aliment ORDER BY aliment.datePeremption
-        return q.getResultList();
+        return (ArrayList) q.getResultList();
     }
 }

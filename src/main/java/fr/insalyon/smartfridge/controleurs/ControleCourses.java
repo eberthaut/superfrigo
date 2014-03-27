@@ -1,13 +1,12 @@
 package fr.insalyon.smartfridge.controleurs;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
 import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 import fr.insalyon.smartfridge.modeles.dao.RecetteDAO;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Service de gestion des habitudes dans le frigo.
@@ -107,5 +106,16 @@ public class ControleCourses {
         //TODO
         return prixListe;
     }
+
+   /* TODO: comment on écrit la liste. Il faut déjà créer  */
+    public static List<Article> genererListeCourses () {
+        List<Article> listeCourses= new ArrayList<Article>();
+
+
+
+        return listeCourses;
+    }
+
+
 
 }
