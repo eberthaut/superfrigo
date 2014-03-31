@@ -57,4 +57,12 @@ public class Aliment {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
 }

@@ -15,13 +15,12 @@ public class ControleAlerte {
 
     public static int statusAlerte (int nombreLimiteJoursVoulu) {
         int statusAlerte= 0;
-        ArrayList<Aliment> prochePeremption= new ArrayList<Aliment>();
-        prochePeremption= listeAlimentsProchePeremption(nombreLimiteJoursVoulu);
+        List<Aliment> prochePeremption= listeAlimentsProchePeremption(nombreLimiteJoursVoulu);
         if (!prochePeremption.isEmpty()) {
             statusAlerte=1;
         }
-        ArrayList<Aliment> perimes= new ArrayList<Aliment>();
-        //perimes= listeAlimentsPerimes();
+
+        List<Aliment> perimes = listeAlimentsPerimes();
         if (!perimes.isEmpty()) {
             statusAlerte=2;
         }
@@ -29,39 +28,34 @@ public class ControleAlerte {
         return statusAlerte;
     }
 
-    public static ArrayList<Aliment> listeAlimentsProchePeremption (int nombreLimiteJoursVoulu) {
-        ArrayList<Aliment> prochePeremption = AlimentDAO.tousTriesParPeremption();
-        //TODO: trouver un truc pour parcourir les aliments et récupérer ceux qui ont une date de péremption entre aujourd'hui et la date limite
-
-        String aujourdhui= calculDateToday();
-        String calculDateLimite= calculDateLimite(nombreLimiteJoursVoulu);
-
-
-        return prochePeremption;
-
-    }
-
-    /*TODO
-    public static ArrayList<Aliment> listeAlimentsPerimes () {
-
-    }
-    */
-
-    public static String calculDateToday(){
-        Calendar aujourdhui = Calendar.getInstance(); // Donne la date d'aujourd'hui en format tout moche
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // "Op�rateur" qui permet de simplifier le format pour avoir type 14/03/2014
-        String aujourdhuiEnString = sdf.format(aujourdhui.getTime()); // On applique l'op�rateur � la date d'aujoud'hui pour avoir la date d'ajout
-        return aujourdhuiEnString;
+    public static List<Aliment> listeAlimentsProchePeremption (int nombreLimiteJoursVoulu) {
+        List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
+        List<Aliment> proches = new ArrayList<Aliment>();
+        Date aujourdhui = new Date();
+        Date dateAlerte = new Date(aujourdhui.getTime() + nombreLimiteJoursVoulu * 60 * 60 * 24);
+        for(Aliment aliment : tries) {
+            if(aliment.getDatePeremption().compareTo(dateAlerte) < 0 && aliment.getDatePeremption().compareTo(aujourdhui) > 0) {
+                proches.add(aliment);
+            } else if(aliment.getDatePeremption().compareTo(aujourdhui) > 0) {
+                break;
+            }
+        }
+        return proches;
 
     }
 
-    public static String calculDateLimite(int n){ // n : nombre de jours avant aujourd'hui qu'on veut vérifier
-        Calendar aujourdhui = Calendar.getInstance();
-        // TODO: voir si ça marche
-        aujourdhui.add(Calendar.DATE,-n); // On enleve n jours à la date d aujourd hui
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String dateLimite = sdf.format(aujourdhui.getTime());
-        return dateLimite;
+    public static List<Aliment> listeAlimentsPerimes () {
+        List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
+        List<Aliment> perimes = new ArrayList<Aliment>();
+        Date aujourdhui = new Date();
+        for(Aliment aliment : tries) {
+            if(aliment.getDatePeremption().compareTo(aujourdhui) < 0) {
+                perimes.add(aliment);
+            } else {
+                break;
+            }
+        }
+        return perimes;
     }
 
 }

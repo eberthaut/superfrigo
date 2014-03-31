@@ -19,11 +19,7 @@ public class ControleCourses {
         RecetteDAO.persiste(recette);
         BaseDAO.faireTransaction();
 
-        if(recette.getId() != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     public static boolean retraitRecette(String nom, List<Article> articles) {
@@ -33,11 +29,7 @@ public class ControleCourses {
         RecetteDAO.supprime(recette);
         BaseDAO.faireTransaction();
 
-        if(recette.getId() != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
 
@@ -101,17 +93,19 @@ public class ControleCourses {
         }
     }
 
-    public static double calculPrixListe () {
+    public static double calculPrixListe (List<Article> listeCourses) {
         double prixListe=0;
-        //TODO
+        for(Article article : listeCourses) {
+            prixListe += article.getPrix();
+        }
         return prixListe;
     }
 
-   /* TODO: comment on écrit la liste. Il faut déjà créer  */
     public static List<Article> genererListeCourses () {
-        List<Article> listeCourses= new ArrayList<Article>();
+        List<Article> listeCourses = new ArrayList<Article>();
 
-
+        List<Article> listeTriee = ArticleDAO.tousTriesParHabitude();
+        // TODO: faire l'algo
 
         return listeCourses;
     }

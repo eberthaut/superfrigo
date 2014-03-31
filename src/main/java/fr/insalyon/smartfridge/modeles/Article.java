@@ -16,12 +16,18 @@ public class Article {
 
     private String nom;
     private String marque;
+    private double prix;
+    private int joursPeremption;
+    private double masse;
 
     private int habitude;
 
-    public Article(String nom, String marque) {
+    public Article(String nom, String marque, double prix, int joursPeremption, double masse) {
         this.nom = nom;
         this.marque = marque;
+        this.prix = prix;
+        this.joursPeremption = joursPeremption;
+        this.masse = masse;
     }
 
     public Article () {
@@ -59,5 +65,29 @@ public class Article {
 
     public void setHabitude(int habitude) {
         this.habitude = habitude;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public int getJoursPeremption() {
+        return joursPeremption;
+    }
+
+    public void setJoursPeremption(int joursPeremption) {
+        this.joursPeremption = joursPeremption;
+    }
+
+    public double getMasse() {
+        return masse;
+    }
+
+    public void setMasse(double masse) {
+        this.masse = masse;
     }
 }
