@@ -28,7 +28,7 @@ public class App
 
         System.out.println(leMemeType.getNom());
 
-        Article article = new Article("Pomme", "", 0.1, 7, 0.2);
+        Article article = new Article("Pomme", "", 0.1, 7, 0.2, unType);
 
         BaseDAO.creerTransaction();
         ArticleDAO.persiste(article);

@@ -22,12 +22,13 @@ public class Article {
 
     private int habitude;
 
-    public Article(String nom, String marque, double prix, int joursPeremption, double masse) {
+    public Article(String nom, String marque, double prix, int joursPeremption, double masse, Type type) {
         this.nom = nom;
         this.marque = marque;
         this.prix = prix;
         this.joursPeremption = joursPeremption;
         this.masse = masse;
+        this.type = type;
     }
 
     public Article () {
