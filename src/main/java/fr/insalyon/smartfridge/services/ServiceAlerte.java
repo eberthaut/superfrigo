@@ -1,17 +1,14 @@
-package fr.insalyon.smartfridge.controleurs;
+package fr.insalyon.smartfridge.services;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.dao.AlimentDAO;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
-import javax.persistence.Query;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
  * S'occupe des aliments périmés.
  */
-public class ControleAlerte {
+public class ServiceAlerte {
 
     public static int statusAlerte (int nombreLimiteJoursVoulu) {
         int statusAlerte= 0;

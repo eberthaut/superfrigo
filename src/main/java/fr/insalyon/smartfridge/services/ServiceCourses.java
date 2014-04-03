@@ -1,4 +1,4 @@
-package fr.insalyon.smartfridge.controleurs;
+package fr.insalyon.smartfridge.services;
 
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Recette;
@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Service de gestion des habitudes dans le frigo.
  */
-public class ControleCourses {
+public class ServiceCourses {
     public static boolean ajoutRecette(String nom, List<Article> articles) {
         Recette recette = new Recette(nom, articles);
 

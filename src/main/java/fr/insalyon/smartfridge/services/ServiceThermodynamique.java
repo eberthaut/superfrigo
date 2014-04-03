@@ -1,11 +1,11 @@
-package fr.insalyon.smartfridge.controleurs;
+package fr.insalyon.smartfridge.services;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.dao.AlimentDAO;
 
 import java.util.List;
 
-public class ControleThermodynamique {
+public class ServiceThermodynamique {
     public static void mettreAJourTemperature() {
         List<Aliment> aliments = AlimentDAO.tous();
 

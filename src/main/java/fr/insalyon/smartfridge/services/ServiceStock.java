@@ -1,4 +1,4 @@
-package fr.insalyon.smartfridge.controleurs;
+package fr.insalyon.smartfridge.services;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * S'occupe de la gestion de stock.
  */
-public class ControleStock {
+public class ServiceStock {
     public static boolean retraitAliment (Article article) {
         BaseDAO.creerTransaction();
         ArticleDAO.supprime(article);

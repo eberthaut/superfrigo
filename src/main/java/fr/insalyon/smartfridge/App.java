@@ -1,16 +1,13 @@
 package fr.insalyon.smartfridge;
 
 
-import fr.insalyon.smartfridge.controleurs.ControleStock;
-import fr.insalyon.smartfridge.modeles.Aliment;
+import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Type;
 import fr.insalyon.smartfridge.modeles.dao.AlimentDAO;
 import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
 import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 import fr.insalyon.smartfridge.modeles.dao.TypeDAO;
-
-import java.util.List;
 
 /**
  * Hello world!
@@ -37,7 +34,7 @@ public class App
         ArticleDAO.persiste(article);
         BaseDAO.faireTransaction();
 
-        ControleStock.ajouterAliment(article, 3);
+        ServiceStock.ajouterAliment(article, 3);
 
         AlimentDAO.tous();
 
