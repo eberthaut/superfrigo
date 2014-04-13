@@ -15,16 +15,14 @@ public class Article {
     private long id;
 
     private String nom;
-    private String marque;
     private double prix;
     private int joursPeremption;
     private double masse;
 
     private int habitude;
 
-    public Article(String nom, String marque, double prix, int joursPeremption, double masse, Type type) {
+    public Article(String nom, double prix, int joursPeremption, double masse, Type type) {
         this.nom = nom;
-        this.marque = marque;
         this.prix = prix;
         this.joursPeremption = joursPeremption;
         this.masse = masse;
@@ -42,14 +40,6 @@ public class Article {
     public void setNom(String nom) {
 
         this.nom = nom;
-    }
-
-    public String getMarque() {
-        return marque;
-    }
-
-    public void setMarque(String marque) {
-        this.marque = marque;
     }
 
     public Type getType() {

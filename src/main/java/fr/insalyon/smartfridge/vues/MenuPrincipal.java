@@ -32,6 +32,7 @@ public class MenuPrincipal extends JPanel {
         ajouterButton.setText("Ajouter des articles");
         ajouterButton.addActionListener(controleur);
         retirerButton.setText("Retirer des articles");
+        retirerButton.addActionListener(controleur);
         coursesButton.setText("Editer une liste de courses");
         alerteButton.setText("Rien a signaler");
         alerteButton.setEnabled(false);

@@ -21,6 +21,13 @@ public class ServiceStock {
         return types;
     }
 
+    public static List<Aliment> listerAliments() {
+        BaseDAO.initialiserPersistence();
+        List<Aliment> aliments = AlimentDAO.tous();
+        BaseDAO.detruirePersistence();
+        return aliments;
+    }
+
     public static List<Article> listerArticles(Type type) {
         BaseDAO.initialiserPersistence();
         List<Article> articles = type.getArticles();
@@ -28,10 +35,18 @@ public class ServiceStock {
         return articles;
     }
 
-    public static boolean retraitAliment (Article article) {
+    public static boolean retraitAliment (Aliment aliment, int quantite) {
+        System.out.println(quantite);
         BaseDAO.initialiserPersistence();
+        aliment = AlimentDAO.trouveId(aliment.getId());
         BaseDAO.creerTransaction();
-        ArticleDAO.supprime(article);
+        if(aliment.getQuantite() <= quantite) {
+            AlimentDAO.supprime(aliment);
+        } else {
+            aliment.setQuantite(aliment.getQuantite() - quantite);
+            System.out.println(aliment.getQuantite());
+            AlimentDAO.miseAJour(aliment);
+        }
         BaseDAO.faireTransaction();
         BaseDAO.detruirePersistence();
         return true;

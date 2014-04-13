@@ -3,6 +3,7 @@ package fr.insalyon.smartfridge.controleurs;
 import fr.insalyon.smartfridge.vues.EntreeCategories;
 import fr.insalyon.smartfridge.vues.Fenetre;
 import fr.insalyon.smartfridge.vues.MenuPrincipal;
+import fr.insalyon.smartfridge.vues.SortieAliment;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,8 @@ public class MenuPrincipalControleur implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(menu.getAjouterButton())) {
             fenetre.allerA(new EntreeCategories(fenetre));
+        } if(e.getSource().equals(menu.getRetirerButton())) {
+            fenetre.allerA(new SortieAliment(fenetre));
         }
     }
 }
