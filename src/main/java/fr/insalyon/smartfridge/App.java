@@ -1,45 +1,37 @@
 package fr.insalyon.smartfridge;
 
-
-import fr.insalyon.smartfridge.services.ServiceStock;
-import fr.insalyon.smartfridge.modeles.Article;
-import fr.insalyon.smartfridge.modeles.Type;
-import fr.insalyon.smartfridge.modeles.dao.AlimentDAO;
-import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
 import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
-import fr.insalyon.smartfridge.modeles.dao.TypeDAO;
+import fr.insalyon.smartfridge.vues.MenuPrincipal;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+
+public class App {
+    public App() {
         BaseDAO.initialiserPersistence();
+        JFrame frame = new MenuPrincipal();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = frame.getSize();
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
 
-        Type unType = new Type("Fruit");
-        BaseDAO.creerTransaction();
-        TypeDAO.persiste(unType);
-        BaseDAO.faireTransaction();
-
-        Type leMemeType = TypeDAO.trouveId(unType.getId());
-
-        System.out.println(leMemeType.getNom());
-
-        Article article = new Article("Pomme", "", 0.1, 7, 0.2, unType);
-
-        BaseDAO.creerTransaction();
-        ArticleDAO.persiste(article);
-        BaseDAO.faireTransaction();
-
-        ServiceStock.ajouterAliment(article, 3);
-
-        AlimentDAO.tous();
-
-        BaseDAO.detruirePersistence(); // Destruction de la connexion à la Base de données
-
-
+    public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new App();
     }
 }
