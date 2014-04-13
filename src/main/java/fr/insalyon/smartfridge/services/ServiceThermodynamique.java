@@ -7,7 +7,7 @@ import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 import java.util.List;
 
 public class ServiceThermodynamique {
-    public static void mettreAJourTemperature() {
+    public static double mettreAJourTemperature() {
         BaseDAO.initialiserPersistence();
         List<Aliment> aliments = AlimentDAO.tous();
 
@@ -22,5 +22,6 @@ public class ServiceThermodynamique {
 
         System.out.println("=> Changement de temperature a " + temperature + " degres celcius.");
         BaseDAO.detruirePersistence();
+        return temperature;
     }
 }

@@ -22,6 +22,7 @@ public class MenuPrincipal extends JPanel {
         try {
             jbInit();
             controleur.gererAlerte();
+            controleur.gererTemperature();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,7 +30,7 @@ public class MenuPrincipal extends JPanel {
 
     private void jbInit() throws Exception {
         this.setLayout(layout);
-        temperatureLabel.setText("5 degres Celcius");
+        temperatureLabel.setText("...");
         ajouterButton.setText("Ajouter des articles");
         ajouterButton.addActionListener(controleur);
         retirerButton.setText("Retirer des articles");
