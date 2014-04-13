@@ -28,9 +28,9 @@ public class AlimentDAO extends BaseDAO {
     /**
      * @return Toutes les entites de Aliment classees par dates de peremption
      */
-    public static ArrayList<Aliment> tousTriesParPeremption() {
+    public static List<Aliment> tousTriesParPeremption() {
         Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment ORDER BY aliment.datePeremption");
         // SELECT * FROM aliment ORDER BY aliment.datePeremption
-        return (ArrayList) q.getResultList();
+        return q.getResultList();
     }
 }

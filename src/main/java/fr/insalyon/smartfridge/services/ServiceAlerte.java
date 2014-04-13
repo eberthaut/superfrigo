@@ -12,9 +12,8 @@ import java.util.*;
 public class ServiceAlerte {
 
     public static int statusAlerte (int nombreLimiteJoursVoulu) {
-        BaseDAO.initialiserPersistence();
         int statusAlerte= 0;
-        List<Aliment> prochePeremption= listeAlimentsProchePeremption(nombreLimiteJoursVoulu);
+        List<Aliment> prochePeremption = listeAlimentsProchePeremption(nombreLimiteJoursVoulu);
         if (!prochePeremption.isEmpty()) {
             statusAlerte=1;
         }
@@ -23,7 +22,6 @@ public class ServiceAlerte {
         if (!perimes.isEmpty()) {
             statusAlerte=2;
         }
-        BaseDAO.detruirePersistence();
         return statusAlerte;
     }
 

@@ -21,6 +21,7 @@ public class MenuPrincipal extends JPanel {
         controleur = new MenuPrincipalControleur(fenetre, this);
         try {
             jbInit();
+            controleur.gererAlerte();
         } catch (Exception e) {
             e.printStackTrace();
         }
