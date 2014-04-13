@@ -21,6 +21,13 @@ public class ServiceStock {
         return types;
     }
 
+    public static List<Article> listerArticles(Type type) {
+        BaseDAO.initialiserPersistence();
+        List<Article> articles = type.getArticles();
+        BaseDAO.detruirePersistence();
+        return articles;
+    }
+
     public static boolean retraitAliment (Article article) {
         BaseDAO.initialiserPersistence();
         BaseDAO.creerTransaction();

@@ -2,6 +2,7 @@ package fr.insalyon.smartfridge.controleurs;
 
 import fr.insalyon.smartfridge.modeles.Type;
 import fr.insalyon.smartfridge.services.ServiceStock;
+import fr.insalyon.smartfridge.vues.EntreeArticles;
 import fr.insalyon.smartfridge.vues.EntreeCategories;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
@@ -26,6 +27,9 @@ public class EntreeCategoriesControleur implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == entreeCategories.getRetourButton()) {
             fenetre.retourArriere();
+        } else if(e.getSource() == entreeCategories.getChoixButton()) {
+            Type t = types.getTypeAt(entreeCategories.getTypesList().getSelectedIndex());
+            fenetre.allerA(new EntreeArticles(fenetre, t));
         }
     }
 

@@ -34,7 +34,7 @@ Le triangle sera de couleur jaune si il y en a qui sont proches de leur date de 
 
 Le bouton d'ajout nous permet d’ajouter des aliments dans notre base de données. En renseignant le nom de l’aliment, on lui donne automatiquement un identifiant ainsi qu’une date d’introduction dans le frigo.    
 
-![Entrée, Catégories](interface-utilisateur/entreeCategories.jpg)
+![Entrée, Catégories](interface-utilisateur/entreeArticles.jpg)
 
 Dans cette deuxième image nous pouvons observer le menu qui apparaît si nous appuyons sur le bouton ajouter. Cela nous affiche à gauche les différents types d’aliments possibles  et à droite une liste avec tous les produits ainsi que la quantité que l’on vient d’ajouter.
 

@@ -1,9 +1,7 @@
 package fr.insalyon.smartfridge.modeles;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Represente un type d'article du frigo
@@ -12,6 +10,9 @@ import javax.persistence.Id;
 // Ce mot clé signifie que cette classe définit en même temps une table dans la base de données.
 @Entity
 public class Type {
+    @OneToMany(mappedBy = "type") // on peut avoir plusieurs articles pour un type
+    private List<Article> articles;
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private long id;
@@ -36,5 +37,9 @@ public class Type {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
     }
 }
