@@ -1,11 +1,24 @@
 package fr.insalyon.smartfridge.vues;
 
-import java.awt.Dimension;
+import fr.insalyon.smartfridge.controleurs.MenuPrincipalControleur;
 
-import javax.swing.JFrame;
+import java.awt.FlowLayout;
 
-public class MenuPrincipal extends JFrame {
-    public MenuPrincipal() {
+import javax.swing.*;
+
+public class MenuPrincipal extends JPanel {
+// c'est le contenu de la fenetre par defaut
+    private MenuPrincipalControleur controleur;
+
+    private JLabel temperatureLabel = new JLabel();
+    private JButton ajouterButton = new JButton();
+    private JButton retirerButton = new JButton();
+    private JButton coursesButton = new JButton();
+    private FlowLayout layout = new FlowLayout();
+    private JButton alerteButton = new JButton();
+
+    public MenuPrincipal(Fenetre fenetre) {
+        controleur = new MenuPrincipalControleur(fenetre, this);
         try {
             jbInit();
         } catch (Exception e) {
@@ -14,8 +27,38 @@ public class MenuPrincipal extends JFrame {
     }
 
     private void jbInit() throws Exception {
-        this.getContentPane().setLayout(null);
-        this.setSize(new Dimension(400, 300));
-        this.setTitle("SmartFridge");
+        this.setLayout(layout);
+        temperatureLabel.setText("5 degres Celcius");
+        ajouterButton.setText("Ajouter des articles");
+        ajouterButton.addActionListener(controleur);
+        retirerButton.setText("Retirer des articles");
+        coursesButton.setText("Editer une liste de courses");
+        alerteButton.setText("Rien a signaler");
+        alerteButton.setEnabled(false);
+        this.add(temperatureLabel, null);
+        this.add(ajouterButton, null);
+        this.add(retirerButton, null);
+        this.add(coursesButton, null);
+        this.add(alerteButton, null);
+    }
+
+    public JLabel getTemperatureLabel() {
+        return temperatureLabel;
+    }
+
+    public JButton getAjouterButton() {
+        return ajouterButton;
+    }
+
+    public JButton getRetirerButton() {
+        return retirerButton;
+    }
+
+    public JButton getCoursesButton() {
+        return coursesButton;
+    }
+
+    public JButton getAlerteButton() {
+        return alerteButton;
     }
 }
