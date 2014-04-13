@@ -1,6 +1,5 @@
 package fr.insalyon.smartfridge;
 
-import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
 import java.awt.Dimension;
@@ -11,7 +10,6 @@ import javax.swing.UIManager;
 
 public class App {
     public App() {
-        BaseDAO.initialiserPersistence();
         JFrame frame = new Fenetre();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = frame.getSize();

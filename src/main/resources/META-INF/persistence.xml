@@ -11,7 +11,6 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sql435118"/>
             <property name="javax.persistence.jdbc.password" value="sN2%cW7*"/>
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
         </properties>
     </persistence-unit>
 </persistence>

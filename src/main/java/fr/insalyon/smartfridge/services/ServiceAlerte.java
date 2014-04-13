@@ -2,6 +2,7 @@ package fr.insalyon.smartfridge.services;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.dao.AlimentDAO;
+import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 
 import java.util.*;
 
@@ -11,6 +12,7 @@ import java.util.*;
 public class ServiceAlerte {
 
     public static int statusAlerte (int nombreLimiteJoursVoulu) {
+        BaseDAO.initialiserPersistence();
         int statusAlerte= 0;
         List<Aliment> prochePeremption= listeAlimentsProchePeremption(nombreLimiteJoursVoulu);
         if (!prochePeremption.isEmpty()) {
@@ -21,11 +23,12 @@ public class ServiceAlerte {
         if (!perimes.isEmpty()) {
             statusAlerte=2;
         }
-
+        BaseDAO.detruirePersistence();
         return statusAlerte;
     }
 
     public static List<Aliment> listeAlimentsProchePeremption (int nombreLimiteJoursVoulu) {
+        BaseDAO.initialiserPersistence();
         List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
         List<Aliment> proches = new ArrayList<Aliment>();
         Date aujourdhui = new Date();
@@ -37,11 +40,13 @@ public class ServiceAlerte {
                 break;
             }
         }
+        BaseDAO.detruirePersistence();
         return proches;
 
     }
 
     public static List<Aliment> listeAlimentsPerimes () {
+        BaseDAO.initialiserPersistence();
         List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
         List<Aliment> perimes = new ArrayList<Aliment>();
         Date aujourdhui = new Date();
@@ -52,6 +57,7 @@ public class ServiceAlerte {
                 break;
             }
         }
+        BaseDAO.detruirePersistence();
         return perimes;
     }
 
