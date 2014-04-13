@@ -54,7 +54,7 @@ public class ServiceStock {
 
     public static boolean ajouterAliment (Article article, int quantite) {
         BaseDAO.initialiserPersistence();
-        Date datePeremption = new Date(new Date().getTime() + article.getJoursPeremption() * 60 * 60 * 24);
+        Date datePeremption = new Date(new Date().getTime() + article.getJoursPeremption() * 60 * 60 * 24 * 1000);
         Aliment aliment= new Aliment(article, datePeremption, quantite);
         BaseDAO.creerTransaction();
         AlimentDAO.persiste(aliment);
