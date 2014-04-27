@@ -17,6 +17,12 @@ public class RecetteDAO extends BaseDAO {
         return (Recette) trouveId(Recette.class, id);
     }
 
+    public static Recette trouveNom(String nom) {
+        Query q = getEntityManager().createQuery("SELECT recette FROM Recette recette WHERE recette.nom=:nom");
+        q.setParameter("nom", nom);
+        return (Recette) q.getSingleResult();
+    }
+
     /**
      * @return Toutes les entites de Recette
      */

@@ -24,9 +24,9 @@ public class ServiceCourses {
         return true;
     }
 
-    public static boolean retraitRecette(String nom, List<Article> articles) {
+    public static boolean retraitRecette(String nom) {
         BaseDAO.initialiserPersistence();
-        Recette recette = new Recette(nom, articles);
+        Recette recette = RecetteDAO.trouveNom(nom);
 
         BaseDAO.creerTransaction();
         RecetteDAO.supprime(recette);
