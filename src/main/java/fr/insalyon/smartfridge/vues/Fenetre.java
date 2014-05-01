@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Fenetre extends JFrame {
+public class Fenetre extends JApplet {
 // cree pour plus facilement changer le contenu de la fenetre
 
     // historique de toutes les fenetres par lesquelles on est passe
@@ -22,11 +22,12 @@ public class Fenetre extends JFrame {
 
     private void jbInit() throws Exception {
         this.setSize(new Dimension(1000,700));
-        this.setTitle("SmartFridge");
+        this.setLayout(new FlowLayout());
     }
 
     private void afficherDernier() { // obtient la derniere vue de l'historique
         this.setContentPane(historique.get(historique.size() - 1));
+        this.getContentPane().setSize(new Dimension(1000,700));
     }
 
     public void revenirDebut() {

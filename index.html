@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <title>SmartFridge</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <style>
+            object {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse" role="navigation">
+
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <h1>Frigidaire intelligent</h1>
+                <object classid="java:Runner.class"
+                        type="application/x-java-applet"
+                        archive="target/SmartFridge-1.0-SNAPSHOT-jar-with-dependencies.jar"
+                        width="1000" height="700">
+                    <param name="code" value="Runner.class"/>
+                    <param name="cache_option" value="no"/>
+                    <param name="codebase_lookup" value="false"/>
+                    <param name="persistState" value="false" />
+                </object>
+            </div>
+        </div>
+
+    </body>
+</html>

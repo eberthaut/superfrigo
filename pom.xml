@@ -11,51 +11,57 @@
       <finalName>${artifactId}-${version}</finalName>
       <plugins>
           <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-jar-plugin</artifactId>
-              <version>2.4</version>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <version>2.2-beta-5</version>
               <configuration>
+                  <descriptorRefs>
+                      <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
                   <archive>
+                      <index>true</index>
                       <manifest>
-                          <mainClass>fr.insalyon.smartfridge.App</mainClass>
+                          <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                       </manifest>
                   </archive>
               </configuration>
+              <executions>
+                  <execution>
+                      <id>make-my-applet-jar</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>single</goal>
+                      </goals>
+                  </execution>
+              </executions>
           </plugin>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-shade-plugin</artifactId>
+              <artifactId>maven-jarsigner-plugin</artifactId>
+              <version>1.2</version>
               <executions>
                   <execution>
-                      <phase>package</phase>
+                      <id>sign</id>
                       <goals>
-                          <goal>shade</goal>
+                          <goal>sign</goal>
                       </goals>
                   </execution>
               </executions>
               <configuration>
-                  <finalName>complete-${artifactId}-${version}</finalName>
-                  <filters>
-                      <filter>
-                          <artifact>*:*</artifact>
-                          <excludes>
-                              <exclude>META-INF/*.SF</exclude>
-                              <exclude>META-INF/*.DSA</exclude>
-                              <exclude>META-INF/*.RSA</exclude>
-                          </excludes>
-                      </filter>
-                  </filters>
+                  <keystore>./localhost.jks</keystore>
+                  <alias>localhost</alias>
+                  <storepass>superfrigo</storepass>
+                  <keypass>superfrigo</keypass>
               </configuration>
           </plugin>
       </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <includes>
-                    <include>META-INF/persistence.xml</include>
-                </includes>
-            </resource>
-        </resources>
+      <resources>
+          <resource>
+              <directory>src/main/resources/</directory>
+              <includes>
+                  <include>META-INF/persistence.xml</include>
+              </includes>
+          </resource>
+      </resources>
     </build>
   <dependencies>
         <dependency>
@@ -85,6 +91,11 @@
             <version>2.1.0</version>
             <type>jar</type>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.30</version>
         </dependency>
     </dependencies>
 </project>
