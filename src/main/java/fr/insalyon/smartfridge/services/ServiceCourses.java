@@ -37,6 +37,21 @@ public class ServiceCourses {
     }
 
 
+    public static boolean changerHabitude(Article article, int habitude) {
+        BaseDAO.initialiserPersistence();
+
+
+        article.setHabitude(habitude);
+
+        BaseDAO.creerTransaction();
+        ArticleDAO.miseAJour(article);
+        BaseDAO.faireTransaction();
+
+        BaseDAO.detruirePersistence();
+        return true;
+    }
+
+
     public static boolean augmenterHabitude(Article article) {
         BaseDAO.initialiserPersistence();
         int modificationHabitude = 1;
@@ -79,7 +94,7 @@ public class ServiceCourses {
     public static boolean activerRecette(Recette recette) {
 
         if(recette.isActif()) {
-            return true;
+            return false;
         } else {
             recette.setActivite(true);
             BaseDAO.initialiserPersistence();
@@ -95,9 +110,9 @@ public class ServiceCourses {
 
     public static boolean desactiverRecette(Recette recette) {
         if(! recette.isActif()) {
-            return true;
+            return false;
         } else {
-            recette.setActivite(true);
+            recette.setActivite(false);
 
             BaseDAO.initialiserPersistence();
 
@@ -127,6 +142,14 @@ public class ServiceCourses {
 
         List<Article> listeTriee = ArticleDAO.tousTriesParHabitude();
         // TODO: faire l'algo
+        listeCourses= ArticleDAO.transformationAliment();
+        List<Article> lHabitude = new ArrayList<Article>();
+        /*lHabitude = ArticleDAO.traitementHabitude();
+        for(int i=0; i<lHabitude.size(); i++ ){
+            Article a = lHabitude.get(i);
+            System.out.println(a.getNom());
+            listeCourses.add(0,a);
+        }*/
         BaseDAO.detruirePersistence();
         return listeCourses;
     }

@@ -52,4 +52,8 @@ public class Recette {
     public long getId() {
         return id;
     }
+
+    public String getNom(){
+        return nom;
+    }
 }

@@ -21,7 +21,7 @@ public class Fenetre extends JFrame {
     }
 
     private void jbInit() throws Exception {
-        this.setSize(new Dimension(719, 458));
+        this.setSize(new Dimension(1000,700));
         this.setTitle("SmartFridge");
     }
 

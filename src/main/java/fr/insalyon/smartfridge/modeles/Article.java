@@ -81,4 +81,8 @@ public class Article {
     public void setMasse(double masse) {
         this.masse = masse;
     }
+
+    public long getId() {
+        return id;
+    }
 }

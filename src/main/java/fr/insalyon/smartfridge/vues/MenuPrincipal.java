@@ -16,6 +16,7 @@ public class MenuPrincipal extends JPanel {
     private JButton coursesButton = new JButton();
     private FlowLayout layout = new FlowLayout();
     private JButton alerteButton = new JButton();
+    private JButton recettesButton = new JButton();
 
     public MenuPrincipal(Fenetre fenetre) {
         controleur = new MenuPrincipalControleur(fenetre, this);
@@ -36,13 +37,17 @@ public class MenuPrincipal extends JPanel {
         retirerButton.setText("Retirer des articles");
         retirerButton.addActionListener(controleur);
         coursesButton.setText("Editer une liste de courses");
+        coursesButton.addActionListener(controleur);
         alerteButton.setText("Rien a signaler");
         alerteButton.setEnabled(false);
+        recettesButton.setText("Recettes");
+        recettesButton.addActionListener(controleur);
         this.add(temperatureLabel, null);
         this.add(ajouterButton, null);
         this.add(retirerButton, null);
         this.add(coursesButton, null);
         this.add(alerteButton, null);
+        this.add(recettesButton, null);
     }
 
     public JLabel getTemperatureLabel() {
@@ -63,5 +68,9 @@ public class MenuPrincipal extends JPanel {
 
     public JButton getAlerteButton() {
         return alerteButton;
+    }
+
+    public JButton getRecettesButton() {
+        return recettesButton;
     }
 }

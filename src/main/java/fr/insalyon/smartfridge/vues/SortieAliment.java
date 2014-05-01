@@ -29,7 +29,7 @@ public class SortieAliment extends JPanel {
 
     private void jbInit() throws Exception {
         this.setLayout(layout);
-        this.setSize(new Dimension(506, 372));
+        this.setSize(new Dimension(1000,700));
         alimentsList.setPreferredSize(new Dimension(200, 300));
         alimentsList.setMaximumSize(new Dimension(200, 1000));
         alimentsList.setMinimumSize(new Dimension(200, 0));

@@ -1,8 +1,10 @@
 package fr.insalyon.smartfridge.modeles.dao;
 
+import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
 
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +34,48 @@ public class ArticleDAO extends BaseDAO{
         return q.getResultList();
     }
 
+    public static List<Article> transformationAliment() {
 
+        List<Article> lArticle = new ArrayList<Article>();
+        List<Aliment> lAliments = AlimentDAO.tous();
+        List<Article> listeArticle = ArticleDAO.tous();
+        Article a;
+        for (int i = 0; i < lAliments.size(); i++) {
+            long id = lAliments.get(i).getArticle().getId();
+            for (int j = 0; j < listeArticle.size(); j++) {
+                if (id == listeArticle.get(j).getId()) {
+                    a = listeArticle.get(j);
+                    //System.out.println(a.getNom());
+                    if (lAliments.get(i).getQuantite() < listeArticle.get(j).getHabitude()) {
+                        lArticle.add(0, a);
+                        //System.out.println(lArticle.get(0).getNom());
+                    }
+                }
+            }
+        }
+
+        List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
+        for(int e= 0; e<listeArticle.size();e++) {
+            Article b = listeArticle.get(e);
+            for (int g = 0; g < lArticle.size(); g++) {
+                Article c = lArticle.get(g);
+                if (b.equals(c)) {
+                    System.out.println(b.getNom());
+                    lArticleAbsentDuFrigo.remove(e);
+                }
+            }
+        }
+
+        for (int h = 0; h <lArticleAbsentDuFrigo.size(); h++) {
+            Article d = lArticleAbsentDuFrigo.get(h);
+            if(d.getHabitude() != 0){
+                //System.out.println(a.getNom());
+                lArticle.add(0, d);
+                //System.out.println(lArticle.get(0).getNom());
+            }
+        }
+
+        return lArticle;
+    }
 }
 

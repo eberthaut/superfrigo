@@ -33,4 +33,11 @@ public class AlimentDAO extends BaseDAO {
         // SELECT * FROM aliment ORDER BY aliment.datePeremption
         return q.getResultList();
     }
+
+    public static List<Aliment> tousTriesParQuantite() {
+        Query q = getEntityManager().createQuery("SELECT quantite FROM Aliment ");
+        // SELECT * FROM aliment ORDER BY aliment.datePeremption
+
+        return q.getResultList();
+    }
 }
