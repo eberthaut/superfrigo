@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPrincipalControleur implements ActionListener {
-// On decouple la recuperation des actions des vues
+    // On decouple la recuperation des actions des vues
     Fenetre fenetre;
     MenuPrincipal menu;
 
