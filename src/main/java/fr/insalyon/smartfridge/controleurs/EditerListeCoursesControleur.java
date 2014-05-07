@@ -21,7 +21,7 @@ public class EditerListeCoursesControleur implements ActionListener{
 
     private Fenetre fenetre;
     private EditerListeCourses editerListeCourses;
-    private ListModel articles;
+    private ListModel<Article> articles;
 
     public EditerListeCoursesControleur(Fenetre fenetre, EditerListeCourses editerListeCourses){
         this.fenetre = fenetre;
@@ -40,30 +40,9 @@ public class EditerListeCoursesControleur implements ActionListener{
     }
 
     public void creerListe() {
-        articles = new ListModel(ServiceCourses.genererListeCourses());
+        articles = new ListModel<Article>(ServiceCourses.genererListeCourses());
         editerListeCourses.getListeDeCourses().setModel(articles);
 
-    }
-
-    private class ListModel extends AbstractListModel {
-        List<Article> list;
-
-        public ListModel(List<Article> articles) {
-            this.list = articles;
-        }
-
-        public int getSize() {
-            return list.size();
-        }
-
-        @Override
-        public Object getElementAt(int i) {
-            return list.get(i).getNom();
-        }
-
-        public Article getArticleAt(int i) {
-            return list.get(i);
-        }
     }
 }
 

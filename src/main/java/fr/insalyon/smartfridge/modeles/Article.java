@@ -85,4 +85,8 @@ public class Article {
     public long getId() {
         return id;
     }
+
+    public String toString() {
+        return nom;
+    }
 }

@@ -65,4 +65,8 @@ public class Aliment {
     public void setArticle(Article article) {
         this.article = article;
     }
+
+    public String toString() {
+        return quantite + "x " + article;
+    }
 }

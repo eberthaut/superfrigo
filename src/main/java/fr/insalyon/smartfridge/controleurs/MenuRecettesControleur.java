@@ -25,7 +25,7 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
 
     Fenetre fenetre;
     MenuRecettes menuRecettes;
-    ListModel recettes;
+    ListModel<Recette> recettes;
 
     public MenuRecettesControleur(Fenetre fenetre, MenuRecettes menuRecettes) {
         this.fenetre = fenetre;
@@ -37,7 +37,7 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuRecettes.getToggleButton()) {
-            Recette r = recettes.getRecettesAt(menuRecettes.getRecettesList().getSelectedIndex());
+            Recette r = recettes.get(menuRecettes.getRecettesList().getSelectedIndex());
 
             if(r.isActif()) {
                 ServiceCourses.desactiverRecette(r);
@@ -50,7 +50,7 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
         } else if(e.getSource().equals(menuRecettes.getAjouterButton())) {
             fenetre.allerA(new EntreeRecettes(fenetre));
         }else if(e.getSource().equals(menuRecettes.getSupprimerButton())) {
-            Recette r = recettes.getRecettesAt(menuRecettes.getRecettesList().getSelectedIndex());
+            Recette r = recettes.get(menuRecettes.getRecettesList().getSelectedIndex());
             ServiceCourses.retraitRecette(r.getNom());
             rafraichirListe();
         }
@@ -62,7 +62,7 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
 
 
     public void rafraichirListe() {
-        recettes = new ListModel(ServiceCourses.listerRecettes());
+        recettes = new ListModel<Recette>(ServiceCourses.listerRecettes());
         menuRecettes.getRecettesList().setModel(recettes);
     }
 
@@ -70,38 +70,12 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
     public void valueChanged(ListSelectionEvent e) {
         int i = menuRecettes.getRecettesList().getSelectedIndex();
         if(i >= 0) {
-            Recette r = recettes.getRecettesAt(i);
+            Recette r = recettes.get(i);
             if(r.isActif()) {
                 menuRecettes.getToggleButton().setText("Desactiver");
             } else {
                 menuRecettes.getToggleButton().setText("Activer");
             }
-        }
-    }
-
-    private class ListModel extends AbstractListModel {
-        List<Recette> recettes;
-
-        public ListModel(List<Recette> recettes) {
-            this.recettes = recettes;
-        }
-
-        @Override // demande par la JList (on doit implementer un AbstractListModel)
-        public int getSize() {
-            return recettes.size();
-        }
-
-        @Override
-        public Object getElementAt(int i) {
-            String checkbox = "[ ] ";
-            if(recettes.get(i).isActif()) {
-                checkbox = "[x] ";
-            }
-            return checkbox + recettes.get(i).getNom();
-        }
-
-        public Recette getRecettesAt(int i) {
-            return recettes.get(i);
         }
     }
 

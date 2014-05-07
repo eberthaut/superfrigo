@@ -56,4 +56,8 @@ public class Recette {
     public String getNom(){
         return nom;
     }
+
+    public String toString() {
+        return "[" + (actif?"x":"  ") + "] " + nom;
+    }
 }

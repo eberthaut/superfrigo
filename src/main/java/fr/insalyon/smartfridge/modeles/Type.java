@@ -42,4 +42,8 @@ public class Type {
     public List<Article> getArticles() {
         return articles;
     }
+
+    public String toString() {
+        return nom;
+    }
 }
