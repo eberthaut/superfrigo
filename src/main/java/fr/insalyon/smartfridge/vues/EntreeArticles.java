@@ -15,7 +15,7 @@ public class EntreeArticles extends SousPanneau {
     private JButton ajouterButton = new JButton();
     private JPanel options = new JPanel();
     private JLabel spinnerLabel = new JLabel();
-    private JSpinner quantiteSpinner = new JSpinner(); // c'est le compteur de qte
+    private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
     public EntreeArticles(Fenetre fenetre, Type type) {
         super(fenetre);
@@ -39,7 +39,6 @@ public class EntreeArticles extends SousPanneau {
         spinnerLabel.setText("Quantite a ajouter : ");
         spinnerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         options.add(spinnerLabel, null);
-        quantiteSpinner.setValue(1);
         options.add(quantiteSpinner, null);
         this.add(options, BorderLayout.SOUTH);
 

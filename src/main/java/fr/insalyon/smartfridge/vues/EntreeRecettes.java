@@ -17,7 +17,7 @@ public class EntreeRecettes extends SousPanneau {
     private JList articlesList = new JList();
     private JScrollPane articlesScroll = new JScrollPane(articlesList);
     private JButton ajouterIngredientButton = new JButton();
-    private JSpinner quantiteSpinner = new JSpinner();
+    private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
     private JButton supprimerIngredientButton = new JButton();
     private JList ingredientsList = new JList();
     private JScrollPane ingredientsScroll = new JScrollPane(ingredientsList);
@@ -45,7 +45,6 @@ public class EntreeRecettes extends SousPanneau {
         ajouterIngredientButton.setText("[Ajouter]>");
         milieu.add(ajouterIngredientButton);
         ajouterIngredientButton.addActionListener(controleur);
-        quantiteSpinner.setValue(0);
         milieu.add(quantiteSpinner);
         supprimerIngredientButton.setText("<[Supprimer]");
         supprimerIngredientButton.addActionListener(controleur);

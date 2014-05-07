@@ -16,7 +16,7 @@ public class ChangerHabitude extends SousPanneau {
     private JPanel options = new JPanel();
     private JButton changerHabitudeButton = new JButton();
     private JLabel habitude = new JLabel();
-    private JSpinner habitudeSpinner = new JSpinner();
+    private JSpinner habitudeSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1));
 
 
     public ChangerHabitude(Fenetre fenetre){
@@ -37,7 +37,6 @@ public class ChangerHabitude extends SousPanneau {
         habitude.setText("Changer l'habitude : ");
         habitude.setHorizontalAlignment(SwingConstants.RIGHT);
         options.add(habitude);
-        getHabitudeSpinner().setValue(0);
         options.add(getHabitudeSpinner());
         changerHabitudeButton.setText("Appliquer");
         options.add(changerHabitudeButton);

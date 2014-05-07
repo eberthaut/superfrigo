@@ -87,15 +87,14 @@ public class EntreeRecettesControleur implements ActionListener, ListSelectionLi
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-
         if(e.getSource() == entreeRecettes.getIngredientsList()) {
             int idx = entreeRecettes.getIngredientsList().getSelectedIndex();
             if(idx >= 0) {
                 Ingredient ing = ingredients.get(idx);
-                entreeRecettes.getQuantiteSpinner().setValue(ing.getQuantite());
+                entreeRecettes.getQuantiteSpinner().setModel(new SpinnerNumberModel(ing.getQuantite(), 1, ing.getQuantite(), 1));
             }
         } else if(e.getSource() == entreeRecettes.getArticlesList()) {
-            entreeRecettes.getQuantiteSpinner().setValue(1);
+            entreeRecettes.getQuantiteSpinner().setModel(new SpinnerNumberModel(1, 1, 1000, 1));
         }
     }
 }

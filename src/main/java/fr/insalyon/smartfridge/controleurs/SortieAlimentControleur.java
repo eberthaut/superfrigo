@@ -5,6 +5,7 @@ import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.Fenetre;
 import fr.insalyon.smartfridge.vues.SortieAliment;
 
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
@@ -40,7 +41,7 @@ public class SortieAlimentControleur implements ActionListener, ListSelectionLis
         int i = sortieAliment.getAlimentsList().getSelectedIndex();
         if(i >= 0) {
             Aliment a = aliments.get(i);
-            sortieAliment.getQuantiteSpinner().setValue(a.getQuantite());
+            sortieAliment.getQuantiteSpinner().setModel(new SpinnerNumberModel(a.getQuantite(), 1, a.getQuantite(), 1));
         }
     }
 }
