@@ -8,7 +8,7 @@ public class Ingredient {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private long id;
 
-    private long quantite;
+    private int quantite;
 
     @ManyToOne
     private
@@ -18,15 +18,23 @@ public class Ingredient {
     private
     Article article;
 
+    public Ingredient(Article article, int quantite) {
+        this.article = article;
+        this.quantite = quantite;
+    }
+
+    public Ingredient() {
+    }
+
     public long getId() {
         return id;
     }
 
-    public long getQuantite() {
+    public int getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(long quantite) {
+    public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
 

@@ -22,7 +22,7 @@ public class ServiceCourses {
         RecetteDAO.persiste(recette);
         for(Ingredient ingredient : ingredients) {
             ingredient.setRecette(recette);
-            IngredientDAO.miseAJour(ingredient);
+            IngredientDAO.persiste(ingredient);
         }
         BaseDAO.faireTransaction();
 

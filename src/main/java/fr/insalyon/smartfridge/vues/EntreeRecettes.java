@@ -41,6 +41,7 @@ public class EntreeRecettes extends SousPanneau {
 
     private void jbInit() throws Exception {
         principal.setLayout(new GridLayout(1,3));
+        articlesList.addListSelectionListener(controleur);
         principal.add(articlesScroll);
         milieu.setLayout(new GridLayout(3, 1));
         ajouterIngredientButton.setText("[Ajouter]>");
@@ -52,6 +53,7 @@ public class EntreeRecettes extends SousPanneau {
         supprimerIngredientButton.addActionListener(controleur);
         milieu.add(supprimerIngredientButton);
         principal.add(milieu);
+        ingredientsList.addListSelectionListener(controleur);
         principal.add(ingredientsScroll);
         this.add(principal, BorderLayout.CENTER);
 
