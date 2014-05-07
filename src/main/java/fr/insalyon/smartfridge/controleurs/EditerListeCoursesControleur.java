@@ -34,9 +34,7 @@ public class EditerListeCoursesControleur implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(editerListeCourses.getChangerHabitudesButton())) {
             fenetre.allerA(new ChangerHabitude(fenetre));
-        }if (e.getSource().equals(editerListeCourses.getRetourButton())) {
-            fenetre.retourArriere();
-        }if (e.getSource().equals(editerListeCourses.getReinitialiserButton())) {
+        } else if (e.getSource().equals(editerListeCourses.getReinitialiserButton())) {
             fenetre.allerA(new EditerListeCourses(fenetre));
         }
     }

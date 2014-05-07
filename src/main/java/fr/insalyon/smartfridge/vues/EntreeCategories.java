@@ -9,8 +9,8 @@ import javax.swing.*;
 public class EntreeCategories extends SousPanneau {
     EntreeCategoriesControleur controleur;
 
-    private JPanel principal = new JPanel();
     private JList typesList = new JList();
+    private JScrollPane scroll = new JScrollPane(typesList);
     private JButton choixButton = new JButton();
 
     public EntreeCategories(Fenetre fenetre) {
@@ -24,17 +24,13 @@ public class EntreeCategories extends SousPanneau {
     }
 
     private void jbInit() throws Exception {
-        principal.setLayout(new BorderLayout());
-
-        principal.add(typesList, BorderLayout.CENTER);
+        this.add(scroll, BorderLayout.CENTER);
 
         choixButton.setText("[Choisir]>");
         choixButton.addActionListener(controleur);
-        principal.add(choixButton, BorderLayout.EAST);
+        this.add(choixButton, BorderLayout.EAST);
 
         controleur.creerListe();
-
-        this.add(principal, BorderLayout.CENTER);
     }
 
     public JList getTypesList() {

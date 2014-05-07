@@ -7,17 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class EditerListeCourses extends JPanel {
+public class EditerListeCourses extends SousPanneau {
     EditerListeCoursesControleur controleur;
 
     private JList listeDeCourses = new JList();
+    private JScrollPane scroll = new JScrollPane(listeDeCourses);
+    private JPanel options = new JPanel();
     private JButton changerHabitudesButton = new JButton();
-    private JButton retourButton = new JButton();
     private JButton reinitialiserButton = new JButton();
-    private FlowLayout layout = new FlowLayout();
-    private JScrollPane scrollPane = new JScrollPane(listeDeCourses);
 
     public EditerListeCourses(Fenetre fenetre) {
+        super(fenetre);
         controleur = new EditerListeCoursesControleur(fenetre, this);
 
         try {
@@ -28,31 +28,19 @@ public class EditerListeCourses extends JPanel {
     }
 
     private void jbInit() throws Exception {
-        this.setLayout(layout);
-        this.setSize(new Dimension(1000, 700));
-        scrollPane.setPreferredSize(new Dimension(250,450));
+        this.add(scroll, BorderLayout.CENTER);
 
-        //listeDeCourses.setPreferredSize(new Dimension(250, 450));
-
-        changerHabitudesButton.setText("Changer mes habitudes");
-        reinitialiserButton.setText("Réinitialiser la liste");
-        retourButton.setText("Retour");
-
-
+        options.setLayout(new GridLayout(1, 2));
+        changerHabitudesButton.setText("[Changer mes habitudes]>");
         changerHabitudesButton.addActionListener(controleur);
-        retourButton.addActionListener(controleur);
+        options.add(changerHabitudesButton);
+        reinitialiserButton.setText("[Réinitialiser la liste]x");
         reinitialiserButton.addActionListener(controleur);
-
-        //this.add(listeDeCourses);
-        this.add(reinitialiserButton);
-        this.add(changerHabitudesButton);
-        this.add(retourButton);
-        this.add(scrollPane);
-
+        options.add(reinitialiserButton);
+        this.add(options, BorderLayout.SOUTH);
     }
 
     public JButton getChangerHabitudesButton() { return changerHabitudesButton; }
-    public JButton getRetourButton() { return retourButton; }
     public JButton getReinitialiserButton() { return reinitialiserButton; }
     public JList getListeDeCourses() { return listeDeCourses; }
 

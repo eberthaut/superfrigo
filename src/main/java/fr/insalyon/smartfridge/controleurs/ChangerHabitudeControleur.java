@@ -31,11 +31,9 @@ public class ChangerHabitudeControleur implements ActionListener, ListSelectionL
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(changerHabitude.getChangerHabitudeButton())){
             Article a = articles.getArticleAt(changerHabitude.getArticlesList().getSelectedIndex());
-            int i = Integer.parseInt(changerHabitude.getHabitudeTextField().getText());
+            int i = (Integer)changerHabitude.getHabitudeSpinner().getValue();
             ServiceCourses.changerHabitude(a,i);
             changerHabitude.getHabitude().setText("L'habitude de l'article "+a.getNom()+" est "+i);
-        } else if( e.getSource().equals(changerHabitude.getRetourButton())){
-            fenetre.retourArriere();
         }
     }
 
@@ -50,12 +48,11 @@ public class ChangerHabitudeControleur implements ActionListener, ListSelectionL
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
         if(changerHabitude.getArticlesList().isSelectionEmpty()){
-            changerHabitude.getSelection().setText("Veuillez sélectionner un article");
+            changerHabitude.getHabitude().setText("Veuillez sélectionner un article");
         } else {
-            String nom = articles.getArticleAt(changerHabitude.getArticlesList().getSelectedIndex()).getNom();
             int habitude = articles.getArticleAt(changerHabitude.getArticlesList().getSelectedIndex()).getHabitude();
-            changerHabitude.getHabitude().setText("L'habitude de l'article "+nom+" est "+habitude);
-            changerHabitude.getSelection().setText("Habitude souhaitée pour l'article "+nom+" :");
+            changerHabitude.getHabitude().setText("Habitude souhaitée :");
+            changerHabitude.getHabitudeSpinner().setValue(habitude);
         }
     }
 
