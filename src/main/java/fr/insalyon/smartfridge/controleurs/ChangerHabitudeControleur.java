@@ -1,29 +1,23 @@
 package fr.insalyon.smartfridge.controleurs;
 
-import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.ChangerHabitude;
-import fr.insalyon.smartfridge.vues.Fenetre;
 
-import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.*;
-import java.util.Collections;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by fannygallais on 27/04/2014.
  */
 public class ChangerHabitudeControleur implements ActionListener, ListSelectionListener{
-    private Fenetre fenetre;
     private ChangerHabitude changerHabitude;
     ListModel<Article> articles;
 
-    public ChangerHabitudeControleur(Fenetre fenetre, ChangerHabitude changerHabitude){
-        this.fenetre = fenetre;
+    public ChangerHabitudeControleur(ChangerHabitude changerHabitude){
         this.changerHabitude = changerHabitude;
         articles = new ListModel<Article>(ServiceStock.listerArticles());
     }

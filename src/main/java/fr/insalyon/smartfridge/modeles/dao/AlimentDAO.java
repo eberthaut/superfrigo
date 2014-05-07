@@ -3,7 +3,6 @@ package fr.insalyon.smartfridge.modeles.dao;
 import fr.insalyon.smartfridge.modeles.Aliment;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

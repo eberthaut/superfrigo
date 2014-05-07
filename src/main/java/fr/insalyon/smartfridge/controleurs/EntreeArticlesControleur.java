@@ -6,10 +6,8 @@ import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.EntreeArticles;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class EntreeArticlesControleur implements ActionListener {
     // On decouple la recuperation des actions des vues

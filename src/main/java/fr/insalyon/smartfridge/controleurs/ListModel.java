@@ -1,7 +1,5 @@
 package fr.insalyon.smartfridge.controleurs;
 
-import fr.insalyon.smartfridge.modeles.Ingredient;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Enumeration;

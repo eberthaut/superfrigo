@@ -1,7 +1,6 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.EditerListeCoursesControleur;
-import fr.insalyon.smartfridge.controleurs.MenuRecettesControleur;
 
 import javax.swing.*;
 import java.awt.*;

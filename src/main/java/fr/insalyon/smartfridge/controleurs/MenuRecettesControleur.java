@@ -2,21 +2,14 @@ package fr.insalyon.smartfridge.controleurs;
 
 import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.services.ServiceCourses;
-import fr.insalyon.smartfridge.services.ServiceStock;
-import fr.insalyon.smartfridge.vues.MenuRecettes;
-import fr.insalyon.smartfridge.vues.Fenetre;
 import fr.insalyon.smartfridge.vues.EntreeRecettes;
-import org.eclipse.persistence.eis.RecordConverter;
-import org.eclipse.persistence.internal.libraries.asm.tree.analysis.Value;
+import fr.insalyon.smartfridge.vues.Fenetre;
+import fr.insalyon.smartfridge.vues.MenuRecettes;
 
-import javax.swing.*;
-import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
  * Created by agabriel on 17/04/14.

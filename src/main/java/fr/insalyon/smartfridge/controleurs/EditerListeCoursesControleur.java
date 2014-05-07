@@ -1,18 +1,13 @@
 package fr.insalyon.smartfridge.controleurs;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
-import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.services.ServiceCourses;
-import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.ChangerHabitude;
 import fr.insalyon.smartfridge.vues.EditerListeCourses;
 import fr.insalyon.smartfridge.vues.Fenetre;
-import fr.insalyon.smartfridge.vues.MenuPrincipal;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
  * Created by fannygallais on 27/04/2014.
@@ -21,7 +16,6 @@ public class EditerListeCoursesControleur implements ActionListener{
 
     private Fenetre fenetre;
     private EditerListeCourses editerListeCourses;
-    private ListModel<Aliment> aliments;
 
     public EditerListeCoursesControleur(Fenetre fenetre, EditerListeCourses editerListeCourses){
         this.fenetre = fenetre;
@@ -40,8 +34,7 @@ public class EditerListeCoursesControleur implements ActionListener{
     }
 
     public void creerListe() {
-        aliments = new ListModel<Aliment>(ServiceCourses.genererListeCourses());
-        editerListeCourses.getListeDeCourses().setModel(aliments);
+        editerListeCourses.getListeDeCourses().setModel(new ListModel<Aliment>(ServiceCourses.genererListeCourses()));
 
     }
 }

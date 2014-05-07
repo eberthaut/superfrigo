@@ -1,8 +1,6 @@
 package fr.insalyon.smartfridge.vues;
 
-import fr.insalyon.smartfridge.controleurs.EntreeArticlesControleur;
 import fr.insalyon.smartfridge.controleurs.EntreeRecettesControleur;
-import fr.insalyon.smartfridge.modeles.Type;
 
 import javax.swing.*;
 import java.awt.*;

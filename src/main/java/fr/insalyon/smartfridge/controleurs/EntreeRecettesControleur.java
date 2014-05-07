@@ -1,22 +1,17 @@
 package fr.insalyon.smartfridge.controleurs;
 
 
-import fr.insalyon.smartfridge.modeles.*;
+import fr.insalyon.smartfridge.modeles.Article;
+import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.services.ServiceStock;
-import fr.insalyon.smartfridge.vues.EntreeArticles;
 import fr.insalyon.smartfridge.vues.EntreeRecettes;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
-import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by fannygallais on 20/04/2014.

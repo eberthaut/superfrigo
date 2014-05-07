@@ -149,13 +149,13 @@ public class ServiceCourses {
         List<Aliment> lCourses = new ArrayList<Aliment>();
         List<Aliment> lAliments = AlimentDAO.tous();
         List<Article> listeArticle = ArticleDAO.tous();
-        for (int i = 0; i < lAliments.size(); i++) {
-            long id = lAliments.get(i).getArticle().getId();
+        for (Aliment lAliment : lAliments) {
+            long id = lAliment.getArticle().getId();
             for (int j = 0; j < listeArticle.size(); j++) {
                 if (id == listeArticle.get(j).getId()) {
                     Article a = listeArticle.get(j);
                     //System.out.println(a.getNom());
-                    if (lAliments.get(i).getQuantite() < a.getHabitude()) {
+                    if (lAliment.getQuantite() < a.getHabitude()) {
                         lCourses.add(new Aliment(a, 1));
                         //System.out.println(lArticle.get(0).getNom());
                     }
@@ -166,8 +166,7 @@ public class ServiceCourses {
         List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
         for(int e= 0; e<lArticleAbsentDuFrigo.size();e++) {
             Article b = lArticleAbsentDuFrigo.get(e);
-            for (int g = 0; g < lCourses.size(); g++) {
-                Aliment a = lCourses.get(g);
+            for (Aliment a : lCourses) {
                 if (b.equals(a.getArticle())) {
                     System.out.println(b.getNom());
                     lArticleAbsentDuFrigo.remove(e);
@@ -175,9 +174,8 @@ public class ServiceCourses {
             }
         }
 
-        for (int h = 0; h <lArticleAbsentDuFrigo.size(); h++) {
-            Article d = lArticleAbsentDuFrigo.get(h);
-            if(d.getHabitude() != 0){
+        for (Article d : lArticleAbsentDuFrigo) {
+            if (d.getHabitude() != 0) {
                 //System.out.println(a.getNom());
                 lCourses.add(new Aliment(d, 1));
                 //System.out.println(lArticle.get(0).getNom());
@@ -187,11 +185,10 @@ public class ServiceCourses {
         List<Recette> listeRecettes = RecetteDAO.tous();
 
         // TODO: Mettre a jour pour les ingredients
-        for(int p=0; p< listeRecettes.size(); p++){
-            if(listeRecettes.get(p).isActif()==true) {
-                List<Ingredient> lIng = listeRecettes.get(p).getIngredients();
-                for (int q = 0; q < lIng.size(); q++) {
-                    Ingredient f = lIng.get(q);
+        for (Recette listeRecette : listeRecettes) {
+            if (listeRecette.isActif()) {
+                List<Ingredient> lIng = listeRecette.getIngredients();
+                for (Ingredient f : lIng) {
                     lCourses.add(new Aliment(f.getArticle(), f.getQuantite()));
                 }
             }

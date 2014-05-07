@@ -21,7 +21,7 @@ public class ChangerHabitude extends SousPanneau {
 
     public ChangerHabitude(Fenetre fenetre){
         super(fenetre);
-        controleur = new ChangerHabitudeControleur(fenetre, this);
+        controleur = new ChangerHabitudeControleur(this);
         try {
             jbInit();
         } catch (Exception e) {
