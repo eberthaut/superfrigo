@@ -1,12 +1,10 @@
 package fr.insalyon.smartfridge.services;
 
+import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.modeles.Recette;
-import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
-import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
-import fr.insalyon.smartfridge.modeles.dao.IngredientDAO;
-import fr.insalyon.smartfridge.modeles.dao.RecetteDAO;
+import fr.insalyon.smartfridge.modeles.dao.*;
 
 import java.util.*;
 
@@ -145,22 +143,62 @@ public class ServiceCourses {
         return prixListe;
     }
 
-    public static List<Article> genererListeCourses () {
+    public static List<Aliment> genererListeCourses() {
         BaseDAO.initialiserPersistence();
-        List<Article> listeCourses = new ArrayList<Article>();
 
-        List<Article> listeTriee = ArticleDAO.tousTriesParHabitude();
-        // TODO: faire l'algo
-        listeCourses= ArticleDAO.transformationAliment();
-        List<Article> lHabitude = new ArrayList<Article>();
-        /*lHabitude = ArticleDAO.traitementHabitude();
-        for(int i=0; i<lHabitude.size(); i++ ){
-            Article a = lHabitude.get(i);
-            System.out.println(a.getNom());
-            listeCourses.add(0,a);
-        }*/
+        List<Aliment> lCourses = new ArrayList<Aliment>();
+        List<Aliment> lAliments = AlimentDAO.tous();
+        List<Article> listeArticle = ArticleDAO.tous();
+        for (int i = 0; i < lAliments.size(); i++) {
+            long id = lAliments.get(i).getArticle().getId();
+            for (int j = 0; j < listeArticle.size(); j++) {
+                if (id == listeArticle.get(j).getId()) {
+                    Article a = listeArticle.get(j);
+                    //System.out.println(a.getNom());
+                    if (lAliments.get(i).getQuantite() < a.getHabitude()) {
+                        lCourses.add(new Aliment(a, 1));
+                        //System.out.println(lArticle.get(0).getNom());
+                    }
+                }
+            }
+        }
+
+        List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
+        for(int e= 0; e<lArticleAbsentDuFrigo.size();e++) {
+            Article b = lArticleAbsentDuFrigo.get(e);
+            for (int g = 0; g < lCourses.size(); g++) {
+                Aliment a = lCourses.get(g);
+                if (b.equals(a.getArticle())) {
+                    System.out.println(b.getNom());
+                    lArticleAbsentDuFrigo.remove(e);
+                }
+            }
+        }
+
+        for (int h = 0; h <lArticleAbsentDuFrigo.size(); h++) {
+            Article d = lArticleAbsentDuFrigo.get(h);
+            if(d.getHabitude() != 0){
+                //System.out.println(a.getNom());
+                lCourses.add(new Aliment(d, 1));
+                //System.out.println(lArticle.get(0).getNom());
+            }
+        }
+
+        List<Recette> listeRecettes = RecetteDAO.tous();
+
+        // TODO: Mettre a jour pour les ingredients
+        for(int p=0; p< listeRecettes.size(); p++){
+            if(listeRecettes.get(p).isActif()==true) {
+                List<Ingredient> lIng = listeRecettes.get(p).getIngredients();
+                for (int q = 0; q < lIng.size(); q++) {
+                    Ingredient f = lIng.get(q);
+                    lCourses.add(new Aliment(f.getArticle(), f.getQuantite()));
+                }
+            }
+        }
+
         BaseDAO.detruirePersistence();
-        return listeCourses;
+        return lCourses;
     }
 
 

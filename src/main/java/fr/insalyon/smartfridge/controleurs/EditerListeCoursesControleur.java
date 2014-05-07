@@ -21,7 +21,7 @@ public class EditerListeCoursesControleur implements ActionListener{
 
     private Fenetre fenetre;
     private EditerListeCourses editerListeCourses;
-    private ListModel<Article> articles;
+    private ListModel<Aliment> aliments;
 
     public EditerListeCoursesControleur(Fenetre fenetre, EditerListeCourses editerListeCourses){
         this.fenetre = fenetre;
@@ -40,8 +40,8 @@ public class EditerListeCoursesControleur implements ActionListener{
     }
 
     public void creerListe() {
-        articles = new ListModel<Article>(ServiceCourses.genererListeCourses());
-        editerListeCourses.getListeDeCourses().setModel(articles);
+        aliments = new ListModel<Aliment>(ServiceCourses.genererListeCourses());
+        editerListeCourses.getListeDeCourses().setModel(aliments);
 
     }
 }

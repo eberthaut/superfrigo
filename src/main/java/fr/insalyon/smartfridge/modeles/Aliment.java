@@ -34,6 +34,12 @@ public class Aliment {
         this.quantite = quantite;
     }
 
+    public Aliment(Article article, int quantite) {
+        this();
+        this.article = article;
+        this.quantite = quantite;
+    }
+
     public long getId() {
         return id;
     }
