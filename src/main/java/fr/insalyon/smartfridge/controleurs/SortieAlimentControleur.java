@@ -41,8 +41,11 @@ public class SortieAlimentControleur implements ActionListener, ListSelectionLis
 
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
-        Aliment a = aliments.getAlimentAt(sortieAliment.getAlimentsList().getSelectedIndex());
-        sortieAliment.getQuantiteSpinner().setValue(a.getQuantite());
+        int i = sortieAliment.getAlimentsList().getSelectedIndex();
+        if(i > 0) {
+            Aliment a = aliments.getAlimentAt(i);
+            sortieAliment.getQuantiteSpinner().setValue(a.getQuantite());
+        }
     }
 
     private class ListModel extends AbstractListModel {
