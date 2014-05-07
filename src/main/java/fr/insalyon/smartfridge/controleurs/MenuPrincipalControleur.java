@@ -49,6 +49,6 @@ public class MenuPrincipalControleur implements ActionListener {
     }
 
     public void gererTemperature() {
-        menu.getTemperatureLabel().setText(ServiceThermodynamique.mettreAJourTemperature() + " degres Celcius");
+        menu.getTemperatureLabel().setText(String.format("%.2f degres Celcius",ServiceThermodynamique.mettreAJourTemperature()));
     }
 }

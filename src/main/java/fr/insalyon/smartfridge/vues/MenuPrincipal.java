@@ -2,7 +2,7 @@ package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.MenuPrincipalControleur;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 
 import javax.swing.*;
 
@@ -10,11 +10,12 @@ public class MenuPrincipal extends JPanel {
 // c'est le contenu de la fenetre par defaut
     private MenuPrincipalControleur controleur;
 
+    private GridLayout layout = new GridLayout(2, 3);
+
     private JLabel temperatureLabel = new JLabel();
     private JButton ajouterButton = new JButton();
     private JButton retirerButton = new JButton();
     private JButton coursesButton = new JButton();
-    private FlowLayout layout = new FlowLayout();
     private JButton alerteButton = new JButton();
     private JButton recettesButton = new JButton();
 
@@ -31,22 +32,29 @@ public class MenuPrincipal extends JPanel {
 
     private void jbInit() throws Exception {
         this.setLayout(layout);
+
         temperatureLabel.setText("...");
+        temperatureLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.add(temperatureLabel, null);
+
         ajouterButton.setText("Ajouter des articles");
         ajouterButton.addActionListener(controleur);
+        this.add(ajouterButton, null);
+
         retirerButton.setText("Retirer des articles");
         retirerButton.addActionListener(controleur);
-        coursesButton.setText("Editer une liste de courses");
-        coursesButton.addActionListener(controleur);
+        this.add(retirerButton, null);
+
         alerteButton.setText("Rien a signaler");
         alerteButton.setEnabled(false);
-        recettesButton.setText("Recettes");
-        recettesButton.addActionListener(controleur);
-        this.add(temperatureLabel, null);
-        this.add(ajouterButton, null);
-        this.add(retirerButton, null);
-        this.add(coursesButton, null);
         this.add(alerteButton, null);
+
+        coursesButton.setText("Generer une liste de courses");
+        coursesButton.addActionListener(controleur);
+        this.add(coursesButton, null);
+
+        recettesButton.setText("Gerer les Recettes");
+        recettesButton.addActionListener(controleur);
         this.add(recettesButton, null);
     }
 
