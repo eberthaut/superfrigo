@@ -2,21 +2,19 @@ package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.EntreeCategoriesControleur;
 
-import java.awt.Dimension;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 
 import javax.swing.*;
 
-public class EntreeCategories extends JPanel {
+public class EntreeCategories extends SousPanneau {
     EntreeCategoriesControleur controleur;
 
-    private FlowLayout layout = new FlowLayout();
+    private JPanel principal = new JPanel();
     private JList typesList = new JList();
     private JButton choixButton = new JButton();
-    private JButton retourButton = new JButton();
 
     public EntreeCategories(Fenetre fenetre) {
+        super(fenetre);
         controleur = new EntreeCategoriesControleur(fenetre, this);
         try {
             jbInit();
@@ -26,20 +24,17 @@ public class EntreeCategories extends JPanel {
     }
 
     private void jbInit() throws Exception {
-        this.setLayout(layout);
-        this.setSize(new Dimension(1000,700));
-        typesList.setPreferredSize(new Dimension(200, 300));
-        typesList.setMaximumSize(new Dimension(200, 1000));
-        typesList.setMinimumSize(new Dimension(200, 0));
-        typesList.setSize(new Dimension(200, 100));
-        choixButton.setText("Choisir");
+        principal.setLayout(new BorderLayout());
+
+        principal.add(typesList, BorderLayout.CENTER);
+
+        choixButton.setText("[Choisir]>");
         choixButton.addActionListener(controleur);
-        retourButton.setText("Retour");
-        retourButton.addActionListener(controleur);
-        this.add(typesList, null);
-        this.add(choixButton, null);
-        this.add(retourButton, null);
+        principal.add(choixButton, BorderLayout.EAST);
+
         controleur.creerListe();
+
+        this.add(principal, BorderLayout.CENTER);
     }
 
     public JList getTypesList() {
@@ -48,9 +43,5 @@ public class EntreeCategories extends JPanel {
 
     public JButton getChoixButton() {
         return choixButton;
-    }
-
-    public JButton getRetourButton() {
-        return retourButton;
     }
 }

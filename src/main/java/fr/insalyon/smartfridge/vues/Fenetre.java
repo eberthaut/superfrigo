@@ -21,7 +21,7 @@ public class Fenetre extends JApplet {
     }
 
     private void jbInit() throws Exception {
-        this.setSize(new Dimension(1000,700));
+        this.setSize(new Dimension(1000, 700));
     }
 
     private void afficherDernier() { // obtient la derniere vue de l'historique

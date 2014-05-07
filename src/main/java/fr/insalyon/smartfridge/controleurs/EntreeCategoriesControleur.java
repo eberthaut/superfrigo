@@ -25,9 +25,7 @@ public class EntreeCategoriesControleur implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == entreeCategories.getRetourButton()) {
-            fenetre.retourArriere();
-        } else if(e.getSource() == entreeCategories.getChoixButton()) {
+        if(e.getSource() == entreeCategories.getChoixButton()) {
             Type t = types.getTypeAt(entreeCategories.getTypesList().getSelectedIndex());
             fenetre.allerA(new EntreeArticles(fenetre, t));
         }

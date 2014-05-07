@@ -3,23 +3,23 @@ package fr.insalyon.smartfridge.vues;
 import fr.insalyon.smartfridge.controleurs.EntreeArticlesControleur;
 import fr.insalyon.smartfridge.modeles.Type;
 
-import java.awt.Dimension;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class EntreeArticles extends JPanel {
+public class EntreeArticles extends SousPanneau {
     EntreeArticlesControleur controleur;
 
-    private FlowLayout layout = new FlowLayout();
+    private JPanel principal = new JPanel();
     private JList articlesList = new JList();
     private JButton ajouterButton = new JButton();
-    private JButton retourButton = new JButton();
+    private JPanel options = new JPanel();
+    private JLabel spinnerLabel = new JLabel();
     private JSpinner quantiteSpinner = new JSpinner(); // c'est le compteur de qte
 
     public EntreeArticles(Fenetre fenetre, Type type) {
+        super(fenetre);
         controleur = new EntreeArticlesControleur(fenetre, this, type);
         try {
             jbInit();
@@ -29,22 +29,24 @@ public class EntreeArticles extends JPanel {
     }
 
     private void jbInit() throws Exception {
-        this.setLayout(layout);
-        this.setSize(new Dimension(1000,700));
-        articlesList.setPreferredSize(new Dimension(200, 300));
-        articlesList.setMaximumSize(new Dimension(200, 1000));
-        articlesList.setMinimumSize(new Dimension(200, 0));
-        articlesList.setSize(new Dimension(200, 100));
-        ajouterButton.setText("Ajouter");
+        principal.setLayout(new BorderLayout());
+        options.setLayout(new FlowLayout());
+
+        principal.add(articlesList, BorderLayout.CENTER);
+
+        ajouterButton.setText("[Ajouter]+");
         ajouterButton.addActionListener(controleur);
-        retourButton.setText("Retour");
-        retourButton.addActionListener(controleur);
+        principal.add(ajouterButton, BorderLayout.EAST);
+
+        spinnerLabel.setText("Quantite a ajouter : ");
+        options.add(spinnerLabel, null);
         quantiteSpinner.setValue(1);
-        this.add(articlesList, null);
-        this.add(quantiteSpinner, null);
-        this.add(ajouterButton, null);
-        this.add(retourButton, null);
+        options.add(quantiteSpinner, null);
+        principal.add(options, BorderLayout.SOUTH);
+
         controleur.creerListe();
+
+        this.add(principal, BorderLayout.CENTER);
     }
 
     public JList getArticlesList() {
@@ -53,10 +55,6 @@ public class EntreeArticles extends JPanel {
 
     public JButton getAjouterButton() {
         return ajouterButton;
-    }
-
-    public JButton getRetourButton() {
-        return retourButton;
     }
 
     public JSpinner getQuantiteSpinner() {

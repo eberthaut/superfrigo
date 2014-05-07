@@ -25,9 +25,7 @@ public class EntreeArticlesControleur implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == entreeArticles.getRetourButton()) {
-            fenetre.retourArriere();
-        } else if(e.getSource() == entreeArticles.getAjouterButton()) {
+        if(e.getSource() == entreeArticles.getAjouterButton()) {
             Article a = articles.getArticleAt(entreeArticles.getArticlesList().getSelectedIndex()); // Recupere l'article selectionne dans la liste (en bleu)
             ServiceStock.ajouterAliment(a, (Integer)entreeArticles.getQuantiteSpinner().getValue());
         }
