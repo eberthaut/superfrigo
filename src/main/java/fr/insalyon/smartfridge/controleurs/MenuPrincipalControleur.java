@@ -29,21 +29,29 @@ public class MenuPrincipalControleur implements ActionListener {
             fenetre.allerA(new MenuRecettes(fenetre));
         } else if(e.getSource().equals(menu.getCoursesButton())) {
             fenetre.allerA(new EditerListeCourses(fenetre));
+        } else if(e.getSource().equals(menu.getAlerteButton()) && menu.getAlerteButton().isEnabled()) {
+            fenetre.allerA(new AlertePeremption(fenetre));
         }
     }
 
     public void gererAlerte() {
         int status = ServiceAlerte.statusAlerte(2);
         switch(status) {
+            case 0:
+                menu.getAlerteButton().setEnabled(false);
+                menu.getAlerteButton().setText("Rien a signaler");
+                break;
             case 1:
                 menu.getAlerteButton().setEnabled(true);
                 menu.getAlerteButton().setForeground(new Color(200, 150, 0));
                 menu.getAlerteButton().setText("Des aliments sont proches de la peremption");
+                menu.getAlerteButton().addActionListener(this);
                 break;
             case 2:
                 menu.getAlerteButton().setEnabled(true);
                 menu.getAlerteButton().setForeground(new Color(200, 0, 0));
                 menu.getAlerteButton().setText("Des aliments sont perimes");
+                menu.getAlerteButton().addActionListener(this);
                 break;
         }
     }
