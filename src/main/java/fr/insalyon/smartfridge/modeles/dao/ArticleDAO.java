@@ -78,7 +78,8 @@ public class ArticleDAO extends BaseDAO{
 
         List<Recette> listeRecettes = RecetteDAO.tous();
 
-        for(int p=0; p< listeRecettes.size(); p++){
+        // TODO: Mettre a jour pour les ingredients
+        /*for(int p=0; p< listeRecettes.size(); p++){
             if(listeRecettes.get(p).isActif()==true) {
                 List<Article> lArticleRecette = listeRecettes.get(p).getArticles();
                 for (int q = 0; q < lArticleRecette.size(); q++) {
@@ -86,7 +87,7 @@ public class ArticleDAO extends BaseDAO{
                     lArticle.add(f);
                 }
             }
-        }
+        }*/
 
         return lArticle;
     }

@@ -1,9 +1,11 @@
 package fr.insalyon.smartfridge.services;
 
 import fr.insalyon.smartfridge.modeles.Article;
+import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
 import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
+import fr.insalyon.smartfridge.modeles.dao.IngredientDAO;
 import fr.insalyon.smartfridge.modeles.dao.RecetteDAO;
 
 import java.util.*;
@@ -12,12 +14,16 @@ import java.util.*;
  * Service de gestion des habitudes dans le frigo.
  */
 public class ServiceCourses {
-    public static boolean ajoutRecette(String nom, List<Article> articles) {
+    public static boolean ajoutRecette(String nom, List<Ingredient> ingredients) {
         BaseDAO.initialiserPersistence();
-        Recette recette = new Recette(nom, articles);
+        Recette recette = new Recette(nom, ingredients);
 
         BaseDAO.creerTransaction();
         RecetteDAO.persiste(recette);
+        for(Ingredient ingredient : ingredients) {
+            ingredient.setRecette(recette);
+            IngredientDAO.miseAJour(ingredient);
+        }
         BaseDAO.faireTransaction();
 
         BaseDAO.detruirePersistence();
@@ -29,6 +35,9 @@ public class ServiceCourses {
         Recette recette = RecetteDAO.trouveNom(nom);
 
         BaseDAO.creerTransaction();
+        for(Ingredient ingredient : recette.getIngredients()) {
+            IngredientDAO.supprime(ingredient);
+        }
         RecetteDAO.supprime(recette);
         BaseDAO.faireTransaction();
 

@@ -9,8 +9,8 @@ import java.util.List;
  */
 @Entity
 public class Recette {
-    @ManyToMany //définit la liste d'articles de la recette
-    private List<Article> ingredients = new ArrayList<Article>();
+    @OneToMany(mappedBy = "recette")
+    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -23,10 +23,10 @@ public class Recette {
         this.actif = true;
     }
 
-    public Recette(String nom, List<Article> articles) {
+    public Recette(String nom, List<Ingredient> ingredients) {
         this();
         this.nom = nom;
-        this.ingredients.addAll(articles);
+        this.ingredients.addAll(ingredients);
     }
 
     public boolean isActif () {
@@ -37,16 +37,16 @@ public class Recette {
         this.actif = actif;
     }
 
-    public List<Article> getArticles() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public boolean ajouterArticle (Article article) {
-        return this.ingredients.add(article);
+    public boolean ajouterIngredient (Ingredient ingredient) {
+        return this.ingredients.add(ingredient);
     }
 
-    public boolean retirerArticle (Article article) {
-        return this.ingredients.remove(article);
+    public boolean retirerIngredient (Ingredient ingredient) {
+        return this.ingredients.remove(ingredient);
     }
 
     public long getId() {
