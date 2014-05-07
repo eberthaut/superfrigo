@@ -2,6 +2,7 @@ package fr.insalyon.smartfridge.modeles.dao;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
+import fr.insalyon.smartfridge.modeles.Recette;
 
 import javax.persistence.Query;
 import java.util.ArrayList;
@@ -55,8 +56,8 @@ public class ArticleDAO extends BaseDAO{
         }
 
         List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
-        for(int e= 0; e<listeArticle.size();e++) {
-            Article b = listeArticle.get(e);
+        for(int e= 0; e<lArticleAbsentDuFrigo.size();e++) {
+            Article b = lArticleAbsentDuFrigo.get(e);
             for (int g = 0; g < lArticle.size(); g++) {
                 Article c = lArticle.get(g);
                 if (b.equals(c)) {
@@ -72,6 +73,18 @@ public class ArticleDAO extends BaseDAO{
                 //System.out.println(a.getNom());
                 lArticle.add(0, d);
                 //System.out.println(lArticle.get(0).getNom());
+            }
+        }
+
+        List<Recette> listeRecettes = RecetteDAO.tous();
+
+        for(int p=0; p< listeRecettes.size(); p++){
+            if(listeRecettes.get(p).isActif()==true) {
+                List<Article> lArticleRecette = listeRecettes.get(p).getArticles();
+                for (int q = 0; q < lArticleRecette.size(); q++) {
+                    Article f = lArticleRecette.get(q);
+                    lArticle.add(f);
+                }
             }
         }
 
