@@ -38,12 +38,10 @@ public class EntreeRecettesControleur implements ActionListener{
 
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == entreeRecettes.getRetourButton()) {
-            fenetre.retourArriere();
-        } else if(e.getSource() == entreeRecettes.getAjouterIngredientButton()) {
+        if(e.getSource() == entreeRecettes.getAjouterIngredientButton()) {
             Article a = articles.getArticleAt(entreeRecettes.getArticlesList().getSelectedIndex());
             if(ingredients.presence(a)){
-                entreeRecettes.setAvancementAjout("Vous ne pouvez pas ajouter deux fois le même ingrégient");
+                // TODO: error dialog
             } else {
                 ingredients.addArticle(a);
                 this.transfertList();
@@ -52,12 +50,12 @@ public class EntreeRecettesControleur implements ActionListener{
         } else if(e.getSource() == entreeRecettes.getValiderButton()) {
             String nom = entreeRecettes.getNomRecetteTexte().getText();
             if(nom.equals("")){
-                entreeRecettes.setAvancementAjout("Vous devez donner un nom à la recette");
+                // TODO: error dialog
             } else if(ingredients.getSize() == 0){
-                entreeRecettes.setAvancementAjout("Vous devez ajouter des ingrédients à la recette");
+                // TODO: error dialog
             } else {
                 ServiceCourses.ajoutRecette(nom, ingredients.getList());
-                entreeRecettes.setAvancementAjout("La recette " + nom + " a bien été ajoutée! Retournez au menu principal");
+                fenetre.retourArriere();
             }
         } else if(e.getSource() == entreeRecettes.getSuprrimerIngredientButton()){
             Article a = articles.getArticleAt(entreeRecettes.getArticlesList().getSelectedIndex());
@@ -66,7 +64,6 @@ public class EntreeRecettesControleur implements ActionListener{
         } else if(e.getSource() == entreeRecettes.getEffacerButton()){
             supprimerList();
             ingredients.supprimerList();
-            entreeRecettes.setAvancementAjout("Recette en cours d'ajout... Cliquez sur valider pour ajouter la recette!");
         }
     }
 
