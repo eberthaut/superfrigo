@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * Created by agabriel on 17/04/14.
  */
-public class MenuRecettes extends SousPanneau {
+public class MenuRecettes extends SousPanneau implements Changeable {
     MenuRecettesControleur controleur;
 
     private JList recettesList = new JList();
@@ -49,6 +49,11 @@ public class MenuRecettes extends SousPanneau {
         controleur.creerListe();
 
     }
+
+    public void mettreAJour() {
+        controleur.rafraichirListe();
+    }
+
     public JButton getToggleButton() {
         return toggleButton;
     }

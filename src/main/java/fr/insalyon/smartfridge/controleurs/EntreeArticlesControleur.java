@@ -6,6 +6,7 @@ import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.EntreeArticles;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +26,10 @@ public class EntreeArticlesControleur implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == entreeArticles.getAjouterButton()) {
             Article a = articles.get(entreeArticles.getArticlesList().getSelectedIndex()); // Recupere l'article selectionne dans la liste (en bleu)
-            ServiceStock.ajouterAliment(a, (Integer)entreeArticles.getQuantiteSpinner().getValue());
+            int nb = (Integer)entreeArticles.getQuantiteSpinner().getValue();
+            ServiceStock.ajouterAliment(a, nb);
+            JOptionPane.showMessageDialog(null, nb + " " + a.getNom() + " ajoute(s) !", "OK !",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

@@ -27,6 +27,10 @@ public class Fenetre extends JApplet {
     private void afficherDernier() { // obtient la derniere vue de l'historique
         this.setContentPane(historique.get(historique.size() - 1));
         this.getContentPane().setSize(new Dimension(1000,700));
+        if(this.getContentPane() instanceof Changeable) {
+            ((Changeable)this.getContentPane()).mettreAJour();
+        }
+
     }
 
     public void revenirDebut() {

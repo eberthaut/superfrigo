@@ -8,6 +8,7 @@ import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.EntreeRecettes;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
@@ -49,9 +50,11 @@ public class EntreeRecettesControleur implements ActionListener, ListSelectionLi
         } else if(e.getSource() == entreeRecettes.getValiderButton()) {
             String nom = entreeRecettes.getNomRecetteTexte().getText();
             if(nom.equals("")){
-                // TODO: error dialog
+                JOptionPane.showMessageDialog(null, "Entrez un nom de recette !", "Invalide !",
+                        JOptionPane.ERROR_MESSAGE);
             } else if(ingredients.getSize() == 0){
-                // TODO: error dialog
+                JOptionPane.showMessageDialog(null, "Ajoutez des ingredients !", "Invalide !",
+                        JOptionPane.ERROR_MESSAGE);
             } else {
                 ServiceCourses.ajoutRecette(nom, ingredients.getList());
                 fenetre.retourArriere();

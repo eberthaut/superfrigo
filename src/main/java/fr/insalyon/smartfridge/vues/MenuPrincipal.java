@@ -6,7 +6,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class MenuPrincipal extends JPanel {
+public class MenuPrincipal extends JPanel implements Changeable {
 // c'est le contenu de la fenetre par defaut
     private MenuPrincipalControleur controleur;
 
@@ -56,6 +56,12 @@ public class MenuPrincipal extends JPanel {
         recettesButton.setText("Gerer les Recettes");
         recettesButton.addActionListener(controleur);
         this.add(recettesButton, null);
+    }
+
+    public void mettreAJour() {
+        super.repaint();
+        controleur.gererAlerte();
+        controleur.gererTemperature();
     }
 
     public JLabel getTemperatureLabel() {
