@@ -8,21 +8,18 @@ import java.awt.*;
 /**
  * Created by agabriel on 17/04/14.
  */
-public class MenuRecettes extends JPanel {
+public class MenuRecettes extends SousPanneau {
     MenuRecettesControleur controleur;
 
-    private FlowLayout layout = new FlowLayout();
-    private BorderLayout layout1 = new BorderLayout();
-    private JPanel panel = new JPanel();
     private JList recettesList = new JList();
-    private JButton retourButton = new JButton();
-    private JButton activerButton = new JButton();
-    private JButton desactiverButton = new JButton();
+    private JScrollPane scroll = new JScrollPane(recettesList);
+    private JPanel options = new JPanel();
+    private JButton toggleButton = new JButton();
     private JButton ajouterButton = new JButton();
-    private JTextArea text = new JTextArea();
     private JButton supprimerButton = new JButton();
 
     public MenuRecettes(Fenetre fenetre) {
+        super(fenetre);
         controleur = new MenuRecettesControleur(fenetre, this);
 
         try {
@@ -33,60 +30,27 @@ public class MenuRecettes extends JPanel {
     }
 
     private void jbInit() throws Exception {
+        options.setLayout(new GridLayout(1, 3));
 
-        this.setLayout(layout);
-        this.setSize(new Dimension(1000, 700));
-        recettesList.setPreferredSize(new Dimension(200, 300));
-        recettesList.setMaximumSize(new Dimension(200, 1000));
-        recettesList.setMinimumSize(new Dimension(200, 0));
-        recettesList.setSize(new Dimension(200, 100));
-        //recettesList=this.creationCheckList(recettesList);
-        retourButton.setText("Retour");
-        retourButton.addActionListener(controleur);
-        activerButton.setText("Activer la recette");
-        activerButton.addActionListener(controleur);
-        desactiverButton.setText("Desactiver la recette");
-        desactiverButton.addActionListener(controleur);
-        ajouterButton.setText("Ajouter une nouvelle recette");
+        recettesList.addListSelectionListener(controleur);
+        this.add(scroll, BorderLayout.CENTER);
+
+        toggleButton.setText("Changer");
+        toggleButton.addActionListener(controleur);
+        options.add(toggleButton);
+        ajouterButton.setText("Ajouter");
         ajouterButton.addActionListener(controleur);
-        supprimerButton.setText("Supprimer la recette");
+        options.add(ajouterButton);
+        supprimerButton.setText("Supprimer");
         supprimerButton.addActionListener(controleur);
-        this.add(recettesList, null);
-        panel.setLayout(new GridLayout(3,2));
-        this.add(panel, null);
-        panel.add(retourButton,null);
-        panel.add(ajouterButton, null);
-        panel.add(activerButton, null);
-        panel.add(desactiverButton, null);
-        panel.add(supprimerButton);
-        text.setText("Activation");
-        panel.add(text);
+        options.add(supprimerButton);
+        this.add(options, BorderLayout.SOUTH);
+
         controleur.creerListe();
 
     }
-    /*public JList creationCheckList(JList rList){
-        for(int i =0; i<rList.getModel().getSize(); i++ ) {
-
-            rList.setComponentOrientation(JCheckBox c);
-            JCheckBox a= new JCheckBox();
-            a = (JCheckBox)rList.getModel().getElementAt(i);
-            a.setName((String) rList.getModel().getElementAt(i));
-            rList.add(a);
-        }
-        return rList;
-    }*/
-
-
-    public JButton getRetourButton() {
-        return retourButton;
-    }
-
-    public JButton getActiverButton() {
-        return activerButton;
-    }
-
-    public JButton getDesactiverButton() {
-        return desactiverButton;
+    public JButton getToggleButton() {
+        return toggleButton;
     }
 
     public JButton getAjouterButton() {
@@ -98,11 +62,6 @@ public class MenuRecettes extends JPanel {
     public JList getRecettesList() {
         return recettesList;
     }
-
-    public JTextArea getText(){ return text;}
-
-    public void setText(String s){ this.text.setText(s);}
-
 }
 
 

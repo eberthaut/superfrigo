@@ -40,7 +40,7 @@ public class SortieAlimentControleur implements ActionListener, ListSelectionLis
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
         int i = sortieAliment.getAlimentsList().getSelectedIndex();
-        if(i > 0) {
+        if(i >= 0) {
             Aliment a = aliments.getAlimentAt(i);
             sortieAliment.getQuantiteSpinner().setValue(a.getQuantite());
         }
