@@ -26,7 +26,7 @@ public abstract class SousPanneau extends JPanel {
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(1000,700));
 
-        retours.setLayout(new FlowLayout());
+        retours.setLayout(new GridLayout(1,2));
 
         getButtonRetour().setText("<[Retour]");
         getButtonRetour().addActionListener(controleurPrincipal);
