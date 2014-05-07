@@ -23,13 +23,13 @@ public class MenuPrincipalControleur implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(menu.getAjouterButton())) {
             fenetre.allerA(new EntreeCategories(fenetre));
-        } /*if(e.getSource().equals(menu.getRetirerButton())) {
+        } else if(e.getSource().equals(menu.getRetirerButton())) {
             fenetre.allerA(new SortieAliment(fenetre));
-        } if(e.getSource().equals(menu.getRecettesButton())) {
+        } else if(e.getSource().equals(menu.getRecettesButton())) {
             fenetre.allerA(new MenuRecettes(fenetre));
-        } if(e.getSource().equals(menu.getCoursesButton())) {
+        } else if(e.getSource().equals(menu.getCoursesButton())) {
             fenetre.allerA(new EditerListeCourses(fenetre));
-        }*/
+        }
     }
 
     public void gererAlerte() {

@@ -25,9 +25,7 @@ public class SortieAlimentControleur implements ActionListener, ListSelectionLis
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == sortieAliment.getRetourButton()) {
-            fenetre.retourArriere();
-        } else if(e.getSource() == sortieAliment.getEnleverButton()) {
+        if(e.getSource() == sortieAliment.getEnleverButton()) {
             Aliment a = aliments.getAlimentAt(sortieAliment.getAlimentsList().getSelectedIndex()); // Recupere l'article selectionne dans la liste (en bleu)
             ServiceStock.retraitAliment(a, (Integer)sortieAliment.getQuantiteSpinner().getValue());
             rafraichirListe();
