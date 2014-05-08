@@ -39,22 +39,27 @@ public class MenuPrincipal extends JPanel implements Changeable {
 
         ajouterButton.setText("Ajouter des articles");
         ajouterButton.addActionListener(controleur);
+        ajouterButton.setIcon(new ImageIcon(getClass().getResource("/icones/ajout-articles.png")));
         this.add(ajouterButton, null);
 
         retirerButton.setText("Retirer des articles");
         retirerButton.addActionListener(controleur);
+        retirerButton.setIcon(new ImageIcon(getClass().getResource("/icones/retrait-articles.png")));
         this.add(retirerButton, null);
 
         alerteButton.setText("Rien a signaler");
         alerteButton.setEnabled(false);
+        alerteButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
         this.add(alerteButton, null);
 
         coursesButton.setText("Generer une liste de courses");
         coursesButton.addActionListener(controleur);
+        coursesButton.setIcon(new ImageIcon(getClass().getResource("/icones/liste.png")));
         this.add(coursesButton, null);
 
         recettesButton.setText("Gerer les Recettes");
         recettesButton.addActionListener(controleur);
+        recettesButton.setIcon(new ImageIcon(getClass().getResource("/icones/recettes.png")));
         this.add(recettesButton, null);
     }
 

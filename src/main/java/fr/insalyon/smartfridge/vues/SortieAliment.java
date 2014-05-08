@@ -31,13 +31,16 @@ public class SortieAliment extends SousPanneau {
         alimentsList.addListSelectionListener(controleur);
         this.add(scroll, BorderLayout.CENTER);
 
-        enleverButton.setText("[Enlever]-");
-        enleverButton.addActionListener(controleur);
-        this.add(enleverButton, BorderLayout.EAST);
+        options.setLayout(new GridLayout(1, 3));
 
         spinnerLabel.setText("Quantite a enlever : ");
+        spinnerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         options.add(spinnerLabel, null);
         options.add(quantiteSpinner, null);
+        enleverButton.setText("Enlever");
+        enleverButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
+        enleverButton.addActionListener(controleur);
+        options.add(enleverButton);
         this.add(options, BorderLayout.SOUTH);
 
         controleur.rafraichirListe();

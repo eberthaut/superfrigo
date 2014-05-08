@@ -30,10 +30,12 @@ public class EditerListeCourses extends SousPanneau {
         this.add(scroll, BorderLayout.CENTER);
 
         options.setLayout(new GridLayout(1, 2));
-        changerHabitudesButton.setText("[Changer mes habitudes]>");
+        changerHabitudesButton.setText("Changer mes habitudes");
+        changerHabitudesButton.setIcon(new ImageIcon(getClass().getResource("/icones/utilisateur.png")));
         changerHabitudesButton.addActionListener(controleur);
         options.add(changerHabitudesButton);
-        reinitialiserButton.setText("[Réinitialiser la liste]x");
+        reinitialiserButton.setText("Réinitialiser la liste");
+        reinitialiserButton.setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
         reinitialiserButton.addActionListener(controleur);
         options.add(reinitialiserButton);
         this.add(options, BorderLayout.SOUTH);

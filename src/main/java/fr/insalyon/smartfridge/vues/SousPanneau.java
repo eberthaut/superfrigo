@@ -28,11 +28,13 @@ public abstract class SousPanneau extends JPanel {
 
         retours.setLayout(new GridLayout(1,2));
 
-        getButtonRetour().setText("<[Retour]");
+        getButtonRetour().setText("Retour");
+        getButtonRetour().setIcon(new ImageIcon(getClass().getResource("/icones/retour.png")));
         getButtonRetour().addActionListener(controleurPrincipal);
         retours.add(getButtonRetour());
 
-        getButtonMenuPrincipal().setText("<<[Menu Principal]");
+        getButtonMenuPrincipal().setText("Menu Principal");
+        getButtonMenuPrincipal().setIcon(new ImageIcon(getClass().getResource("/icones/menu-principal.png")));
         getButtonMenuPrincipal().addActionListener(controleurPrincipal);
         retours.add(getButtonMenuPrincipal());
 

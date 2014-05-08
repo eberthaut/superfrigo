@@ -39,6 +39,7 @@ public class ChangerHabitude extends SousPanneau {
         options.add(habitude);
         options.add(getHabitudeSpinner());
         changerHabitudeButton.setText("Appliquer");
+        changerHabitudeButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
         options.add(changerHabitudeButton);
         this.add(options, BorderLayout.SOUTH);
 

@@ -25,7 +25,8 @@ public class AlertePeremption extends SousPanneau {
     private void jbInit() throws Exception {
         this.add(scroll, BorderLayout.CENTER);
 
-        enleverButton.setText("[Enlever]-");
+        enleverButton.setText("Enlever");
+        enleverButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
         enleverButton.addActionListener(controleur);
         this.add(enleverButton, BorderLayout.EAST);
 

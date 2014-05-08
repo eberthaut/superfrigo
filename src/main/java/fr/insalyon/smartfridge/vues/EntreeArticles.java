@@ -28,18 +28,18 @@ public class EntreeArticles extends SousPanneau {
     }
 
     private void jbInit() throws Exception {
-        options.setLayout(new GridLayout(1,2));
+        options.setLayout(new GridLayout(1,3));
 
         this.add(scroll, BorderLayout.CENTER);
-
-        ajouterButton.setText("[Ajouter]+");
-        ajouterButton.addActionListener(controleur);
-        this.add(ajouterButton, BorderLayout.EAST);
 
         spinnerLabel.setText("Quantite a ajouter : ");
         spinnerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         options.add(spinnerLabel, null);
         options.add(quantiteSpinner, null);
+        ajouterButton.setText("Ajouter");
+        ajouterButton.setIcon(new ImageIcon(getClass().getResource("/icones/ajout.png")));
+        ajouterButton.addActionListener(controleur);
+        options.add(ajouterButton);
         this.add(options, BorderLayout.SOUTH);
 
         controleur.creerListe();

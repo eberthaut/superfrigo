@@ -42,11 +42,13 @@ public class EntreeRecettes extends SousPanneau {
         articlesList.addListSelectionListener(controleur);
         principal.add(articlesScroll);
         milieu.setLayout(new GridLayout(3, 1));
-        ajouterIngredientButton.setText("[Ajouter]>");
+        ajouterIngredientButton.setText("Ajouter");
+        ajouterIngredientButton.setIcon(new ImageIcon(getClass().getResource("/icones/ajout.png")));
         milieu.add(ajouterIngredientButton);
         ajouterIngredientButton.addActionListener(controleur);
         milieu.add(quantiteSpinner);
-        supprimerIngredientButton.setText("<[Supprimer]");
+        supprimerIngredientButton.setText("Supprimer");
+        supprimerIngredientButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
         supprimerIngredientButton.addActionListener(controleur);
         milieu.add(supprimerIngredientButton);
         principal.add(milieu);
@@ -55,13 +57,15 @@ public class EntreeRecettes extends SousPanneau {
         this.add(principal, BorderLayout.CENTER);
 
         options.setLayout(new GridLayout(1, 4));
-        effacerButton.setText("[Effacer]-");
+        effacerButton.setText("Effacer");
+        effacerButton.setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
         effacerButton.addActionListener(controleur);
         options.add(effacerButton);
         nomRecette.setText("Nom de la recette :");
         options.add(nomRecette);
         options.add(nomRecetteTexte);
-        validerButton.setText("[Valider]+");
+        validerButton.setText("Valider");
+        validerButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
         validerButton.addActionListener(controleur);
         options.add(validerButton);
         this.add(options, BorderLayout.SOUTH);

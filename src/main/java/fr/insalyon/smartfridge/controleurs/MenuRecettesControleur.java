@@ -6,6 +6,7 @@ import fr.insalyon.smartfridge.vues.EntreeRecettes;
 import fr.insalyon.smartfridge.vues.Fenetre;
 import fr.insalyon.smartfridge.vues.MenuRecettes;
 
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
@@ -35,9 +36,11 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
             if(r.isActif()) {
                 ServiceCourses.desactiverRecette(r);
                 menuRecettes.getToggleButton().setText("Activer");
+                menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
             } else {
                 ServiceCourses.activerRecette(r);
                 menuRecettes.getToggleButton().setText("Desactiver");
+                menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
             }
             rafraichirListe();
         } else if(e.getSource().equals(menuRecettes.getAjouterButton())) {
@@ -66,8 +69,10 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
             Recette r = recettes.get(i);
             if(r.isActif()) {
                 menuRecettes.getToggleButton().setText("Desactiver");
+                menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
             } else {
                 menuRecettes.getToggleButton().setText("Activer");
+                menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
             }
         }
     }

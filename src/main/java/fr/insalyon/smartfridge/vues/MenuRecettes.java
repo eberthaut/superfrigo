@@ -35,13 +35,16 @@ public class MenuRecettes extends SousPanneau implements Changeable {
         recettesList.addListSelectionListener(controleur);
         this.add(scroll, BorderLayout.CENTER);
 
-        toggleButton.setText("Changer");
+        toggleButton.setText("Activer");
+        toggleButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
         toggleButton.addActionListener(controleur);
         options.add(toggleButton);
         ajouterButton.setText("Ajouter");
+        ajouterButton.setIcon(new ImageIcon(getClass().getResource("/icones/ajout.png")));
         ajouterButton.addActionListener(controleur);
         options.add(ajouterButton);
         supprimerButton.setText("Supprimer");
+        supprimerButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
         supprimerButton.addActionListener(controleur);
         options.add(supprimerButton);
         this.add(options, BorderLayout.SOUTH);

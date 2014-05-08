@@ -26,7 +26,8 @@ public class EntreeCategories extends SousPanneau {
     private void jbInit() throws Exception {
         this.add(scroll, BorderLayout.CENTER);
 
-        choixButton.setText("[Choisir]>");
+        choixButton.setText("Choisir");
+        choixButton.setIcon(new ImageIcon(getClass().getResource("/icones/suivant.png")));
         choixButton.addActionListener(controleur);
         this.add(choixButton, BorderLayout.EAST);
 
