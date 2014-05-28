@@ -27,7 +27,7 @@ public class ChangerHabitudeControleur implements ActionListener, ListSelectionL
             Article a = articles.get(changerHabitude.getArticlesList().getSelectedIndex());
             int i = (Integer)changerHabitude.getHabitudeSpinner().getValue();
             ServiceCourses.changerHabitude(a,i);
-            changerHabitude.getHabitude().setText("L'habitude de l'article "+a.getNom()+" est "+i);
+            changerHabitude.getHabitudeEtat().setText("L'habitude de l'article "+a.getNom()+" est "+i+". Habitude souhaitée : ");
         }
     }
 
@@ -42,11 +42,13 @@ public class ChangerHabitudeControleur implements ActionListener, ListSelectionL
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
         if(changerHabitude.getArticlesList().isSelectionEmpty()){
-            changerHabitude.getHabitude().setText("Veuillez sélectionner un article");
+            changerHabitude.getHabitudeEtat().setText("Veuillez sélectionner un article");
         } else {
+            Article a =  articles.get(changerHabitude.getArticlesList().getSelectedIndex());
             int habitude = articles.get(changerHabitude.getArticlesList().getSelectedIndex()).getHabitude();
-            changerHabitude.getHabitude().setText("Habitude souhaitée :");
-            changerHabitude.getHabitudeSpinner().setValue(habitude);
+            changerHabitude.getHabitudeEtat().setText("L'habitude de l'article "+a.getNom()+" est "+habitude+". Habitude souhaitée : ");
+            //changerHabitude.getHabitude().setText("Habitude souhaitée :");
+            //changerHabitude.getHabitudeSpinner().setValue(habitude);
         }
     }
 }

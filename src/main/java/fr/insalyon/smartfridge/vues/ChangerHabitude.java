@@ -15,7 +15,7 @@ public class ChangerHabitude extends SousPanneau {
     private JScrollPane scroll = new JScrollPane(articlesList);
     private JPanel options = new JPanel();
     private JButton changerHabitudeButton = new JButton();
-    private JLabel habitude = new JLabel();
+    private JLabel habitudeEtat = new JLabel();
     private JSpinner habitudeSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1));
 
 
@@ -30,13 +30,12 @@ public class ChangerHabitude extends SousPanneau {
     }
 
     private void jbInit() throws Exception{
-        options.setLayout(new GridLayout(1, 3));
+        options.setLayout(new GridLayout(2, 3));
 
         this.add(scroll, BorderLayout.CENTER);
 
-        habitude.setText("Changer l'habitude : ");
-        habitude.setHorizontalAlignment(SwingConstants.RIGHT);
-        options.add(habitude);
+        habitudeEtat.setText("Veuillez sélectionner un article");
+        options.add(habitudeEtat);
         options.add(getHabitudeSpinner());
         changerHabitudeButton.setText("Appliquer");
         changerHabitudeButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
@@ -50,7 +49,7 @@ public class ChangerHabitude extends SousPanneau {
 
     public JList getArticlesList() {return articlesList;}
     public JButton getChangerHabitudeButton() {return changerHabitudeButton;}
-    public JLabel getHabitude() {return habitude;}
+    public JLabel getHabitudeEtat() {return habitudeEtat;}
     public JSpinner getHabitudeSpinner() {
         return habitudeSpinner;
     }

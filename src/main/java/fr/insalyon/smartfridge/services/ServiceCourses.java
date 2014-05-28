@@ -198,6 +198,11 @@ public class ServiceCourses {
         return lCourses;
     }
 
-
+    public static List<Ingredient> listerIngredients(Recette r){
+        BaseDAO.initialiserPersistence();
+        List<Ingredient> ingredients = r.getIngredients();
+        BaseDAO.detruirePersistence();
+        return ingredients;
+    }
 
 }

@@ -13,7 +13,10 @@ public class MenuRecettes extends SousPanneau implements Changeable {
 
     private JList recettesList = new JList();
     private JScrollPane scroll = new JScrollPane(recettesList);
+    private JList ingredientsList = new JList();
+    private JScrollPane ingredientsRecette = new JScrollPane(ingredientsList);
     private JPanel options = new JPanel();
+    private JPanel panneauCentre = new JPanel();
     private JButton toggleButton = new JButton();
     private JButton ajouterButton = new JButton();
     private JButton supprimerButton = new JButton();
@@ -33,7 +36,10 @@ public class MenuRecettes extends SousPanneau implements Changeable {
         options.setLayout(new GridLayout(1, 3));
 
         recettesList.addListSelectionListener(controleur);
-        this.add(scroll, BorderLayout.CENTER);
+        panneauCentre.setLayout(new GridLayout(1,3));
+        panneauCentre.add(scroll);
+        panneauCentre.add(ingredientsRecette);
+        this.add(panneauCentre, BorderLayout.CENTER);
 
         toggleButton.setText("Activer");
         toggleButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
@@ -54,7 +60,7 @@ public class MenuRecettes extends SousPanneau implements Changeable {
     }
 
     public void mettreAJour() {
-        controleur.rafraichirListe();
+        controleur.rafraichirListeRecette();
     }
 
     public JButton getToggleButton() {
@@ -69,6 +75,10 @@ public class MenuRecettes extends SousPanneau implements Changeable {
 
     public JList getRecettesList() {
         return recettesList;
+    }
+
+    public JList getIngredientsList() {
+        return ingredientsList;
     }
 }
 

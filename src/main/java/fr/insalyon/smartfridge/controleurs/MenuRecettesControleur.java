@@ -1,5 +1,6 @@
 package fr.insalyon.smartfridge.controleurs;
 
+import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.vues.EntreeRecettes;
@@ -20,11 +21,14 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
     Fenetre fenetre;
     MenuRecettes menuRecettes;
     ListModel<Recette> recettes;
+    ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
+
 
     public MenuRecettesControleur(Fenetre fenetre, MenuRecettes menuRecettes) {
         this.fenetre = fenetre;
         this.menuRecettes = menuRecettes;
         recettes = new ListModel(ServiceCourses.listerRecettes());
+
 
     }
 
@@ -42,24 +46,30 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
                 menuRecettes.getToggleButton().setText("Desactiver");
                 menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
             }
-            rafraichirListe();
+            rafraichirListeRecette();
         } else if(e.getSource().equals(menuRecettes.getAjouterButton())) {
             fenetre.allerA(new EntreeRecettes(fenetre));
         }else if(e.getSource().equals(menuRecettes.getSupprimerButton())) {
             Recette r = recettes.get(menuRecettes.getRecettesList().getSelectedIndex());
             ServiceCourses.retraitRecette(r.getNom());
-            rafraichirListe();
+            rafraichirListeRecette();
         }
     }
 
     public void creerListe() {
+        menuRecettes.getIngredientsList().setModel(ingredients);
         menuRecettes.getRecettesList().setModel(recettes);
     }
 
 
-    public void rafraichirListe() {
+    public void rafraichirListeRecette() {
         recettes = new ListModel<Recette>(ServiceCourses.listerRecettes());
         menuRecettes.getRecettesList().setModel(recettes);
+
+    }
+
+    public void rafraichirListeIngredients(){
+        menuRecettes.getIngredientsList().setModel(ingredients);
     }
 
     @Override
@@ -67,6 +77,9 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
         int i = menuRecettes.getRecettesList().getSelectedIndex();
         if(i >= 0) {
             Recette r = recettes.get(i);
+            ListModel ingredients = new ListModel(ServiceCourses.listerIngredients(r)) ;
+            this.ingredients = ingredients;
+            rafraichirListeIngredients();
             if(r.isActif()) {
                 menuRecettes.getToggleButton().setText("Desactiver");
                 menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
@@ -74,6 +87,7 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
                 menuRecettes.getToggleButton().setText("Activer");
                 menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
             }
+
         }
     }
 
