@@ -147,42 +147,51 @@ public class ServiceCourses {
         BaseDAO.initialiserPersistence();
 
         List<Aliment> lCourses = new ArrayList<Aliment>();
-        List<Aliment> lAliments = AlimentDAO.tous();
+        //List<Aliment> lAliments = AlimentDAO.tous();
         List<Article> listeArticle = ArticleDAO.tous();
-        for (Aliment lAliment : lAliments) {
+        List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
+        List<Recette> listeRecettes = RecetteDAO.tous();
+        BaseDAO.detruirePersistence();
+        List<Aliment> lAli = ServiceStock.listerAliments();
+
+        for (Aliment lAliment : lAli) {
+            System.out.println(lAliment.toString());
             long id = lAliment.getArticle().getId();
             for (int j = 0; j < listeArticle.size(); j++) {
                 if (id == listeArticle.get(j).getId()) {
                     Article a = listeArticle.get(j);
-                    //System.out.println(a.getNom());
-                    if (lAliment.getQuantite() < a.getHabitude()) {
-                        lCourses.add(new Aliment(a, 1));
-                        //System.out.println(lArticle.get(0).getNom());
+                    if(lAliment.getQuantite() < a.getHabitude()) {
+                        lCourses.add(new Aliment(a, a.getHabitude()-lAliment.getQuantite()));
+                    }
+                    if(lAliment.getQuantite() == a.getHabitude()){
+                        lCourses.add(new Aliment(a, a.getHabitude()-lAliment.getQuantite()));
                     }
                 }
             }
         }
 
-        List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
         for(int e= 0; e<lArticleAbsentDuFrigo.size();e++) {
             Article b = lArticleAbsentDuFrigo.get(e);
             for (Aliment a : lCourses) {
                 if (b.equals(a.getArticle())) {
-                    System.out.println(b.getNom());
                     lArticleAbsentDuFrigo.remove(e);
                 }
             }
         }
 
+
         for (Article d : lArticleAbsentDuFrigo) {
             if (d.getHabitude() != 0) {
-                //System.out.println(a.getNom());
-                lCourses.add(new Aliment(d, 1));
+                // System.out.println( "je suis absent du frigo mais g une habitude "+ d.getNom());
+                lCourses.add(new Aliment(d, d.getHabitude()));
                 //System.out.println(lArticle.get(0).getNom());
             }
         }
+        for(int y = 0; y<lCourses.size(); y++){
+            System.out.println(lCourses.get(y).toString());
+        }
 
-        List<Recette> listeRecettes = RecetteDAO.tous();
+
 
         // TODO: Mettre a jour pour les ingredients
         for (Recette listeRecette : listeRecettes) {
@@ -193,8 +202,25 @@ public class ServiceCourses {
                 }
             }
         }
+        for(int j=0; j<lCourses.size(); j++){
+            for(int k=j+1 ; k<lCourses.size(); k++) {
+                //System.out.println(lCourses.get(j).toString());
+                if (lCourses.get(j).getArticle().equals(lCourses.get(k).getArticle())) {
+                    //System.out.println(lCourses.get(j).toString());
+                    //lCourses.add(new Aliment(lCourses.get(j).getArticle(), (lCourses.get(j).getQuantite()+ lCourses.get(k).getQuantite())));
+                    int q = lCourses.get(k).getQuantite();
+                    lCourses.get(j).setQuantite(lCourses.get(j).getQuantite()+ q);
+                    lCourses.remove(k);
+                }
+            }
+        }
 
-        BaseDAO.detruirePersistence();
+        for(int i=0; i<lCourses.size(); i++ ){
+            if(lCourses.get(i).getQuantite()==0){
+                lCourses.remove(i);
+            }
+        }
+
         return lCourses;
     }
 

@@ -26,13 +26,17 @@ public class ServiceStock {
     public static List<Aliment> listerAliments() {
         BaseDAO.initialiserPersistence();
         List<Aliment> aliments = AlimentDAO.tous();
+        for(int y=0; y<aliments.size(); y++){
+            //System.out.println("tour aliment j : " + aliments.get(y).toString());
+        }
         for(int j=0; j<aliments.size(); j++){
+            //System.out.println("tour aliment j : " + aliments.get(j).toString());
             for(int k=j+1 ; k<aliments.size(); k++) {
                 //System.out.println(lCourses.get(j).toString());
                 if (aliments.get(j).getArticle().equals(aliments.get(k).getArticle())) {
-                    System.out.println(aliments.get(j).toString());
-                    aliments.get(k).setQuantite(aliments.get(j).getQuantite() + aliments.get(k).getQuantite());
-                    aliments.remove(j);
+                    //System.out.println("test"+aliments.get(j).toString());
+                    aliments.get(j).setQuantite(aliments.get(j).getQuantite() + aliments.get(k).getQuantite());
+                    aliments.remove(k);
                 }
             }
         }
