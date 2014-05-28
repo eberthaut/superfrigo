@@ -21,7 +21,8 @@ public class ArticleDAO extends BaseDAO{
      * @return Toutes les entites de Article
      */
     public static List<Article> tous() {
-        return (List<Article>) tous("Article");
+        Query q = getEntityManager().createQuery("SELECT article FROM Article article ORDER BY article.nom ASC");
+        return q.getResultList();
     }
 
     /**

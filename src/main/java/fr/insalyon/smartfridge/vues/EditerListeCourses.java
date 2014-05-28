@@ -39,6 +39,8 @@ public class EditerListeCourses extends SousPanneau {
         reinitialiserButton.addActionListener(controleur);
         options.add(reinitialiserButton);
         this.add(options, BorderLayout.SOUTH);
+        controleur.creerListe();
+        controleur.rafraichirListe();
     }
 
     public JButton getChangerHabitudesButton() { return changerHabitudesButton; }

@@ -37,5 +37,9 @@ public class EditerListeCoursesControleur implements ActionListener{
         editerListeCourses.getListeDeCourses().setModel(new ListModel<Aliment>(ServiceCourses.genererListeCourses()));
 
     }
+
+    public void rafraichirListe() {
+        this.creerListe();
+    }
 }
 

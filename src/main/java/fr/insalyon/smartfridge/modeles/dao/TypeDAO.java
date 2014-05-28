@@ -1,7 +1,9 @@
 package fr.insalyon.smartfridge.modeles.dao;
 
+import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Type;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -14,6 +16,12 @@ public class TypeDAO extends BaseDAO {
      */
     public static Type trouveId(long id) {
         return (Type) trouveId(Type.class, id);
+    }
+
+    public static List<Article> listerArticlesType(Type type){
+        Query q = getEntityManager().createQuery("SELECT article FROM Article article WHERE article.type=:type ORDER BY article.nom ASC");
+        q.setParameter("type", type);
+        return q.getResultList();
     }
 
     /**

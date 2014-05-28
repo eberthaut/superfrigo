@@ -5,6 +5,8 @@ import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Type;
 import fr.insalyon.smartfridge.modeles.dao.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -24,13 +26,23 @@ public class ServiceStock {
     public static List<Aliment> listerAliments() {
         BaseDAO.initialiserPersistence();
         List<Aliment> aliments = AlimentDAO.tous();
+        for(int j=0; j<aliments.size(); j++){
+            for(int k=j+1 ; k<aliments.size(); k++) {
+                //System.out.println(lCourses.get(j).toString());
+                if (aliments.get(j).getArticle().equals(aliments.get(k).getArticle())) {
+                    System.out.println(aliments.get(j).toString());
+                    aliments.get(k).setQuantite(aliments.get(j).getQuantite() + aliments.get(k).getQuantite());
+                    aliments.remove(j);
+                }
+            }
+        }
         BaseDAO.detruirePersistence();
         return aliments;
     }
 
     public static List<Article> listerArticles(Type type) {
         BaseDAO.initialiserPersistence();
-        List<Article> articles = type.getArticles();
+        List<Article> articles = TypeDAO.listerArticlesType(type);
         BaseDAO.detruirePersistence();
         return articles;
     }
