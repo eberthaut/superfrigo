@@ -25,18 +25,22 @@ public class ServiceStock {
 
     public static List<Aliment> listerAliments() {
         BaseDAO.initialiserPersistence();
+        List<Aliment> ali = AlimentDAO.tous();
         List<Aliment> aliments = AlimentDAO.tous();
-        for(int y=0; y<aliments.size(); y++){
-            //System.out.println("tour aliment j : " + aliments.get(y).toString());
-        }
+
+       /* for(int y=0; y<aliments.size(); y++){
+            System.out.println("tour aliment j : " + aliments.get(y).toString());
+        }*/
         for(int j=0; j<aliments.size(); j++){
             //System.out.println("tour aliment j : " + aliments.get(j).toString());
+
             for(int k=j+1 ; k<aliments.size(); k++) {
                 //System.out.println(lCourses.get(j).toString());
                 if (aliments.get(j).getArticle().equals(aliments.get(k).getArticle())) {
-                    //System.out.println("test"+aliments.get(j).toString());
+                    // System.out.println("test"+aliments.get(j).toString());
                     aliments.get(j).setQuantite(aliments.get(j).getQuantite() + aliments.get(k).getQuantite());
                     aliments.remove(k);
+                    k--;
                 }
             }
         }
@@ -59,16 +63,50 @@ public class ServiceStock {
     }
 
     public static boolean retraitAliment (Aliment aliment, int quantite) {
-        System.out.println(quantite);
+
         BaseDAO.initialiserPersistence();
         aliment = AlimentDAO.trouveId(aliment.getId());
         BaseDAO.creerTransaction();
-        if(aliment.getQuantite() <= quantite) {
-            AlimentDAO.supprime(aliment);
-        } else {
-            aliment.setQuantite(aliment.getQuantite() - quantite);
-            System.out.println(aliment.getQuantite());
-            AlimentDAO.miseAJour(aliment);
+
+        List<Aliment> lAli = AlimentDAO.tous();
+        List<Aliment> lRegroupee = new ArrayList<Aliment>();
+        Aliment aliAsupprimer = aliment;
+        int quantiteRestante = quantite;
+
+        for(int i=0; i<lAli.size();i++){
+            System.out.println(lAli.get(i));
+        }
+
+        for (int i = 0; i < lAli.size(); i++) {
+            if (aliment.getArticle().equals(lAli.get(i).getArticle())) {
+                lRegroupee.add(lAli.get(i));
+            }
+        }
+
+        while (quantiteRestante != 0) {
+            for (int i = 0; i < lRegroupee.size(); i++) {
+                System.out.println("liste: " + lRegroupee.get(i));
+                if (aliAsupprimer.getDateAjout().after(lRegroupee.get(i).getDateAjout())) {
+                    aliAsupprimer = lRegroupee.get(i);
+                }
+            }
+
+            if(aliAsupprimer.getQuantite() == quantiteRestante){
+                aliAsupprimer.setQuantite(0);
+                AlimentDAO.supprime(aliAsupprimer);
+                quantiteRestante=0;
+            }
+            if (aliAsupprimer.getQuantite() > quantiteRestante) {
+                aliAsupprimer.setQuantite(aliAsupprimer.getQuantite()-quantiteRestante);
+                AlimentDAO.miseAJour(aliAsupprimer);
+                quantiteRestante = 0;
+
+            } else if (aliAsupprimer.getQuantite() < quantiteRestante) {
+                AlimentDAO.supprime(aliAsupprimer);
+                lRegroupee.remove(aliAsupprimer);
+                quantiteRestante = quantiteRestante - aliAsupprimer.getQuantite();
+                aliAsupprimer= lRegroupee.get(0);
+            }
         }
         BaseDAO.faireTransaction();
         BaseDAO.detruirePersistence();
