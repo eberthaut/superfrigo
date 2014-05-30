@@ -3,6 +3,8 @@ package fr.insalyon.smartfridge.modeles.dao;
 import fr.insalyon.smartfridge.modeles.Aliment;
 
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +33,18 @@ public class AlimentDAO extends BaseDAO {
         Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment ORDER BY aliment.datePeremption");
         // SELECT * FROM aliment ORDER BY aliment.datePeremption
         return q.getResultList();
+    }
+
+    public static List<Aliment> tousAvant(Date date) {
+        Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment WHERE aliment.datePeremption < :date ");
+        q.setParameter("date", date, TemporalType.DATE);
+        return q.getResultList();
+    }
+
+    public static long compteTousAvant(Date date) {
+        Query q = getEntityManager().createQuery("SELECT COUNT(aliment.id) FROM Aliment aliment WHERE aliment.datePeremption < :date ");
+        q.setParameter("date", date, TemporalType.DATE);
+        return (Long)q.getSingleResult();
     }
 
     public static List<Aliment> tousTriesParQuantite() {

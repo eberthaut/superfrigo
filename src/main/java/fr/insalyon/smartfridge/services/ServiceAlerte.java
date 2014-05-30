@@ -11,33 +11,30 @@ import java.util.*;
  */
 public class ServiceAlerte {
 
+    private static Date computeLimite(int nbJours) {
+        Date aujourdhui = new Date();
+        return new Date(aujourdhui.getTime() + (long)nbJours * 60 * 60 * 24 * 1000);
+    }
+
     public static int statusAlerte (int nombreLimiteJoursVoulu) {
+        BaseDAO.initialiserPersistence();
         int statusAlerte= 0;
-        List<Aliment> prochePeremption = listeAlimentsProchePeremption(nombreLimiteJoursVoulu);
-        if (!prochePeremption.isEmpty()) {
+        long prochePeremption = AlimentDAO.compteTousAvant(computeLimite(nombreLimiteJoursVoulu));
+        if (prochePeremption > 0) {
             statusAlerte=1;
         }
 
-        List<Aliment> perimes = listeAlimentsPerimes();
-        if (!perimes.isEmpty()) {
+        long perimes = AlimentDAO.compteTousAvant(computeLimite(0));
+        if (perimes > 0) {
             statusAlerte=2;
         }
+        BaseDAO.detruirePersistence();
         return statusAlerte;
     }
 
     public static List<Aliment> listeAlimentsProchePeremption (int nombreLimiteJoursVoulu) {
         BaseDAO.initialiserPersistence();
-        List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
-        List<Aliment> proches = new ArrayList<Aliment>();
-        Date aujourdhui = new Date();
-        Date dateAlerte = new Date(aujourdhui.getTime() + (long)nombreLimiteJoursVoulu * 60 * 60 * 24 * 1000);
-        for(Aliment aliment : tries) {
-            if(aliment.getDatePeremption().compareTo(dateAlerte) < 0 && aliment.getDatePeremption().compareTo(aujourdhui) > 0) {
-                proches.add(aliment);
-            } else if(aliment.getDatePeremption().compareTo(aujourdhui) > 0) {
-                break;
-            }
-        }
+        List<Aliment> proches = AlimentDAO.tousAvant(computeLimite(nombreLimiteJoursVoulu));
         BaseDAO.detruirePersistence();
         return proches;
 
@@ -45,16 +42,7 @@ public class ServiceAlerte {
 
     public static List<Aliment> listeAlimentsPerimes () {
         BaseDAO.initialiserPersistence();
-        List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
-        List<Aliment> perimes = new ArrayList<Aliment>();
-        Date aujourdhui = new Date();
-        for(Aliment aliment : tries) {
-            if(aliment.getDatePeremption().compareTo(aujourdhui) < 0) {
-                perimes.add(aliment);
-            } else {
-                break;
-            }
-        }
+        List<Aliment> perimes = AlimentDAO.tousAvant(computeLimite(0));
         BaseDAO.detruirePersistence();
         return perimes;
     }
