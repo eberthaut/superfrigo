@@ -9,13 +9,9 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.List;
 
-/**
- * Created by rricard on 30/05/14.
- */
 public class ServiceImpression {
     public static void imprimer(final List<Aliment> aliments) {
         PrinterJob job = PrinterJob.getPrinterJob();
-        final boolean necessitePlus = true;
         job.setPrintable(new Printable() {
             @Override
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
