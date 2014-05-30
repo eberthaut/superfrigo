@@ -30,7 +30,7 @@ public class ServiceAlerte {
         List<Aliment> tries = AlimentDAO.tousTriesParPeremption();
         List<Aliment> proches = new ArrayList<Aliment>();
         Date aujourdhui = new Date();
-        Date dateAlerte = new Date(aujourdhui.getTime() + nombreLimiteJoursVoulu * 60 * 60 * 24);
+        Date dateAlerte = new Date(aujourdhui.getTime() + (long)nombreLimiteJoursVoulu * 60 * 60 * 24 * 1000);
         for(Aliment aliment : tries) {
             if(aliment.getDatePeremption().compareTo(dateAlerte) < 0 && aliment.getDatePeremption().compareTo(aujourdhui) > 0) {
                 proches.add(aliment);
