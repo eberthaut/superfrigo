@@ -17,24 +17,31 @@ public class Recette {
     private long id;
 
     private String nom;
-    private boolean actif;
+    private int prevuPour;
+    private int activePour;
 
     public Recette() {
-        this.actif = true;
+        this.activePour = this.prevuPour = 0;
     }
 
-    public Recette(String nom, List<Ingredient> ingredients) {
+    public Recette(String nom, List<Ingredient> ingredients, int prevuPour) {
         this();
         this.nom = nom;
         this.ingredients.addAll(ingredients);
+        this.prevuPour = this.activePour = prevuPour;
     }
 
     public boolean isActif () {
-        return this.actif;
+        return (this.activePour > 0);
     }
 
     public void setActivite (boolean actif) {
-        this.actif = actif;
+        if(actif) {
+            this.activePour = this.prevuPour;
+        } else {
+            this.activePour = 0;
+        }
+
     }
 
     public List<Ingredient> getIngredients() {
@@ -58,6 +65,22 @@ public class Recette {
     }
 
     public String toString() {
-        return (actif?"✓ ":"   ") + nom;
+        return (isActif()?"✓ ":"   ") + nom;
+    }
+
+    public int getPrevuPour() {
+        return prevuPour;
+    }
+
+    public void setPrevuPour(int prevuPour) {
+        this.prevuPour = prevuPour;
+    }
+
+    public int getActivePour() {
+        return activePour;
+    }
+
+    public void setActivePour(int activePour) {
+        this.activePour = activePour;
     }
 }
