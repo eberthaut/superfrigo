@@ -6,7 +6,7 @@ title: Application
 
 <object classid="java:Runner.class"
         type="application/x-java-applet"
-        archive="../target/SmartFridge-1.0-SNAPSHOT-jar-with-dependencies.jar"
+        archive="assets/Smartfridge.jar"
         width="1000" height="700">
   <param name="code" value="Runner.class"/>
   <param name="cache_option" value="no"/>
