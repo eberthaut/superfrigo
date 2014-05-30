@@ -1,8 +1,12 @@
 package fr.insalyon.smartfridge.modeles.dao;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
+import fr.insalyon.smartfridge.modeles.Article;
 
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,10 +37,38 @@ public class AlimentDAO extends BaseDAO {
         return q.getResultList();
     }
 
+    public static List<Aliment> tousAvant(Date date) {
+        Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment WHERE aliment.datePeremption < :date ");
+        q.setParameter("date", date, TemporalType.DATE);
+        return q.getResultList();
+    }
+
+    public static long compteTousAvant(Date date) {
+        Query q = getEntityManager().createQuery("SELECT COUNT(aliment.id) FROM Aliment aliment WHERE aliment.datePeremption < :date ");
+        q.setParameter("date", date, TemporalType.DATE);
+        return (Long)q.getSingleResult();
+    }
+
     public static List<Aliment> tousTriesParQuantite() {
         Query q = getEntityManager().createQuery("SELECT quantite FROM Aliment ");
         // SELECT * FROM aliment ORDER BY aliment.datePeremption
 
+        return q.getResultList();
+    }
+
+    public static List<Aliment> tousUniques() {
+        Query q = getEntityManager().createQuery("SELECT aliment.article, SUM(aliment.quantite) FROM Aliment aliment GROUP BY aliment.article");
+        List<Object[]> produitEtCompte = q.getResultList();
+        List<Aliment> aliments = new ArrayList<Aliment>();
+        for(Object[] pec : produitEtCompte) {
+            aliments.add(new Aliment((Article) pec[0], Integer.parseInt(((Long) pec[1]).toString())));
+        }
+        return aliments;
+    }
+
+    public static List<Aliment> tousTriesParPeremption(Article article) {
+        Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment WHERE aliment.article = :article ORDER BY aliment.datePeremption");
+        q.setParameter("article", article);
         return q.getResultList();
     }
 }

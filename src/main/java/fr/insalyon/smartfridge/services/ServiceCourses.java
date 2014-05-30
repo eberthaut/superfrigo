@@ -133,17 +133,16 @@ public class ServiceCourses {
     }
 
     public static double calculPrixListe (List<Article> listeCourses) {
-        BaseDAO.initialiserPersistence();
         double prixListe=0;
         for(Article article : listeCourses) {
             prixListe += article.getPrix();
         }
-
-        BaseDAO.detruirePersistence();
         return prixListe;
     }
 
     public static List<Aliment> genererListeCourses() {
+        // TODO: A opt
+
         BaseDAO.initialiserPersistence();
 
         List<Aliment> lCourses = new ArrayList<Aliment>();
