@@ -23,8 +23,6 @@ public class EditerListeCoursesControleur implements ActionListener{
     public EditerListeCoursesControleur(Fenetre fenetre, EditerListeCourses editerListeCourses){
         this.fenetre = fenetre;
         this.editerListeCourses = editerListeCourses;
-        //articles = new ListModel(ServiceStock.listerArticles());
-        // articles = new ListModel(ServiceCourses.genererListeCourses());
         this.creerListe();
     }
 

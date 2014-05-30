@@ -59,39 +59,6 @@ public class ServiceCourses {
         return true;
     }
 
-
-    public static boolean augmenterHabitude(Article article) {
-        BaseDAO.initialiserPersistence();
-        int modificationHabitude = 1;
-
-        // TODO : Faire un algorithme
-
-        article.setHabitude(article.getHabitude() + modificationHabitude);
-
-        BaseDAO.creerTransaction();
-        ArticleDAO.miseAJour(article);
-        BaseDAO.faireTransaction();
-
-        BaseDAO.detruirePersistence();
-        return true;
-    }
-
-    public static boolean decrementerHabitude(Article article) {
-        BaseDAO.initialiserPersistence();
-        int modificationHabitude = 1;
-
-        // TODO : Faire un algorithme
-
-        article.setHabitude(article.getHabitude() - modificationHabitude);
-
-        BaseDAO.creerTransaction();
-        ArticleDAO.miseAJour(article);
-        BaseDAO.faireTransaction();
-
-        BaseDAO.detruirePersistence();
-        return true;
-    }
-
     public static List<Recette> listerRecettes() {
         BaseDAO.initialiserPersistence();
         List<Recette> recettes = RecetteDAO.tous();
@@ -147,7 +114,6 @@ public class ServiceCourses {
         BaseDAO.initialiserPersistence();
 
         List<Aliment> lCourses = new ArrayList<Aliment>();
-        //List<Aliment> lAliments = AlimentDAO.tous();
         List<Article> listeArticle = ArticleDAO.tous();
         List<Article> lArticleAbsentDuFrigo = ArticleDAO.tous();
         List<Recette> listeRecettes = RecetteDAO.tous();
@@ -155,7 +121,6 @@ public class ServiceCourses {
         List<Aliment> lAli = ServiceStock.listerAliments();
 
         for (Aliment lAliment : lAli) {
-            System.out.println(lAliment.toString());
             long id = lAliment.getArticle().getId();
             for (int j = 0; j < listeArticle.size(); j++) {
                 if (id == listeArticle.get(j).getId()) {
@@ -182,13 +147,8 @@ public class ServiceCourses {
 
         for (Article d : lArticleAbsentDuFrigo) {
             if (d.getHabitude() != 0) {
-                // System.out.println( "je suis absent du frigo mais g une habitude "+ d.getNom());
                 lCourses.add(new Aliment(d, d.getHabitude()));
-                //System.out.println(lArticle.get(0).getNom());
             }
-        }
-        for(int y = 0; y<lCourses.size(); y++){
-            System.out.println(lCourses.get(y).toString());
         }
 
 
@@ -204,10 +164,7 @@ public class ServiceCourses {
         }
         for(int j=0; j<lCourses.size(); j++){
             for(int k=j+1 ; k<lCourses.size(); k++) {
-                //System.out.println(lCourses.get(j).toString());
                 if (lCourses.get(j).getArticle().equals(lCourses.get(k).getArticle())) {
-                    //System.out.println(lCourses.get(j).toString());
-                    //lCourses.add(new Aliment(lCourses.get(j).getArticle(), (lCourses.get(j).getQuantite()+ lCourses.get(k).getQuantite())));
                     int q = lCourses.get(k).getQuantite();
                     lCourses.get(j).setQuantite(lCourses.get(j).getQuantite()+ q);
                     lCourses.remove(k);

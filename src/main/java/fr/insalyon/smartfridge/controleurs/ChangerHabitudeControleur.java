@@ -47,8 +47,6 @@ public class ChangerHabitudeControleur implements ActionListener, ListSelectionL
             Article a =  articles.get(changerHabitude.getArticlesList().getSelectedIndex());
             int habitude = articles.get(changerHabitude.getArticlesList().getSelectedIndex()).getHabitude();
             changerHabitude.getHabitudeEtat().setText("L'habitude de l'article "+a.getNom()+" est "+habitude+". Habitude souhaitée : ");
-            //changerHabitude.getHabitude().setText("Habitude souhaitée :");
-            //changerHabitude.getHabitudeSpinner().setValue(habitude);
         }
     }
 }
