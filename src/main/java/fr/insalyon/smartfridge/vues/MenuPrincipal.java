@@ -32,6 +32,7 @@ public class MenuPrincipal extends JPanel implements Changeable {
 
     private void jbInit() throws Exception {
         this.setLayout(layout);
+        this.setBackground(Color.WHITE);
 
         temperatureLabel.setText("...");
         temperatureLabel.setHorizontalAlignment(SwingConstants.CENTER);

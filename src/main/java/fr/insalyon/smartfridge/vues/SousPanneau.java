@@ -25,6 +25,7 @@ public abstract class SousPanneau extends JPanel {
     private void jbInit() throws Exception {
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(1000,700));
+        this.setBackground(Color.WHITE);
 
         retours.setLayout(new GridLayout(1,2));
 
