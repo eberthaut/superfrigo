@@ -17,9 +17,12 @@ public class AlertePeremptionControleur implements ActionListener {
     AlertePeremption alertePeremption;
     ListModel<Aliment> aliments;
 
-    public AlertePeremptionControleur(Fenetre fenetre, AlertePeremption alertePeremption) {
+    int nbJours;
+
+    public AlertePeremptionControleur(Fenetre fenetre, AlertePeremption alertePeremption, int nbJours) {
         this.fenetre = fenetre;
         this.alertePeremption = alertePeremption;
+        this.nbJours = nbJours;
     }
 
     @Override
@@ -33,8 +36,8 @@ public class AlertePeremptionControleur implements ActionListener {
 
     public void rafraichirListe() {
         List<Aliment> liste;
-        if(ServiceAlerte.statusAlerte(2) == 1) {
-            liste = ServiceAlerte.listeAlimentsProchePeremption(2);
+        if(ServiceAlerte.statusAlerte(nbJours) == 1) {
+            liste = ServiceAlerte.listeAlimentsProchePeremption(nbJours);
         } else {
             liste = ServiceAlerte.listeAlimentsPerimes();
         }

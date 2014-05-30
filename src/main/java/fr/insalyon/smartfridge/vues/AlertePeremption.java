@@ -12,9 +12,9 @@ public class AlertePeremption extends SousPanneau {
     private JScrollPane scroll = new JScrollPane(alimentsList);
     private JButton enleverButton = new JButton();
 
-    public AlertePeremption(Fenetre fenetre) {
+    public AlertePeremption(Fenetre fenetre, int nbJours) {
         super(fenetre);
-        controleur = new AlertePeremptionControleur(fenetre, this);
+        controleur = new AlertePeremptionControleur(fenetre, this, nbJours);
         try {
             jbInit();
         } catch (Exception e) {

@@ -15,6 +15,8 @@ public class MenuPrincipalControleur implements ActionListener {
     Fenetre fenetre;
     MenuPrincipal menu;
 
+    private int nbJoursAlerte = 2;
+
     public MenuPrincipalControleur(Fenetre fenetre, MenuPrincipal menu) {
         this.fenetre = fenetre;
         this.menu = menu;
@@ -31,12 +33,15 @@ public class MenuPrincipalControleur implements ActionListener {
         } else if(e.getSource().equals(menu.getCoursesButton())) {
             fenetre.allerA(new EditerListeCourses(fenetre));
         } else if(e.getSource().equals(menu.getAlerteButton()) && menu.getAlerteButton().isEnabled()) {
-            fenetre.allerA(new AlertePeremption(fenetre));
+            fenetre.allerA(new AlertePeremption(fenetre, this.nbJoursAlerte));
+        } else if(e.getSource().equals(menu.getAlerteCombo())) {
+            this.nbJoursAlerte = (Integer)menu.getAlerteCombo().getSelectedItem();
+            gererAlerte();
         }
     }
 
     public void gererAlerte() {
-        int status = ServiceAlerte.statusAlerte(2);
+        int status = ServiceAlerte.statusAlerte(nbJoursAlerte);
         switch(status) {
             case 0:
                 menu.getAlerteButton().setEnabled(false);

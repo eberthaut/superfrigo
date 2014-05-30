@@ -16,7 +16,10 @@ public class MenuPrincipal extends JPanel implements Changeable {
     private JButton ajouterButton = new JButton();
     private JButton retirerButton = new JButton();
     private JButton coursesButton = new JButton();
+    private JPanel alertePanel = new JPanel();
     private JButton alerteButton = new JButton();
+    private JLabel alerteLabel = new JLabel();
+    private JComboBox<Integer> alerteCombo = new JComboBox<Integer>();
     private JButton recettesButton = new JButton();
 
     public MenuPrincipal(Fenetre fenetre) {
@@ -48,10 +51,22 @@ public class MenuPrincipal extends JPanel implements Changeable {
         retirerButton.setIcon(new ImageIcon(getClass().getResource("/icones/retrait-articles.png")));
         this.add(retirerButton, null);
 
+        alerteLabel.setText("<html><body>Nombre de jours avant d'alerter <br> une peremption proche :</body></html>");
+        alerteLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        alertePanel.add(alerteLabel);
+        for(int i = 1; i <= 10; i ++) {
+            alerteCombo.addItem(i);
+        }
+        alerteCombo.setSelectedItem(2);
+        alerteCombo.addActionListener(controleur);
+        alertePanel.add(alerteCombo);
+        alertePanel.setLayout(new GridLayout(3, 1));
         alerteButton.setText("Rien a signaler");
         alerteButton.setEnabled(false);
         alerteButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
-        this.add(alerteButton, null);
+        alertePanel.add(alerteButton, null);
+        alertePanel.setBackground(Color.WHITE);
+        this.add(alertePanel);
 
         coursesButton.setText("Generer une liste de courses");
         coursesButton.addActionListener(controleur);
@@ -92,5 +107,9 @@ public class MenuPrincipal extends JPanel implements Changeable {
 
     public JButton getRecettesButton() {
         return recettesButton;
+    }
+
+    public JComboBox<Integer> getAlerteCombo() {
+        return alerteCombo;
     }
 }
