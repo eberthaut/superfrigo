@@ -14,7 +14,6 @@ public class MenuPrincipalControleur implements ActionListener {
     // On decouple la recuperation des actions des vues
     Fenetre fenetre;
     MenuPrincipal menu;
-    JButton lastButton;
 
     public MenuPrincipalControleur(Fenetre fenetre, MenuPrincipal menu) {
         this.fenetre = fenetre;
@@ -23,19 +22,16 @@ public class MenuPrincipalControleur implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() != lastButton) {
-            lastButton = (JButton)e.getSource();
-            if(lastButton.equals(menu.getAjouterButton())) {
-                fenetre.allerA(new EntreeCategories(fenetre));
-            } else if(lastButton.equals(menu.getRetirerButton())) {
-                fenetre.allerA(new SortieAliment(fenetre));
-            } else if(lastButton.equals(menu.getRecettesButton())) {
-                fenetre.allerA(new MenuRecettes(fenetre));
-            } else if(lastButton.equals(menu.getCoursesButton())) {
-                fenetre.allerA(new EditerListeCourses(fenetre));
-            } else if(lastButton.equals(menu.getAlerteButton()) && menu.getAlerteButton().isEnabled()) {
-                fenetre.allerA(new AlertePeremption(fenetre));
-            }
+        if(e.getSource().equals(menu.getAjouterButton())) {
+            fenetre.allerA(new EntreeCategories(fenetre));
+        } else if(e.getSource().equals(menu.getRetirerButton())) {
+            fenetre.allerA(new SortieAliment(fenetre));
+        } else if(e.getSource().equals(menu.getRecettesButton())) {
+            fenetre.allerA(new MenuRecettes(fenetre));
+        } else if(e.getSource().equals(menu.getCoursesButton())) {
+            fenetre.allerA(new EditerListeCourses(fenetre));
+        } else if(e.getSource().equals(menu.getAlerteButton()) && menu.getAlerteButton().isEnabled()) {
+            fenetre.allerA(new AlertePeremption(fenetre));
         }
     }
 
@@ -46,12 +42,14 @@ public class MenuPrincipalControleur implements ActionListener {
                 menu.getAlerteButton().setEnabled(false);
                 menu.getAlerteButton().setText("Rien a signaler");
                 menu.getAlerteButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
+                menu.getAlerteButton().removeActionListener(this);
                 break;
             case 1:
                 menu.getAlerteButton().setEnabled(true);
                 menu.getAlerteButton().setForeground(new Color(200, 150, 0));
                 menu.getAlerteButton().setText("Des aliments sont proches de la peremption");
                 menu.getAlerteButton().setIcon(new ImageIcon(getClass().getResource("/icones/danger.png")));
+                menu.getAlerteButton().removeActionListener(this);
                 menu.getAlerteButton().addActionListener(this);
                 break;
             case 2:
@@ -59,6 +57,7 @@ public class MenuPrincipalControleur implements ActionListener {
                 menu.getAlerteButton().setForeground(new Color(200, 0, 0));
                 menu.getAlerteButton().setText("Des aliments sont perimes");
                 menu.getAlerteButton().setIcon(new ImageIcon(getClass().getResource("/icones/erreur.png")));
+                menu.getAlerteButton().removeActionListener(this);
                 menu.getAlerteButton().addActionListener(this);
                 break;
         }
