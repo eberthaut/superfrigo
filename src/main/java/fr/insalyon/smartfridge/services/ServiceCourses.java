@@ -141,6 +141,8 @@ public class ServiceCourses {
     }
 
     public static List<Aliment> genererListeCourses() {
+        // TODO: A opt
+
         BaseDAO.initialiserPersistence();
 
         List<Aliment> lCourses = new ArrayList<Aliment>();
