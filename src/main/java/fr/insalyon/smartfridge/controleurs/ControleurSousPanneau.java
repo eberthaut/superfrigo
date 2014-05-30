@@ -22,13 +22,7 @@ public class ControleurSousPanneau implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == panneau.getButtonRetour()) {
-            if(panneau instanceof ChangerHabitude){
-                fenetre.allerA(new EditerListeCourses(fenetre));
-                System.out.println("coucou");
-            } else {
-                fenetre.retourArriere();
-            }
-
+            fenetre.retourArriere();
         } else if(e.getSource() == panneau.getButtonMenuPrincipal()) {
             fenetre.revenirDebut();
         }

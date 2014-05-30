@@ -114,6 +114,7 @@ h3 {
 
 .content {
     padding: 2em 1em 0;
+    background-image: url(food.png);
 }
 
 .post {

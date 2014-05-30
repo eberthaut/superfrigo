@@ -14,6 +14,7 @@ public class MenuPrincipalControleur implements ActionListener {
     // On decouple la recuperation des actions des vues
     Fenetre fenetre;
     MenuPrincipal menu;
+    JButton lastButton;
 
     public MenuPrincipalControleur(Fenetre fenetre, MenuPrincipal menu) {
         this.fenetre = fenetre;
@@ -22,16 +23,19 @@ public class MenuPrincipalControleur implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(menu.getAjouterButton())) {
-            fenetre.allerA(new EntreeCategories(fenetre));
-        } else if(e.getSource().equals(menu.getRetirerButton())) {
-            fenetre.allerA(new SortieAliment(fenetre));
-        } else if(e.getSource().equals(menu.getRecettesButton())) {
-            fenetre.allerA(new MenuRecettes(fenetre));
-        } else if(e.getSource().equals(menu.getCoursesButton())) {
-            fenetre.allerA(new EditerListeCourses(fenetre));
-        } else if(e.getSource().equals(menu.getAlerteButton()) && menu.getAlerteButton().isEnabled()) {
-            fenetre.allerA(new AlertePeremption(fenetre));
+        if(e.getSource() != lastButton) {
+            lastButton = (JButton)e.getSource();
+            if(lastButton.equals(menu.getAjouterButton())) {
+                fenetre.allerA(new EntreeCategories(fenetre));
+            } else if(lastButton.equals(menu.getRetirerButton())) {
+                fenetre.allerA(new SortieAliment(fenetre));
+            } else if(lastButton.equals(menu.getRecettesButton())) {
+                fenetre.allerA(new MenuRecettes(fenetre));
+            } else if(lastButton.equals(menu.getCoursesButton())) {
+                fenetre.allerA(new EditerListeCourses(fenetre));
+            } else if(lastButton.equals(menu.getAlerteButton()) && menu.getAlerteButton().isEnabled()) {
+                fenetre.allerA(new AlertePeremption(fenetre));
+            }
         }
     }
 

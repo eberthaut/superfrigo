@@ -28,6 +28,7 @@ public abstract class SousPanneau extends JPanel {
         this.setBackground(Color.WHITE);
 
         retours.setLayout(new GridLayout(1,2));
+        retours.setBackground(Color.WHITE);
 
         getButtonRetour().setText("Retour");
         getButtonRetour().setIcon(new ImageIcon(getClass().getResource("/icones/retour.png")));
