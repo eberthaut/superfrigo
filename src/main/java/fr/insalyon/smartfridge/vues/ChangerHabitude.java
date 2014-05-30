@@ -30,7 +30,7 @@ public class ChangerHabitude extends SousPanneau {
     }
 
     private void jbInit() throws Exception{
-        options.setLayout(new GridLayout(2, 3));
+        options.setLayout(new GridLayout(1, 3));
 
         this.add(scroll, BorderLayout.CENTER);
 

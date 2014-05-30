@@ -157,8 +157,9 @@ public class ServiceCourses {
         for (Recette listeRecette : listeRecettes) {
             if (listeRecette.isActif()) {
                 List<Ingredient> lIng = listeRecette.getIngredients();
+                float ratio =  listeRecette.getActivePour() / listeRecette.getPrevuPour();
                 for (Ingredient f : lIng) {
-                    lCourses.add(new Aliment(f.getArticle(), f.getQuantite()));
+                    lCourses.add(new Aliment(f.getArticle(), Math.round(f.getQuantite() * ratio)));
                 }
             }
         }
