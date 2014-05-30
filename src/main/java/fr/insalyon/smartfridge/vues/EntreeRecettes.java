@@ -26,6 +26,8 @@ public class EntreeRecettes extends SousPanneau {
     private JLabel nomRecette = new JLabel();
     private JTextField nomRecetteTexte = new JTextField();
     private JButton validerButton = new JButton();
+    private JLabel pourLabel = new JLabel();
+    private JSpinner pourSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
 
     public EntreeRecettes(Fenetre fenetre) {
         super(fenetre);
@@ -56,7 +58,7 @@ public class EntreeRecettes extends SousPanneau {
         principal.add(ingredientsScroll);
         this.add(principal, BorderLayout.CENTER);
 
-        options.setLayout(new GridLayout(1, 4));
+        options.setLayout(new GridLayout(1, 6));
         effacerButton.setText("Effacer");
         effacerButton.setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
         effacerButton.addActionListener(controleur);
@@ -64,6 +66,9 @@ public class EntreeRecettes extends SousPanneau {
         nomRecette.setText("Nom de la recette :");
         options.add(nomRecette);
         options.add(nomRecetteTexte);
+        pourLabel.setText("Pour :");
+        options.add(pourLabel);
+        options.add(pourSpinner);
         validerButton.setText("Valider");
         validerButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
         validerButton.addActionListener(controleur);
@@ -93,6 +98,10 @@ public class EntreeRecettes extends SousPanneau {
 
     public JSpinner getQuantiteSpinner() {
         return quantiteSpinner;
+    }
+
+    public JSpinner getPourSpinner() {
+        return pourSpinner;
     }
 }
 

@@ -49,14 +49,18 @@ public class EntreeRecettesControleur implements ActionListener, ListSelectionLi
             rafraichirListe();
         } else if(e.getSource() == entreeRecettes.getValiderButton()) {
             String nom = entreeRecettes.getNomRecetteTexte().getText();
-            if(nom.equals("")){
+            int pour = (Integer)entreeRecettes.getPourSpinner().getValue();
+            if(nom.equals("")) {
                 JOptionPane.showMessageDialog(null, "Entrez un nom de recette !", "Invalide !",
                         JOptionPane.ERROR_MESSAGE);
+            } else if(pour < 1){
+                JOptionPane.showMessageDialog(null, "Donnez le nombre de personnes correspondant à la recette !", "Invalide !",
+                            JOptionPane.ERROR_MESSAGE);
             } else if(ingredients.getSize() == 0){
                 JOptionPane.showMessageDialog(null, "Ajoutez des ingredients !", "Invalide !",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                ServiceCourses.ajoutRecette(nom, ingredients.getList());
+                ServiceCourses.ajoutRecette(nom, pour, ingredients.getList());
                 fenetre.retourArriere();
             }
         } else if(e.getSource() == entreeRecettes.getSuprrimerIngredientButton()){

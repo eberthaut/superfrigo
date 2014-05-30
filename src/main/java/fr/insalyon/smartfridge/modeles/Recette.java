@@ -65,7 +65,7 @@ public class Recette {
     }
 
     public String toString() {
-        return (isActif()?"✓ ":"   ") + nom;
+        return (isActif()?"✓ ":"   ") + nom + "(prevu pour " + prevuPour + " personnes" + (isActif()?", active pour " + activePour + "personnes":"") + ")";
     }
 
     public int getPrevuPour() {

@@ -13,9 +13,9 @@ import java.util.*;
  * Service de gestion des habitudes dans le frigo.
  */
 public class ServiceCourses {
-    public static boolean ajoutRecette(String nom, List<Ingredient> ingredients) {
+    public static boolean ajoutRecette(String nom, int pour, List<Ingredient> ingredients) {
         BaseDAO.initialiserPersistence();
-        Recette recette = new Recette(nom, ingredients);
+        Recette recette = new Recette(nom, ingredients, pour);
 
         BaseDAO.creerTransaction();
         RecetteDAO.persiste(recette);
