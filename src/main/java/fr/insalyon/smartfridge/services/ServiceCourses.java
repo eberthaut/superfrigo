@@ -66,12 +66,12 @@ public class ServiceCourses {
         return recettes;
     }
 
-    public static boolean activerRecette(Recette recette) {
+    public static boolean activerRecette(Recette recette, int pour) {
 
         if(recette.isActif()) {
             return false;
         } else {
-            recette.setActivite(true);
+            recette.setActivePour(pour);
             BaseDAO.initialiserPersistence();
 
             BaseDAO.creerTransaction();

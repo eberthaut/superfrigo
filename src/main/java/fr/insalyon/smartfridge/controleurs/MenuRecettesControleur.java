@@ -43,7 +43,11 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
                 menuRecettes.getToggleButton().setText("Activer");
                 menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
             } else {
-                ServiceCourses.activerRecette(r);
+                int pour = 0;
+                while(pour < 1) {
+                   pour = Integer.parseInt(JOptionPane.showInputDialog(null, "Entrez le nombre de personnes a activer.", "1"));
+                }
+                ServiceCourses.activerRecette(r, pour);
                 menuRecettes.getToggleButton().setText("Desactiver");
                 menuRecettes.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
             }
