@@ -13,7 +13,7 @@ public class EditerListeCourses extends SousPanneau {
     private JScrollPane scroll = new JScrollPane(listeDeCourses);
     private JPanel options = new JPanel();
     private JButton changerHabitudesButton = new JButton();
-    private JButton reinitialiserButton = new JButton();
+    private JButton impressionButton = new JButton();
 
     public EditerListeCourses(Fenetre fenetre) {
         super(fenetre);
@@ -34,17 +34,17 @@ public class EditerListeCourses extends SousPanneau {
         changerHabitudesButton.setIcon(new ImageIcon(getClass().getResource("/icones/utilisateur.png")));
         changerHabitudesButton.addActionListener(controleur);
         options.add(changerHabitudesButton);
-        reinitialiserButton.setText("Réinitialiser la liste");
-        reinitialiserButton.setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
-        reinitialiserButton.addActionListener(controleur);
-        options.add(reinitialiserButton);
+        impressionButton.setText("Imprimer");
+        //impressionButton.setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
+        impressionButton.addActionListener(controleur);
+        options.add(impressionButton);
         this.add(options, BorderLayout.SOUTH);
         controleur.creerListe();
         controleur.rafraichirListe();
     }
 
     public JButton getChangerHabitudesButton() { return changerHabitudesButton; }
-    public JButton getReinitialiserButton() { return reinitialiserButton; }
+    public JButton getImpressionButton() { return impressionButton; }
     public JList getListeDeCourses() { return listeDeCourses; }
 
 }

@@ -6,6 +6,7 @@ import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.modeles.dao.*;
 
+import java.awt.print.PrinterJob;
 import java.util.*;
 
 /**
