@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class EditerListeCourses extends SousPanneau {
+public class EditerListeCourses extends SousPanneau implements Changeable {
     EditerListeCoursesControleur controleur;
 
     private JList listeDeCourses = new JList();
@@ -35,7 +35,7 @@ public class EditerListeCourses extends SousPanneau {
         changerHabitudesButton.addActionListener(controleur);
         options.add(changerHabitudesButton);
         impressionButton.setText("Imprimer");
-        //impressionButton.setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
+        impressionButton.setIcon(new ImageIcon(getClass().getResource("/icones/imprimer.png")));
         impressionButton.addActionListener(controleur);
         options.add(impressionButton);
         this.add(options, BorderLayout.SOUTH);
@@ -47,6 +47,11 @@ public class EditerListeCourses extends SousPanneau {
     public JButton getImpressionButton() { return impressionButton; }
     public JList getListeDeCourses() { return listeDeCourses; }
 
+
+    @Override
+    public void mettreAJour() {
+        controleur.rafraichirListe();
+    }
 }
 
 
