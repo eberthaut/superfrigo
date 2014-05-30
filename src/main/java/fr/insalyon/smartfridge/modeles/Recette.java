@@ -58,6 +58,6 @@ public class Recette {
     }
 
     public String toString() {
-        return "[" + (actif?"x":"  ") + "] " + nom;
+        return (actif?"✓ ":"   ") + nom;
     }
 }
