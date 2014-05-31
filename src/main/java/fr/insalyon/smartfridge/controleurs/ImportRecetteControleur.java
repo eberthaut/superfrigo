@@ -31,6 +31,7 @@ public class ImportRecetteControleur implements ActionListener {
             importRecette.getPropositionsList().setModel(liensRecettes);
         } else if(e.getSource().equals(importRecette.getImportButton())) {
             serviceImport.importRecette((PropositionRecherche)importRecette.getPropositionsList().getSelectedValue());
+            fenetre.retourArriere();
         }
     }
 }
