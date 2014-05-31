@@ -20,6 +20,7 @@ public class MenuRecettes extends SousPanneau implements Changeable {
     private JButton toggleButton = new JButton();
     private JButton ajouterButton = new JButton();
     private JButton supprimerButton = new JButton();
+    private JButton importButton = new JButton();
 
     public MenuRecettes(Fenetre fenetre) {
         super(fenetre);
@@ -33,7 +34,7 @@ public class MenuRecettes extends SousPanneau implements Changeable {
     }
 
     private void jbInit() throws Exception {
-        options.setLayout(new GridLayout(1, 3));
+        options.setLayout(new GridLayout(1, 4));
 
         recettesList.addListSelectionListener(controleur);
         panneauCentre.setLayout(new GridLayout(1,3));
@@ -53,6 +54,10 @@ public class MenuRecettes extends SousPanneau implements Changeable {
         supprimerButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
         supprimerButton.addActionListener(controleur);
         options.add(supprimerButton);
+        importButton.setText("Importer depuis Internet");
+        importButton.setIcon(new ImageIcon(getClass().getResource("/icones/internet.png")));
+        importButton.addActionListener(controleur);
+        options.add(importButton);
         this.add(options, BorderLayout.SOUTH);
 
         controleur.creerListe();
@@ -79,6 +84,10 @@ public class MenuRecettes extends SousPanneau implements Changeable {
 
     public JList getIngredientsList() {
         return ingredientsList;
+    }
+
+    public JButton getImportButton() {
+        return importButton;
     }
 }
 

@@ -5,6 +5,7 @@ import fr.insalyon.smartfridge.modeles.Recette;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.vues.EntreeRecettes;
 import fr.insalyon.smartfridge.vues.Fenetre;
+import fr.insalyon.smartfridge.vues.ImportRecette;
 import fr.insalyon.smartfridge.vues.MenuRecettes;
 
 import javax.swing.*;
@@ -29,8 +30,6 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
         this.fenetre = fenetre;
         this.menuRecettes = menuRecettes;
         recettes = new ListModel(ServiceCourses.listerRecettes());
-
-
     }
 
     @Override
@@ -54,10 +53,12 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
             rafraichirListeRecette();
         } else if(e.getSource().equals(menuRecettes.getAjouterButton())) {
             fenetre.allerA(new EntreeRecettes(fenetre));
-        }else if(e.getSource().equals(menuRecettes.getSupprimerButton())) {
+        } else if(e.getSource().equals(menuRecettes.getSupprimerButton())) {
             Recette r = recettes.get(menuRecettes.getRecettesList().getSelectedIndex());
             ServiceCourses.retraitRecette(r.getNom());
             rafraichirListeRecette();
+        } else if(e.getSource().equals(menuRecettes.getImportButton())) {
+            fenetre.allerA(new ImportRecette(fenetre));
         }
     }
 
