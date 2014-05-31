@@ -62,12 +62,12 @@ public class ServiceImportMarmiton implements ServiceImportInternet {
                         typeImport = new Type("Import");
                         TypeDAO.creerTransaction();
                         TypeDAO.persiste(typeImport);
-                        TypeDAO.faireTransaction();
+                        TypeDAO.faireTransactionSecurisee();
                     }
                     article = new Article(nomIngredient, 1, 10, 1, typeImport);
                     ArticleDAO.creerTransaction();
                     ArticleDAO.persiste(article);
-                    ArticleDAO.faireTransaction();
+                    ArticleDAO.faireTransactionSecurisee();
                 }
                 ingredients.add(new Ingredient(article, quantite));
             }

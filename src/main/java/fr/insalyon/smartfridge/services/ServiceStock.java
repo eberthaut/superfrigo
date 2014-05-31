@@ -33,7 +33,7 @@ public class ServiceStock {
 
     public static List<Article> listerArticles(Type type) {
         BaseDAO.initialiserPersistence();
-        List<Article> articles = TypeDAO.listerArticlesType(type);
+        List<Article> articles = ArticleDAO.listerArticlesType(type);
         BaseDAO.detruirePersistence();
         return articles;
     }
@@ -59,7 +59,7 @@ public class ServiceStock {
                 break;
             }
         }
-        BaseDAO.faireTransaction();
+        BaseDAO.faireTransactionSecurisee();
         BaseDAO.detruirePersistence();
         return true;
     }
@@ -72,7 +72,7 @@ public class ServiceStock {
         Aliment aliment= new Aliment(article, datePeremption, quantite);
         BaseDAO.creerTransaction();
         AlimentDAO.persiste(aliment);
-        BaseDAO.faireTransaction();
+        BaseDAO.faireTransactionSecurisee();
         BaseDAO.detruirePersistence();
         return true;
     }

@@ -26,7 +26,7 @@ public class ServiceCourses {
             ingredient.setRecette(recette);
             IngredientDAO.persiste(ingredient);
         }
-        BaseDAO.faireTransaction();
+        BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
         return true;
@@ -41,7 +41,7 @@ public class ServiceCourses {
             IngredientDAO.supprime(ingredient);
         }
         RecetteDAO.supprime(recette);
-        BaseDAO.faireTransaction();
+        BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
         return true;
@@ -56,7 +56,7 @@ public class ServiceCourses {
 
         BaseDAO.creerTransaction();
         ArticleDAO.miseAJour(article);
-        BaseDAO.faireTransaction();
+        BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
         return true;
@@ -79,7 +79,7 @@ public class ServiceCourses {
 
             BaseDAO.creerTransaction();
             RecetteDAO.miseAJour(recette);
-            BaseDAO.faireTransaction();
+            BaseDAO.faireTransactionSecurisee();
             BaseDAO.detruirePersistence();
 
             return true;
@@ -96,7 +96,7 @@ public class ServiceCourses {
 
             BaseDAO.creerTransaction();
             RecetteDAO.miseAJour(recette);
-            BaseDAO.faireTransaction();
+            BaseDAO.faireTransactionSecurisee();
             BaseDAO.detruirePersistence();
 
             return true;
