@@ -33,8 +33,7 @@ public class ControleurEntreeCategories implements ActionListener, Rafraichissab
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == vue.getChoixButton()) {
-            Type t = types.get(vue.getTypesList().getSelectedIndex());
-            fenetre.allerA(new VueEntreeArticles(fenetre, t));
+            actionChoix();
         }
     }
 
@@ -42,5 +41,11 @@ public class ControleurEntreeCategories implements ActionListener, Rafraichissab
     public void mettreAJour() {
         types = new ListModel<Type>(ServiceStock.listerTypes()); // On récupère tous les types
         vue.getTypesList().setModel(types);
+    }
+
+    /** Quand on clique sur choix */
+    private void actionChoix() {
+        Type t = types.get(vue.getTypesList().getSelectedIndex());
+        fenetre.allerA(new VueEntreeArticles(fenetre, t));
     }
 }

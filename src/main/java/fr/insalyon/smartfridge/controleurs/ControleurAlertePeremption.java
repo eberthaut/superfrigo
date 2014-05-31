@@ -33,9 +33,7 @@ public class ControleurAlertePeremption implements ActionListener, Rafraichissab
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == vue.getEnleverButton()) {
-            Aliment a = aliments.get(vue.getAlimentsList().getSelectedIndex());
-            ServiceStock.retraitAliment(a, a.getQuantite());
-            mettreAJour();
+            actionEnleverButton();
         }
     }
 
@@ -49,5 +47,12 @@ public class ControleurAlertePeremption implements ActionListener, Rafraichissab
         }
         aliments = new ListModel<Aliment>(liste);
         vue.getAlimentsList().setModel(aliments);
+    }
+
+    /** Quand on clique sur le bouton enlever */
+    private void actionEnleverButton() {
+        Aliment a = aliments.get(vue.getAlimentsList().getSelectedIndex());
+        ServiceStock.retraitAliment(a, a.getQuantite());
+        mettreAJour();
     }
 }

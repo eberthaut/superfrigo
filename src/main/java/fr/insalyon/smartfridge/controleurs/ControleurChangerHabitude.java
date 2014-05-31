@@ -4,6 +4,7 @@ import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.utilitaires.ListModel;
+import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueChangerHabitude;
 
@@ -30,10 +31,7 @@ public class ControleurChangerHabitude implements ActionListener, ListSelectionL
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(vue.getChangerHabitudeButton())){
-            Article a = articles.get(vue.getArticlesList().getSelectedIndex());
-            int i = (Integer) vue.getHabitudeSpinner().getValue();
-            ServiceCourses.changerHabitude(a,i);
-            vue.getHabitudeEtat().setText("L'habitude de l'article "+a.getNom()+" est "+i+". Habitude souhaitée : ");
+            actionChangerHabitude();
         }
     }
 
@@ -45,12 +43,25 @@ public class ControleurChangerHabitude implements ActionListener, ListSelectionL
 
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
+        selectionArticle();
+    }
+
+    /** Quand on clique sur changer */
+    private void actionChangerHabitude() {
+        Article a = articles.get(vue.getArticlesList().getSelectedIndex());
+        int i = (Integer) vue.getHabitudeSpinner().getValue();
+        ServiceCourses.changerHabitude(a,i);
+        vue.getHabitudeEtat().setText(Raccourcis.html("L'habitude de l'article "+a.getNom()+" est "+i+".<br/>Habitude souhaitée : "));
+    }
+
+    /** Quand on selectionne un article */
+    private void selectionArticle() {
         if(vue.getArticlesList().isSelectionEmpty()){
             vue.getHabitudeEtat().setText("Veuillez sélectionner un article");
         } else {
             Article a =  articles.get(vue.getArticlesList().getSelectedIndex());
             int habitude = articles.get(vue.getArticlesList().getSelectedIndex()).getHabitude();
-            vue.getHabitudeEtat().setText("<html><body>L'habitude de l'article "+a.getNom()+" est "+habitude+".<br/> Habitude souhaitée :</html></body>");
+            vue.getHabitudeEtat().setText(Raccourcis.html("L'habitude de l'article "+a.getNom()+" est "+habitude+".<br/>Habitude souhaitée :"));
         }
     }
 }

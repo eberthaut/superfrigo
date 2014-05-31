@@ -39,18 +39,17 @@ public class ControleurMenuPrincipal implements ActionListener, Rafraichissable 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(vue.getAjouterButton())) {
-            fenetre.allerA(new VueEntreeCategories(fenetre));
+            actionAjouter();
         } else if(e.getSource().equals(vue.getRetirerButton())) {
-            fenetre.allerA(new VueSortieAliment(fenetre));
+            actionRetirer();
         } else if(e.getSource().equals(vue.getRecettesButton())) {
-            fenetre.allerA(new VueMenuRecettes(fenetre));
+            actionRecettes();
         } else if(e.getSource().equals(vue.getCoursesButton())) {
-            fenetre.allerA(new VueEditerListeCourses(fenetre));
+            actionCourses();
         } else if(e.getSource().equals(vue.getAlerteButton()) && vue.getAlerteButton().isEnabled()) {
-            fenetre.allerA(new VueAlertePeremption(fenetre, this.nbJoursAlerte));
+            actionAlerte();
         } else if(e.getSource().equals(vue.getAlerteCombo())) {
-            this.nbJoursAlerte = (Integer) vue.getAlerteCombo().getSelectedItem();
-            mettreAJour();
+            actionSelectionAlerte();
         }
     }
 
@@ -82,5 +81,36 @@ public class ControleurMenuPrincipal implements ActionListener, Rafraichissable 
                 break;
         }
         vue.getTemperatureLabel().setText(String.format("%.2f degres Celcius",ServiceThermodynamique.mettreAJourTemperature()));
+    }
+
+    /** Quand on clique sur ajouter */
+    private void actionAjouter() {
+        fenetre.allerA(new VueEntreeCategories(fenetre));
+    }
+
+    /** Quand on clique sur retirer */
+    private void actionRetirer() {
+        fenetre.allerA(new VueSortieAliment(fenetre));
+    }
+
+    /** Quand on clique sur recettes */
+    private void actionRecettes() {
+        fenetre.allerA(new VueMenuRecettes(fenetre));
+    }
+
+    /** Quand on clique sur courses */
+    private void actionCourses() {
+        fenetre.allerA(new VueEditerListeCourses(fenetre));
+    }
+
+    /** Quand on clique sur alerte */
+    private void actionAlerte() {
+        fenetre.allerA(new VueAlertePeremption(fenetre, this.nbJoursAlerte));
+    }
+
+    /** Quand on clique sur le selecteur d'alerte */
+    private void actionSelectionAlerte() {
+        this.nbJoursAlerte = (Integer) vue.getAlerteCombo().getSelectedItem();
+        mettreAJour();
     }
 }

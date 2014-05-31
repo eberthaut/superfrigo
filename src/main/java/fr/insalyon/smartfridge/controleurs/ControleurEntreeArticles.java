@@ -33,11 +33,7 @@ public class ControleurEntreeArticles implements ActionListener, Rafraichissable
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == vue.getAjouterButton()) {
-            Article a = articles.get(vue.getArticlesList().getSelectedIndex()); // Recupere l'article selectionne dans la liste (en bleu)
-            int nb = (Integer) vue.getQuantiteSpinner().getValue();
-            ServiceStock.ajouterAliment(a, nb);
-            JOptionPane.showMessageDialog(null, nb + " " + a.getNom() + " ajoute(s) !", "OK !",
-                    JOptionPane.INFORMATION_MESSAGE);
+            actionAjouter();
         }
     }
 
@@ -45,5 +41,14 @@ public class ControleurEntreeArticles implements ActionListener, Rafraichissable
     public void mettreAJour() {
         articles = new ListModel<Article>(ServiceStock.listerArticles(type));
         vue.getArticlesList().setModel(articles);
+    }
+
+    /** Quand ajouter est clique */
+    private void actionAjouter() {
+        Article a = articles.get(vue.getArticlesList().getSelectedIndex()); // Recupere l'article selectionne dans la liste (en bleu)
+        int nb = (Integer) vue.getQuantiteSpinner().getValue();
+        ServiceStock.ajouterAliment(a, nb);
+        JOptionPane.showMessageDialog(null, nb + " " + a.getNom() + " ajoute(s) !", "OK !",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }

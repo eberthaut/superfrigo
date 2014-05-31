@@ -28,7 +28,7 @@ public class VueSortieAliment extends VueSousPanneau implements Rafraichissable 
      */
     public VueSortieAliment(Fenetre fenetre) {
         super(fenetre);
-        controleur = new ControleurSortieAliment(fenetre, this);
+        controleur = new ControleurSortieAliment(this);
 
         enleverButton.addActionListener(controleur);
 

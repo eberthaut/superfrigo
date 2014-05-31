@@ -26,9 +26,19 @@ public class ControleurSousPanneau implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == vue.getButtonRetour()) {
-            fenetre.retourArriere();
+            actionRetour();
         } else if(e.getSource() == vue.getButtonMenuPrincipal()) {
-            fenetre.revenirDebut();
+            actionMenuPrincipal();
         }
+    }
+
+    /** Quand un clique sur retour */
+    private void actionRetour() {
+        fenetre.retourArriere();
+    }
+
+    /** Quand on clique sur menu principal */
+    private void actionMenuPrincipal() {
+        fenetre.revenirDebut();
     }
 }

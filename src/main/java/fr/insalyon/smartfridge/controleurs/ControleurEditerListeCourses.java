@@ -35,9 +35,9 @@ public class ControleurEditerListeCourses implements ActionListener, Rafraichiss
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vue.getChangerHabitudesButton())) {
-            fenetre.allerA(new VueChangerHabitude(fenetre));
+            actionChangerHabitude();
         } else if (e.getSource().equals(vue.getImpressionButton())) {
-            ServiceImpression.imprimer(aliments);
+            actionImprimer();
         }
     }
 
@@ -45,6 +45,16 @@ public class ControleurEditerListeCourses implements ActionListener, Rafraichiss
     public void mettreAJour() {
         aliments = ServiceCourses.genererListeCourses();
         vue.getListeDeCourses().setModel(new ListModel<Aliment>(aliments));
+    }
+
+    /** Quand changer habitude est clique */
+    private void actionChangerHabitude() {
+        fenetre.allerA(new VueChangerHabitude(fenetre));
+    }
+
+    /** Quand imprime est clique */
+    private void actionImprimer() {
+        ServiceImpression.imprimer(aliments);
     }
 }
 

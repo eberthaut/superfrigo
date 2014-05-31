@@ -42,30 +42,13 @@ public class ControleurMenuRecettes implements ActionListener, ListSelectionList
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == vue.getToggleButton()) {
-            Recette r = recettes.get(vue.getRecettesList().getSelectedIndex());
-
-            if(r.isActif()) {
-                ServiceCourses.desactiverRecette(r);
-                vue.getToggleButton().setText("Activer");
-                vue.getToggleButton().setIcon(Raccourcis.icone("ok"));
-            } else {
-                int pour = 0;
-                while(pour < 1) {
-                   pour = Integer.parseInt(JOptionPane.showInputDialog(null, "Entrez le nombre de personnes a activer.", "1"));
-                }
-                ServiceCourses.activerRecette(r, pour);
-                vue.getToggleButton().setText("Desactiver");
-                vue.getToggleButton().setIcon(Raccourcis.icone("desactiver"));
-            }
-            mettreAJour();
+            actionToggle();
         } else if(e.getSource().equals(vue.getAjouterButton())) {
-            fenetre.allerA(new VueEntreeRecettes(fenetre));
+            actionAjouter();
         } else if(e.getSource().equals(vue.getSupprimerButton())) {
-            Recette r = recettes.get(vue.getRecettesList().getSelectedIndex());
-            ServiceCourses.retraitRecette(r.getNom());
-            mettreAJour();
+            actionSupprimmer();
         } else if(e.getSource().equals(vue.getImportButton())) {
-            fenetre.allerA(new VueImportRecette(fenetre));
+            actionImport();
         }
     }
 
@@ -79,14 +62,55 @@ public class ControleurMenuRecettes implements ActionListener, ListSelectionList
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        selectionRecette();
+    }
+
+    /** Quand on clique sur le toggle */
+    private void actionToggle() {
+        Recette r = recettes.get(vue.getRecettesList().getSelectedIndex());
+
+        if(r.isActif()) {
+            ServiceCourses.desactiverRecette(r);
+            vue.getToggleButton().setText("Activer");
+            vue.getToggleButton().setIcon(Raccourcis.icone("ok"));
+        } else {
+            int pour = 0;
+            while(pour < 1) {
+                pour = Integer.parseInt(JOptionPane.showInputDialog(null, "Entrez le nombre de personnes a activer.", "1"));
+            }
+            ServiceCourses.activerRecette(r, pour);
+            vue.getToggleButton().setText("Desactiver");
+            vue.getToggleButton().setIcon(Raccourcis.icone("desactiver"));
+        }
+        mettreAJour();
+    }
+
+    /** Quand on clique sur ajouter */
+    private void actionAjouter() {
+        fenetre.allerA(new VueEntreeRecettes(fenetre));
+    }
+
+    /** Quand on clique sur supprimmer */
+    private void actionSupprimmer() {
+        Recette r = recettes.get(vue.getRecettesList().getSelectedIndex());
+        ServiceCourses.retraitRecette(r.getNom());
+        mettreAJour();
+    }
+
+    /** Quand on clique sur import */
+    private void actionImport() {
+        fenetre.allerA(new VueImportRecette(fenetre));
+    }
+
+    /** Quand on selectionne une recette */
+    private void selectionRecette() {
         if(vue.getRecettesList().isSelectionEmpty()){
             ingredients.removeAllElements();
             vue.getIngredientsList().setModel(ingredients);
-        }
-        else {
+        } else {
             int i = vue.getRecettesList().getSelectedIndex();
             Recette r = recettes.get(i);
-            this.ingredients = new ListModel(ServiceCourses.listerIngredients(r));
+            this.ingredients = new ListModel<Ingredient>(ServiceCourses.listerIngredients(r));
             vue.getIngredientsList().setModel(ingredients);
             if(r.isActif()) {
                 vue.getToggleButton().setText("Desactiver");
@@ -95,9 +119,7 @@ public class ControleurMenuRecettes implements ActionListener, ListSelectionList
                 vue.getToggleButton().setText("Activer");
                 vue.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
             }
-
         }
     }
-
 }
 

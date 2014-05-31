@@ -32,12 +32,22 @@ public class ControleurImportRecette implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(vue.getRechercheButton())) {
-            String recherche = vue.getRechercheField().getText();
-            ListModel<PropositionRecherche> liensRecettes = new ListModel<PropositionRecherche>(serviceImport.rechercherRecettes(recherche));
-            vue.getPropositionsList().setModel(liensRecettes);
+            actionRecherche();
         } else if(e.getSource().equals(vue.getImportButton())) {
-            serviceImport.importRecette((PropositionRecherche) vue.getPropositionsList().getSelectedValue());
-            fenetre.retourArriere();
+            actionImport();
         }
+    }
+
+    /** Quand on clique sur recherche */
+    private void actionRecherche() {
+        String recherche = vue.getRechercheField().getText();
+        ListModel<PropositionRecherche> liensRecettes = new ListModel<PropositionRecherche>(serviceImport.rechercherRecettes(recherche));
+        vue.getPropositionsList().setModel(liensRecettes);
+    }
+
+    /** Quand on clique sur import */
+    private void actionImport() {
+        serviceImport.importRecette((PropositionRecherche) vue.getPropositionsList().getSelectedValue());
+        fenetre.retourArriere();
     }
 }
