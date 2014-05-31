@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-public class ListModel<E> extends DefaultListModel<E> {
+public class ListModel<E> extends DefaultListModel {
     public ListModel() {
 
     }
@@ -18,10 +18,14 @@ public class ListModel<E> extends DefaultListModel<E> {
 
     public List<E> getList() {
         List<E> list = new ArrayList<E>();
-        Enumeration<E> it = this.elements();
+        Enumeration<E> it = (Enumeration<E>)this.elements();
         while(it.hasMoreElements()) {
             list.add(it.nextElement());
         }
         return list;
+    }
+
+    public E get(int index) {
+        return (E)super.get(index);
     }
 }

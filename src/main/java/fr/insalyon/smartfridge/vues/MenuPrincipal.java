@@ -19,7 +19,7 @@ public class MenuPrincipal extends JPanel implements Changeable {
     private JPanel alertePanel = new JPanel();
     private JButton alerteButton = new JButton();
     private JLabel alerteLabel = new JLabel();
-    private JComboBox<Integer> alerteCombo = new JComboBox<Integer>();
+    private JComboBox alerteCombo = new JComboBox();
     private JButton recettesButton = new JButton();
 
     public MenuPrincipal(Fenetre fenetre) {
@@ -109,7 +109,7 @@ public class MenuPrincipal extends JPanel implements Changeable {
         return recettesButton;
     }
 
-    public JComboBox<Integer> getAlerteCombo() {
+    public JComboBox getAlerteCombo() {
         return alerteCombo;
     }
 }
