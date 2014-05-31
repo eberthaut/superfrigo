@@ -8,40 +8,35 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class EntreeArticles extends SousPanneau {
+public class EntreeArticles extends SousPanneau implements Changeable {
     private EntreeArticlesControleur controleur;
+
     private JList articlesList = new JList();
-    private JScrollPane scroll = new JScrollPane(articlesList);
-    private JButton ajouterButton = new JButton();
-    private JPanel options = new JPanel();
-    private JLabel spinnerLabel = new JLabel();
+    private JButton ajouterButton = new JButton("Ajouter", UtilitairesVues.icone("ajout"));
     private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
     public EntreeArticles(Fenetre fenetre, Type type) {
         super(fenetre);
         controleur = new EntreeArticlesControleur(fenetre, this, type);
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void jbInit() throws Exception {
-        options.setLayout(new GridLayout(1,3));
+        ajouterButton.addActionListener(controleur);
 
+        JScrollPane scroll = new JScrollPane(articlesList);
         this.add(scroll, BorderLayout.CENTER);
 
-        spinnerLabel.setText("Quantite a ajouter : ");
+
+        JPanel options = new JPanel(new GridLayout(1,3));
+
+        JLabel spinnerLabel = new JLabel("Quantite a ajouter : ");
         spinnerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         options.add(spinnerLabel, null);
         options.add(quantiteSpinner, null);
-        ajouterButton.setText("Ajouter");
-        ajouterButton.setIcon(new ImageIcon(getClass().getResource("/icones/ajout.png")));
-        ajouterButton.addActionListener(controleur);
         options.add(ajouterButton);
         this.add(options, BorderLayout.SOUTH);
+    }
 
+    @Override
+    public void mettreAJour() {
         controleur.creerListe();
     }
 
@@ -56,4 +51,6 @@ public class EntreeArticles extends SousPanneau {
     public JSpinner getQuantiteSpinner() {
         return quantiteSpinner;
     }
+
+
 }

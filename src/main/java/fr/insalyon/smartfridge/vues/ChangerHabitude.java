@@ -5,45 +5,34 @@ import fr.insalyon.smartfridge.controleurs.ChangerHabitudeControleur;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by fannygallais on 27/04/2014.
- */
-public class ChangerHabitude extends SousPanneau {
+public class ChangerHabitude extends SousPanneau implements Changeable {
     private ChangerHabitudeControleur controleur;
 
     private JList articlesList = new JList();
-    private JScrollPane scroll = new JScrollPane(articlesList);
-    private JPanel options = new JPanel();
-    private JButton changerHabitudeButton = new JButton();
-    private JLabel habitudeEtat = new JLabel();
+    private JButton changerHabitudeButton = new JButton("Appliquer", UtilitairesVues.icone("ok"));
+    private JLabel habitudeEtat = new JLabel("Veuillez sélectionner un article");
     private JSpinner habitudeSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1));
 
 
     public ChangerHabitude(Fenetre fenetre){
         super(fenetre);
         controleur = new ChangerHabitudeControleur(this);
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void jbInit() throws Exception{
-        options.setLayout(new GridLayout(1, 3));
-
-        this.add(scroll, BorderLayout.CENTER);
-
-        habitudeEtat.setText("Veuillez sélectionner un article");
-        options.add(habitudeEtat);
-        options.add(getHabitudeSpinner());
-        changerHabitudeButton.setText("Appliquer");
-        changerHabitudeButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
-        options.add(changerHabitudeButton);
-        this.add(options, BorderLayout.SOUTH);
 
         changerHabitudeButton.addActionListener(controleur);
         articlesList.addListSelectionListener(controleur);
+
+        JScrollPane scroll = new JScrollPane(articlesList);
+        this.add(scroll, BorderLayout.CENTER);
+
+        JPanel options = new JPanel(new GridLayout(1, 3));
+        options.add(habitudeEtat);
+        options.add(getHabitudeSpinner());
+        options.add(changerHabitudeButton);
+        this.add(options, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void mettreAJour() {
         controleur.creerListe();
     }
 

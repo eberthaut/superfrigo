@@ -11,9 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-/**
- * Created by fannygallais on 27/04/2014.
- */
 public class EditerListeCoursesControleur implements ActionListener{
 
     private Fenetre fenetre;
@@ -37,10 +34,6 @@ public class EditerListeCoursesControleur implements ActionListener{
     public void creerListe() {
         aliments = ServiceCourses.genererListeCourses();
         editerListeCourses.getListeDeCourses().setModel(new ListModel<Aliment>(aliments));
-    }
-
-    public void rafraichirListe() {
-        this.creerListe();
     }
 }
 

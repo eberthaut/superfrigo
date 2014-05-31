@@ -6,40 +6,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class SousPanneau extends JPanel {
-    private ControleurSousPanneau controleurPrincipal;
-
-    private JComponent retours = new JPanel();
-    private JButton buttonRetour = new JButton();
-    private JButton buttonMenuPrincipal = new JButton();
-
+    private JButton buttonRetour = new JButton("Retour", UtilitairesVues.icone("retour"));
+    private JButton buttonMenuPrincipal = new JButton("Menu Principal", UtilitairesVues.icone("menu-principal"));
 
     public SousPanneau(Fenetre fenetre) {
-        controleurPrincipal = new ControleurSousPanneau(fenetre, this);
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+        ControleurSousPanneau controleurPrincipal = new ControleurSousPanneau(fenetre, this);
 
-    private void jbInit() throws Exception {
+        buttonRetour.addActionListener(controleurPrincipal);
+        buttonMenuPrincipal.addActionListener(controleurPrincipal);
+
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(1000,700));
         this.setBackground(Color.WHITE);
 
-        retours.setLayout(new GridLayout(1,2));
+        JPanel retours = new JPanel(new GridLayout(1, 2));
         retours.setBackground(Color.WHITE);
-
-        getButtonRetour().setText("Retour");
-        getButtonRetour().setIcon(new ImageIcon(getClass().getResource("/icones/retour.png")));
-        getButtonRetour().addActionListener(controleurPrincipal);
-        retours.add(getButtonRetour());
-
-        getButtonMenuPrincipal().setText("Menu Principal");
-        getButtonMenuPrincipal().setIcon(new ImageIcon(getClass().getResource("/icones/menu-principal.png")));
-        getButtonMenuPrincipal().addActionListener(controleurPrincipal);
-        retours.add(getButtonMenuPrincipal());
-
+        retours.add(buttonRetour);
+        retours.add(buttonMenuPrincipal);
         this.add(retours, BorderLayout.NORTH);
     }
 

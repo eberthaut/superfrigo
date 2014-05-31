@@ -20,6 +20,11 @@ public class MenuPrincipalControleur implements ActionListener {
     public MenuPrincipalControleur(Fenetre fenetre, MenuPrincipal menu) {
         this.fenetre = fenetre;
         this.menu = menu;
+
+        for(int i = 1; i <= 10; i ++) {
+            menu.getAlerteCombo().addItem(i);
+        }
+        menu.getAlerteCombo().setSelectedItem(nbJoursAlerte);
     }
 
     @Override

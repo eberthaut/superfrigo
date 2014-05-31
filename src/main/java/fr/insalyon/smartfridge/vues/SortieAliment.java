@@ -7,42 +7,34 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class SortieAliment extends SousPanneau {
+public class SortieAliment extends SousPanneau implements Changeable {
     private SortieAlimentControleur controleur;
 
     private JList alimentsList = new JList();
-    private JScrollPane scroll = new JScrollPane(alimentsList);
-    private JButton enleverButton = new JButton();
-    private JPanel options = new JPanel();
-    private JLabel spinnerLabel = new JLabel();
+    private JButton enleverButton = new JButton("Enlever", UtilitairesVues.icone("suppression"));
     private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
     public SortieAliment(Fenetre fenetre) {
         super(fenetre);
         controleur = new SortieAlimentControleur(fenetre, this);
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void jbInit() throws Exception {
+        enleverButton.addActionListener(controleur);
+
         alimentsList.addListSelectionListener(controleur);
+        JScrollPane scroll = new JScrollPane(alimentsList);
         this.add(scroll, BorderLayout.CENTER);
 
-        options.setLayout(new GridLayout(1, 3));
-
-        spinnerLabel.setText("Quantite a enlever : ");
+        JPanel options = new JPanel(new GridLayout(1, 3));
+        JLabel spinnerLabel = new JLabel("Quantite a enlever : ");
         spinnerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        options.add(spinnerLabel, null);
-        options.add(quantiteSpinner, null);
-        enleverButton.setText("Enlever");
-        enleverButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
-        enleverButton.addActionListener(controleur);
+        options.add(spinnerLabel);
+        options.add(quantiteSpinner);
         options.add(enleverButton);
         this.add(options, BorderLayout.SOUTH);
+    }
 
+    @Override
+    public void mettreAJour() {
         controleur.rafraichirListe();
     }
 
@@ -57,4 +49,6 @@ public class SortieAliment extends SousPanneau {
     public JSpinner getQuantiteSpinner() {
         return quantiteSpinner;
     }
+
+
 }

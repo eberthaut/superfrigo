@@ -6,31 +6,26 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class EntreeCategories extends SousPanneau {
+public class EntreeCategories extends SousPanneau implements Changeable {
     private EntreeCategoriesControleur controleur;
 
     private JList typesList = new JList();
-    private JScrollPane scroll = new JScrollPane(typesList);
-    private JButton choixButton = new JButton();
+    private JButton choixButton = new JButton("Choisir", UtilitairesVues.icone("suivant"));
 
     public EntreeCategories(Fenetre fenetre) {
         super(fenetre);
         controleur = new EntreeCategoriesControleur(fenetre, this);
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void jbInit() throws Exception {
+        choixButton.addActionListener(controleur);
+
+        JScrollPane scroll = new JScrollPane(typesList);
         this.add(scroll, BorderLayout.CENTER);
 
-        choixButton.setText("Choisir");
-        choixButton.setIcon(new ImageIcon(getClass().getResource("/icones/suivant.png")));
-        choixButton.addActionListener(controleur);
         this.add(choixButton, BorderLayout.EAST);
+    }
 
+    @Override
+    public void mettreAJour() {
         controleur.creerListe();
     }
 

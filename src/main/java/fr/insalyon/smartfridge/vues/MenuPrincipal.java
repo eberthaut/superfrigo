@@ -10,77 +10,48 @@ public class MenuPrincipal extends JPanel implements Changeable {
 // c'est le contenu de la fenetre par defaut
     private MenuPrincipalControleur controleur;
 
-    private GridLayout layout = new GridLayout(2, 3);
-
     private JLabel temperatureLabel = new JLabel();
-    private JButton ajouterButton = new JButton();
-    private JButton retirerButton = new JButton();
-    private JButton coursesButton = new JButton();
-    private JPanel alertePanel = new JPanel();
+    private JButton ajouterButton = new JButton("Ajouter des Articles", UtilitairesVues.icone("ajout-articles"));
+    private JButton retirerButton = new JButton("Retirer des articles", UtilitairesVues.icone("retrait-articles"));
+    private JButton coursesButton = new JButton("Generer une liste de courses", UtilitairesVues.icone("liste"));
     private JButton alerteButton = new JButton();
-    private JLabel alerteLabel = new JLabel();
     private JComboBox alerteCombo = new JComboBox();
-    private JButton recettesButton = new JButton();
+    private JButton recettesButton = new JButton("Gerer les Recettes", UtilitairesVues.icone("recettes"));
 
     public MenuPrincipal(Fenetre fenetre) {
         controleur = new MenuPrincipalControleur(fenetre, this);
-        try {
-            jbInit();
-            controleur.gererAlerte();
-            controleur.gererTemperature();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void jbInit() throws Exception {
-        this.setLayout(layout);
+        ajouterButton.addActionListener(controleur);
+        retirerButton.addActionListener(controleur);
+        alerteCombo.addActionListener(controleur);
+        coursesButton.addActionListener(controleur);
+        recettesButton.addActionListener(controleur);
+
+        this.setLayout(new GridLayout(2, 3));
         this.setBackground(Color.WHITE);
 
-        temperatureLabel.setText("...");
         temperatureLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        this.add(temperatureLabel, null);
+        this.add(temperatureLabel);
 
-        ajouterButton.setText("Ajouter des articles");
-        ajouterButton.addActionListener(controleur);
-        ajouterButton.setIcon(new ImageIcon(getClass().getResource("/icones/ajout-articles.png")));
-        this.add(ajouterButton, null);
+        this.add(ajouterButton);
 
-        retirerButton.setText("Retirer des articles");
-        retirerButton.addActionListener(controleur);
-        retirerButton.setIcon(new ImageIcon(getClass().getResource("/icones/retrait-articles.png")));
-        this.add(retirerButton, null);
+        this.add(retirerButton);
 
-        alerteLabel.setText("<html><body>Nombre de jours avant d'alerter <br> une peremption proche :</body></html>");
+        JPanel alertePanel = new JPanel(new GridLayout(3, 1));
+        alertePanel.setBackground(Color.WHITE);
+        JLabel alerteLabel = new JLabel(UtilitairesVues.html("Nombre de jours avant d'alerter <br> une peremption proche :"));
         alerteLabel.setHorizontalAlignment(SwingConstants.CENTER);
         alertePanel.add(alerteLabel);
-        for(int i = 1; i <= 10; i ++) {
-            alerteCombo.addItem(i);
-        }
-        alerteCombo.setSelectedItem(2);
-        alerteCombo.addActionListener(controleur);
         alertePanel.add(alerteCombo);
-        alertePanel.setLayout(new GridLayout(3, 1));
-        alerteButton.setText("Rien a signaler");
-        alerteButton.setEnabled(false);
-        alerteButton.setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
-        alertePanel.add(alerteButton, null);
-        alertePanel.setBackground(Color.WHITE);
+        alertePanel.add(alerteButton);
         this.add(alertePanel);
 
-        coursesButton.setText("Generer une liste de courses");
-        coursesButton.addActionListener(controleur);
-        coursesButton.setIcon(new ImageIcon(getClass().getResource("/icones/liste.png")));
-        this.add(coursesButton, null);
+        this.add(coursesButton);
 
-        recettesButton.setText("Gerer les Recettes");
-        recettesButton.addActionListener(controleur);
-        recettesButton.setIcon(new ImageIcon(getClass().getResource("/icones/recettes.png")));
-        this.add(recettesButton, null);
+        this.add(recettesButton);
     }
 
     public void mettreAJour() {
-        super.repaint();
         controleur.gererAlerte();
         controleur.gererTemperature();
     }

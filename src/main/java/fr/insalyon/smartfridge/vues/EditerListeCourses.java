@@ -11,47 +11,32 @@ public class EditerListeCourses extends SousPanneau implements Changeable {
 
     private JList listeDeCourses = new JList();
     private JScrollPane scroll = new JScrollPane(listeDeCourses);
-    private JPanel options = new JPanel();
-    private JButton changerHabitudesButton = new JButton();
-    private JButton impressionButton = new JButton();
+    private JButton changerHabitudesButton = new JButton("Changer mes habitudes", UtilitairesVues.icone("utilisateur"));
+    private JButton impressionButton = new JButton("Imprimer", UtilitairesVues.icone("imprimer"));
 
     public EditerListeCourses(Fenetre fenetre) {
         super(fenetre);
         controleur = new EditerListeCoursesControleur(fenetre, this);
 
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+        changerHabitudesButton.addActionListener(controleur);
+        impressionButton.addActionListener(controleur);
 
-    private void jbInit() throws Exception {
         this.add(scroll, BorderLayout.CENTER);
 
-        options.setLayout(new GridLayout(1, 2));
-        changerHabitudesButton.setText("Changer mes habitudes");
-        changerHabitudesButton.setIcon(new ImageIcon(getClass().getResource("/icones/utilisateur.png")));
-        changerHabitudesButton.addActionListener(controleur);
+        JPanel options = new JPanel(new GridLayout(1, 2));
         options.add(changerHabitudesButton);
-        impressionButton.setText("Imprimer");
-        impressionButton.setIcon(new ImageIcon(getClass().getResource("/icones/imprimer.png")));
-        impressionButton.addActionListener(controleur);
         options.add(impressionButton);
         this.add(options, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void mettreAJour() {
         controleur.creerListe();
-        controleur.rafraichirListe();
     }
 
     public JButton getChangerHabitudesButton() { return changerHabitudesButton; }
     public JButton getImpressionButton() { return impressionButton; }
     public JList getListeDeCourses() { return listeDeCourses; }
-
-
-    @Override
-    public void mettreAJour() {
-        controleur.rafraichirListe();
-    }
 }
 
 
