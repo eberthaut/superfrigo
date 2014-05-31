@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 /** Gere les changements d'habitude */
 public class ControleurChangerHabitude implements ActionListener, ListSelectionListener, Rafraichissable {
     /** La vue */
-    private VueChangerHabitude vue;
+    private final VueChangerHabitude vue;
     /** Le modele des articles */
     private ListModel<Article> articles;
 

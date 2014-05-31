@@ -11,20 +11,20 @@ import java.awt.*;
 /** Vue des recettes */
 public class VueMenuRecettes extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurMenuRecettes controleur;
+    private final ControleurMenuRecettes controleur;
 
     /** La liste de recettes */
-    private JList recettesList = new JList();
+    private final JList recettesList = new JList();
     /** La liste d'ingredients */
-    private JList ingredientsList = new JList();
+    private final JList ingredientsList = new JList();
     /** Le bouton de changement */
-    private JButton toggleButton = new JButton("Activer", Raccourcis.icone("ok"));
+    private final JButton toggleButton = new JButton("Activer", Raccourcis.icone("ok"));
     /** Le bouton d'ajout */
-    private JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
+    private final JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
     /** Le bouton de suppression */
-    private JButton supprimerButton = new JButton("Supprimer", Raccourcis.icone("suppression"));
+    private final JButton supprimerButton = new JButton("Supprimer", Raccourcis.icone("suppression"));
     /** Le bouton d'import */
-    private JButton importButton = new JButton("Importer depuis Marmiton.org", Raccourcis.icone("internet"));
+    private final JButton importButton = new JButton("Importer depuis Marmiton.org", Raccourcis.icone("internet"));
 
     /** Constructeur
      *

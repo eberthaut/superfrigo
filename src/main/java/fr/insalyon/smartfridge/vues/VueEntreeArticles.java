@@ -9,19 +9,18 @@ import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.JSpinner;
 
 /** La vue pour ajouter un article */
 public class VueEntreeArticles extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurEntreeArticles controleur;
+    private final ControleurEntreeArticles controleur;
 
     /** La liste des articles */
-    private JList articlesList = new JList();
+    private final JList articlesList = new JList();
     /** Le bouton d'ajout */
-    private JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
+    private final JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
     /** Le spinner de quantite */
-    private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
+    private final JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
     /** Constructeur
      *

@@ -6,9 +6,9 @@ package fr.insalyon.smartfridge.modeles;
  */
 public class PropositionRecherche {
     /** Le nom */
-    private String nom;
+    private final String nom;
     /** L'identifiant ou le chemin vers le resultat */
-    private String id;
+    private final String id;
 
     /** Le constructeur
      *

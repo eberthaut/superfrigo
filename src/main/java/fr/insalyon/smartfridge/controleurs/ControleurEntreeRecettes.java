@@ -18,13 +18,13 @@ import java.awt.event.ActionListener;
 /** Gere la saisie d'une recette */
 public class ControleurEntreeRecettes implements ActionListener, ListSelectionListener, Rafraichissable {
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** La vue */
-    private VueEntreeRecettes vue;
+    private final VueEntreeRecettes vue;
     /** Le modele des articles disponibles */
     private ListModel<Article> articles;
     /** Le modele des ingredients ajoutes */
-    private ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
+    private final ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
 
     /** Constructeur
      *

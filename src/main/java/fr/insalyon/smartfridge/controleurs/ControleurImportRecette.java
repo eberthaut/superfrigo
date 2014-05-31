@@ -13,11 +13,11 @@ import java.awt.event.ActionListener;
 /** Gere l'import depuis un service Internet */
 public class ControleurImportRecette implements ActionListener {
     /** La vue */
-    private VueImportRecette vue;
+    private final VueImportRecette vue;
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** Le service d'import */
-    private ServiceImportInternet serviceImport = new ServiceImportMarmiton();
+    private final ServiceImportInternet serviceImport = new ServiceImportMarmiton();
 
     /** Constructeur
      *

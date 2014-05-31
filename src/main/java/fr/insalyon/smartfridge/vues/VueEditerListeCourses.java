@@ -11,14 +11,14 @@ import java.awt.*;
 /** Vue d'edition de liste de courses */
 public class VueEditerListeCourses extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurEditerListeCourses controleur;
+    private final ControleurEditerListeCourses controleur;
 
     /** La liste de courses */
-    private JList listeDeCourses = new JList();
+    private final JList listeDeCourses = new JList();
     /** Bouton de changement d'habtude */
-    private JButton changerHabitudesButton = new JButton("Changer mes habitudes", Raccourcis.icone("utilisateur"));
+    private final JButton changerHabitudesButton = new JButton("Changer mes habitudes", Raccourcis.icone("utilisateur"));
     /** Bouton d'impression */
-    private JButton impressionButton = new JButton("Imprimer", Raccourcis.icone("imprimer"));
+    private final JButton impressionButton = new JButton("Imprimer", Raccourcis.icone("imprimer"));
 
     /** Constructeur
      *

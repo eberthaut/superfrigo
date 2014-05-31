@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /** Utilitaire gerant la fenetre de l'application pour le multi-vue */
 public class Fenetre extends JApplet {
     /** Historique des vues */
-    private ArrayList<JPanel> historique = new ArrayList<JPanel>();
+    private final ArrayList<JPanel> historique = new ArrayList<JPanel>();
 
     /** Constructeur
      *

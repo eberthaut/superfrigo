@@ -23,7 +23,7 @@ public class ArticleDAO extends BaseDAO{
      */
     public static List<Article> tous() {
         Query q = getEntityManager().createQuery("SELECT article FROM Article article ORDER BY article.nom ASC");
-        return q.getResultList();
+        return (List<Article>)q.getResultList();
     }
 
     /** Trouve tous les Aliment classes par habitudes de façon descendante
@@ -32,7 +32,7 @@ public class ArticleDAO extends BaseDAO{
      */
     public static List<Article> tousTriesParHabitude() {
         Query q = getEntityManager().createQuery("SELECT article FROM Article article ORDER BY article.habitude DESC");
-        return q.getResultList();
+        return (List<Article>)q.getResultList();
     }
 
     /** Trouve un Article par son nom
@@ -54,7 +54,7 @@ public class ArticleDAO extends BaseDAO{
     public static List<Article> listerArticlesType(Type type){
         Query q = getEntityManager().createQuery("SELECT article FROM Article article WHERE article.type=:type ORDER BY article.nom ASC");
         q.setParameter("type", type);
-        return q.getResultList();
+        return (List<Article>)q.getResultList();
     }
 }
 

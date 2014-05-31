@@ -11,26 +11,26 @@ import java.awt.*;
 /** Vue pour saisir une recette */
 public class VueEntreeRecettes extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurEntreeRecettes controleur;
+    private final ControleurEntreeRecettes controleur;
 
     /** La liste des articles */
-    private JList articlesList = new JList();
+    private final JList articlesList = new JList();
     /** Le bouton pour ajouter un ingredient */
-    private JButton ajouterIngredientButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
+    private final JButton ajouterIngredientButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
     /** Le spinner pour choisir la quantite */
-    private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
+    private final JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
     /** Le bouton de suppression d'un ingredient */
-    private JButton supprimerIngredientButton = new JButton("Supprimer", Raccourcis.icone("suppression"));
+    private final JButton supprimerIngredientButton = new JButton("Supprimer", Raccourcis.icone("suppression"));
     /** La liste d'ingredients */
-    private JList ingredientsList = new JList();
+    private final JList ingredientsList = new JList();
     /** Le bouton pour effacer */
-    private JButton effacerButton = new JButton("Effacer", Raccourcis.icone("desactiver"));
+    private final JButton effacerButton = new JButton("Effacer", Raccourcis.icone("desactiver"));
     /** Le champ pour saisir le nom */
-    private JTextField nomRecetteTexte = new JTextField();
+    private final JTextField nomRecetteTexte = new JTextField();
     /** Le bouton de validation */
-    private JButton validerButton = new JButton("Valider", Raccourcis.icone("ok"));
+    private final JButton validerButton = new JButton("Valider", Raccourcis.icone("ok"));
     /** Le spinner de choix du nombre de personnes */
-    private JSpinner pourSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
+    private final JSpinner pourSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
 
     /** Constructeur
      *

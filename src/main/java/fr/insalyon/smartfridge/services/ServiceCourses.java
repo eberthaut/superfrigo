@@ -21,7 +21,7 @@ public class ServiceCourses {
      * @param ingredients Avec quoi ?
      * @return Le succes de l'operation
      */
-    public static boolean ajoutRecette(String nom, int pour, List<Ingredient> ingredients) {
+    public static Recette ajoutRecette(String nom, int pour, List<Ingredient> ingredients) {
         BaseDAO.initialiserPersistence();
         Recette recette = new Recette(nom, ingredients, pour);
 
@@ -34,7 +34,11 @@ public class ServiceCourses {
         boolean res = BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
-        return res;
+        if(res) {
+            return recette;
+        } else {
+            return null;
+        }
     }
 
     /** Retire une recette
@@ -165,12 +169,11 @@ public class ServiceCourses {
             long id = lAliment.getArticle().getId();
             for (Article aListeArticle : listeArticle) {
                 if (id == aListeArticle.getId()) {
-                    Article a = aListeArticle;
-                    if (lAliment.getQuantite() < a.getHabitude()) {
-                        lCourses.add(new Aliment(a, a.getHabitude() - lAliment.getQuantite()));
+                    if (lAliment.getQuantite() < aListeArticle.getHabitude()) {
+                        lCourses.add(new Aliment(aListeArticle, aListeArticle.getHabitude() - lAliment.getQuantite()));
                     }
-                    if (lAliment.getQuantite() == a.getHabitude()) {
-                        lCourses.add(new Aliment(a, a.getHabitude() - lAliment.getQuantite()));
+                    if (lAliment.getQuantite() == aListeArticle.getHabitude()) {
+                        lCourses.add(new Aliment(aListeArticle, aListeArticle.getHabitude() - lAliment.getQuantite()));
                     }
                 }
             }

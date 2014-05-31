@@ -14,11 +14,11 @@ import java.util.List;
 /** Gere l'affichage d'une alerte */
 public class ControleurAlertePeremption implements ActionListener, Rafraichissable {
     /** La vue */
-    private VueAlertePeremption vue;
+    private final VueAlertePeremption vue;
     /** Le modele des aliments */
     private ListModel<Aliment> aliments;
     /** Le nombre de jours a considerer pour les aliments proches de la peremption */
-    int nbJours;
+    private final int nbJours;
 
     /** Constructeur
      *

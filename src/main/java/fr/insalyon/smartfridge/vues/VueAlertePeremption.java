@@ -11,12 +11,12 @@ import java.awt.*;
 /** Vue de l'alerte */
 public class VueAlertePeremption extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurAlertePeremption controleur;
+    private final ControleurAlertePeremption controleur;
 
     /** La liste des aliments */
-    private JList alimentsList = new JList();
+    private final JList alimentsList = new JList();
     /** Le bouton pour les enlever */
-    private JButton enleverButton = new JButton("Enlever", Raccourcis.icone("suppression"));
+    private final JButton enleverButton = new JButton("Enlever", Raccourcis.icone("suppression"));
 
     /** Le Constructeur
      *

@@ -9,7 +9,7 @@ import java.util.List;
 public class Recette {
     /** Les ingredients */
     @OneToMany(mappedBy = "recette")
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private final List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     /** L'identifiant */
     @Id

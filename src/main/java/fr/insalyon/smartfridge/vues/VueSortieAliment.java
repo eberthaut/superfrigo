@@ -8,19 +8,18 @@ import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.JSpinner;
 
 /** Vue pour enlever des aliments */
 public class VueSortieAliment extends VueSousPanneau implements Rafraichissable {
     /** Le constructeur */
-    private ControleurSortieAliment controleur;
+    private final ControleurSortieAliment controleur;
 
     /** La liste d'aliments */
-    private JList alimentsList = new JList();
+    private final JList alimentsList = new JList();
     /** Le bouton pour enlever */
-    private JButton enleverButton = new JButton("Enlever", Raccourcis.icone("suppression"));
+    private final JButton enleverButton = new JButton("Enlever", Raccourcis.icone("suppression"));
     /** Le spinner de quantite */
-    private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
+    private final JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
     /** Constructeur
      *

@@ -13,15 +13,15 @@ import java.awt.*;
  */
 public abstract class VueSousPanneau extends JPanel {
     /** Le bouton pour remonter un niveau */
-    private JButton buttonRetour = new JButton("Retour", Raccourcis.icone("retour"));
+    private final JButton buttonRetour = new JButton("Retour", Raccourcis.icone("retour"));
     /** Le bouton pour revenir a la racine */
-    private JButton buttonMenuPrincipal = new JButton("Menu Principal", Raccourcis.icone("menu-principal"));
+    private final JButton buttonMenuPrincipal = new JButton("Menu Principal", Raccourcis.icone("menu-principal"));
 
     /** Constructeur
      *
      * @param fenetre La fenetre de l'application
      */
-    public VueSousPanneau(Fenetre fenetre) {
+    VueSousPanneau(Fenetre fenetre) {
         ControleurSousPanneau controleurPrincipal = new ControleurSousPanneau(fenetre, this);
 
         buttonRetour.addActionListener(controleurPrincipal);

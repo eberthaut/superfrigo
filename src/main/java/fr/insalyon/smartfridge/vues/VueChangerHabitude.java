@@ -11,16 +11,16 @@ import java.awt.*;
 /** Vue pour changer les habitudes utilisateur */
 public class VueChangerHabitude extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurChangerHabitude controleur;
+    private final ControleurChangerHabitude controleur;
 
     /** La liste d'articles */
-    private JList articlesList = new JList();
+    private final JList articlesList = new JList();
     /** Le bouton pour changer les habitudes */
-    private JButton changerHabitudeButton = new JButton("Appliquer", Raccourcis.icone("ok"));
+    private final JButton changerHabitudeButton = new JButton("Appliquer", Raccourcis.icone("ok"));
     /** L'affichage de l'etat des habitudes */
-    private JLabel habitudeEtat = new JLabel("Veuillez sélectionner un article");
+    private final JLabel habitudeEtat = new JLabel("Veuillez sélectionner un article");
     /** Le spinner de selection de l'habitude */
-    private JSpinner habitudeSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1));
+    private final JSpinner habitudeSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1));
 
     /** Constructeur
      *

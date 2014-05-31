@@ -2,7 +2,6 @@ package fr.insalyon.smartfridge.controleurs;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.services.ServiceStock;
-import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.ListModel;
 import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueSortieAliment;
@@ -16,7 +15,7 @@ import java.awt.event.ActionListener;
 /** Gere la sortie des aliments */
 public class ControleurSortieAliment implements ActionListener, ListSelectionListener, Rafraichissable {
     /** La vue */
-    private VueSortieAliment vue;
+    private final VueSortieAliment vue;
     /** La modele des aliments */
     private ListModel<Aliment> aliments;
 

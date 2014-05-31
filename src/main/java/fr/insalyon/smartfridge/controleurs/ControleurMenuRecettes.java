@@ -20,9 +20,9 @@ import java.awt.event.ActionListener;
 /** Gere l'ensemble des recettes */
 public class ControleurMenuRecettes implements ActionListener, ListSelectionListener, Rafraichissable {
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** La vue */
-    private VueMenuRecettes vue;
+    private final VueMenuRecettes vue;
     /** Le modele des recettes */
     private ListModel<Recette> recettes;
     /** Le modele des ingredients contenus dans la recette */

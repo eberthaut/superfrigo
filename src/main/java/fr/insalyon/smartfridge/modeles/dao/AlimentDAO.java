@@ -36,7 +36,7 @@ public class AlimentDAO extends BaseDAO {
     public static List<Aliment> tousAvant(Date date) {
         Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment WHERE aliment.datePeremption < :date ");
         q.setParameter("date", date, TemporalType.DATE);
-        return q.getResultList();
+        return (List<Aliment>)q.getResultList();
     }
 
     /** Compte tous les Aliment qui periment avant une certaine date
@@ -56,7 +56,7 @@ public class AlimentDAO extends BaseDAO {
      */
     public static List<Aliment> tousUniques() {
         Query q = getEntityManager().createQuery("SELECT aliment.article, SUM(aliment.quantite) FROM Aliment aliment GROUP BY aliment.article");
-        List<Object[]> produitEtCompte = q.getResultList();
+        List<Object[]> produitEtCompte = (List<Object[]>)q.getResultList();
         List<Aliment> aliments = new ArrayList<Aliment>();
         for(Object[] pec : produitEtCompte) {
             aliments.add(new Aliment((Article) pec[0], Integer.parseInt(pec[1].toString())));
@@ -72,6 +72,6 @@ public class AlimentDAO extends BaseDAO {
     public static List<Aliment> tousTriesParPeremption(Article article) {
         Query q = getEntityManager().createQuery("SELECT aliment FROM Aliment aliment WHERE aliment.article = :article ORDER BY aliment.datePeremption");
         q.setParameter("article", article);
-        return q.getResultList();
+        return (List<Aliment>)q.getResultList();
     }
 }

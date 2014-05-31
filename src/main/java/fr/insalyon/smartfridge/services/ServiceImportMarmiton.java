@@ -75,7 +75,7 @@ public class ServiceImportMarmiton implements ServiceImportInternet {
                 ingredients.add(new Ingredient(article, quantite));
             }
             BaseDAO.detruirePersistence();
-            ServiceCourses.ajoutRecette(proposition.getNom(), nbPersonnes, ingredients);
+            return ServiceCourses.ajoutRecette(proposition.getNom(), nbPersonnes, ingredients);
         } catch (IOException e) {
             e.printStackTrace();
         }

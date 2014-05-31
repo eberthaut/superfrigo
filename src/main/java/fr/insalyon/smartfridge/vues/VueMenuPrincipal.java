@@ -12,22 +12,22 @@ import javax.swing.*;
 /** Vue du menu principal */
 public class VueMenuPrincipal extends JPanel implements Rafraichissable {
     /** Le controleur */
-    private ControleurMenuPrincipal controleur;
+    private final ControleurMenuPrincipal controleur;
 
     /** L'affichage de temperature */
-    private JLabel temperatureLabel = new JLabel();
+    private final JLabel temperatureLabel = new JLabel();
     /** Le bouton pour ajouter */
-    private JButton ajouterButton = new JButton("Ajouter des Articles", Raccourcis.icone("ajout-articles"));
+    private final JButton ajouterButton = new JButton("Ajouter des Articles", Raccourcis.icone("ajout-articles"));
     /** Le bouton pour retirer */
-    private JButton retirerButton = new JButton("Retirer des articles", Raccourcis.icone("retrait-articles"));
+    private final JButton retirerButton = new JButton("Retirer des articles", Raccourcis.icone("retrait-articles"));
     /** Le bouton pour la liste de courses */
-    private JButton coursesButton = new JButton("Generer une liste de courses", Raccourcis.icone("liste"));
+    private final JButton coursesButton = new JButton("Generer une liste de courses", Raccourcis.icone("liste"));
     /** Le bouton d'alerte */
-    private JButton alerteButton = new JButton();
+    private final JButton alerteButton = new JButton();
     /** Le menu deroulant d'alerte */
-    private JComboBox alerteCombo = new JComboBox();
+    private final JComboBox alerteCombo = new JComboBox();
     /** Le bouton pour les recettes */
-    private JButton recettesButton = new JButton("Gerer les Recettes", Raccourcis.icone("recettes"));
+    private final JButton recettesButton = new JButton("Gerer les Recettes", Raccourcis.icone("recettes"));
 
     /** Constructeur
      *

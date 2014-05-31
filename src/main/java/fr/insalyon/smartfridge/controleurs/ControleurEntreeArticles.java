@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
 /** Gere l'ajout d'articles */
 public class ControleurEntreeArticles implements ActionListener, Rafraichissable {
     /** La vue */
-    private VueEntreeArticles vue;
+    private final VueEntreeArticles vue;
     /** Le type */
-    private Type type;
+    private final Type type;
     /** Le modele d'articles */
     private ListModel<Article> articles;
 

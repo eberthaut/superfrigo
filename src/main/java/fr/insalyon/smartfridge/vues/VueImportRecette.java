@@ -9,17 +9,14 @@ import java.awt.*;
 
 /** Vue ppour importer une recette */
 public class VueImportRecette extends VueSousPanneau {
-    /** Le controleur */
-    private ControleurImportRecette controleur;
-
     /** La liste des resultats de recherche */
-    private JList propositionsList = new JList();
+    private final JList propositionsList = new JList();
     /** Le champ de recherche */
-    private JTextField rechercheField = new JTextField();
+    private final JTextField rechercheField = new JTextField();
     /** Le bouton de recherche */
-    private JButton rechercheButton = new JButton("Recherche", new ImageIcon(getClass().getResource("/icones/recherche.png")));
+    private final JButton rechercheButton = new JButton("Recherche", new ImageIcon(getClass().getResource("/icones/recherche.png")));
     /** Le bouton d'import */
-    private JButton importButton = new JButton("Importer", new ImageIcon(getClass().getResource("/icones/import.png")));
+    private final JButton importButton = new JButton("Importer", new ImageIcon(getClass().getResource("/icones/import.png")));
 
     /** Constructeur
      *
@@ -27,7 +24,7 @@ public class VueImportRecette extends VueSousPanneau {
      */
     public VueImportRecette(Fenetre fenetre) {
         super(fenetre);
-        controleur = new ControleurImportRecette(fenetre, this);
+        ControleurImportRecette controleur = new ControleurImportRecette(fenetre, this);
 
         rechercheButton.addActionListener(controleur);
         importButton.addActionListener(controleur);

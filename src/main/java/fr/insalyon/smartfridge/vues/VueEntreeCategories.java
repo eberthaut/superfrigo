@@ -12,12 +12,12 @@ import javax.swing.*;
 /** La vue pour choisir un Type pour ajouter un Article */
 public class VueEntreeCategories extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
-    private ControleurEntreeCategories controleur;
+    private final ControleurEntreeCategories controleur;
 
     /** La liste de types */
-    private JList typesList = new JList();
+    private final JList typesList = new JList();
     /** Le bouton de choix */
-    private JButton choixButton = new JButton("Choisir", Raccourcis.icone("suivant"));
+    private final JButton choixButton = new JButton("Choisir", Raccourcis.icone("suivant"));
 
     /** Constructeur
      *

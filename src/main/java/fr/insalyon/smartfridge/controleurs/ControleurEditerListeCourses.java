@@ -16,9 +16,9 @@ import java.util.List;
 /** Gere la generation de la liste de courses */
 public class ControleurEditerListeCourses implements ActionListener, Rafraichissable {
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** La vue */
-    private VueEditerListeCourses vue;
+    private final VueEditerListeCourses vue;
     /** Le modele des aliments dans la liste */
     private List<Aliment> aliments;
 

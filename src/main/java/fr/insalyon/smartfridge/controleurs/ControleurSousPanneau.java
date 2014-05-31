@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 /** Gere tout ce qui n'est pas le menu principal */
 public class ControleurSousPanneau implements ActionListener {
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** La vue */
-    private VueSousPanneau vue;
+    private final VueSousPanneau vue;
 
     /** Constructeur
      *

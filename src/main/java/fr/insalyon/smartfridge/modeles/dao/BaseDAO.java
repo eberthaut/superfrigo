@@ -62,18 +62,16 @@ public class BaseDAO {
      * 
      * @param entity L'entite JPA a enregistrer
      */
-    public static boolean persiste(Object entity) {
+    public static void persiste(Object entity) {
         getEntityManager().persist(entity);
-        return true;
     }
 
     /** Persiste une mise a jour d'entite dans la base de donnees
      * 
      * @param entity L'entite JPA a mettre a jour
      */
-    public static boolean miseAJour(Object entity) {
+    public static void miseAJour(Object entity) {
         getEntityManager().merge(entity);
-        return true;
     }
 
     /** Supprime un objet de la base
@@ -90,7 +88,7 @@ public class BaseDAO {
      * @param id La cle primaire de l'element
      * @return L'element stocke a la cle primaire
      */
-    protected static Object trouveId(Class type, long id) {
+    static Object trouveId(Class type, long id) {
         return getEntityManager().find(type, id);
     }
 
@@ -99,7 +97,7 @@ public class BaseDAO {
      * @param entityName Le nom de la classe de l'element
      * @return Tous ces elements
      */
-    protected static List tous(String entityName) {
+    static List tous(String entityName) {
         Query q = getEntityManager().createQuery("select e from " + entityName + " e");
         return q.getResultList();
     }
@@ -108,7 +106,7 @@ public class BaseDAO {
      *
      * @return L'entity manager global
      */
-    protected static EntityManager getEntityManager() {
+    static EntityManager getEntityManager() {
         return threadLocal.get();
     }
 }

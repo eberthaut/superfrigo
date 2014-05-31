@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
 /** Gere le choix d'un type lors de l'ajout */
 public class ControleurEntreeCategories implements ActionListener, Rafraichissable {
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** La vue */
-    private VueEntreeCategories vue;
+    private final VueEntreeCategories vue;
     /** Le modele des types */
     private ListModel<Type> types;
 

@@ -4,7 +4,6 @@ import fr.insalyon.smartfridge.services.ServiceAlerte;
 import fr.insalyon.smartfridge.services.ServiceThermodynamique;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
-import fr.insalyon.smartfridge.vues.VueEntreeCategories;
 import fr.insalyon.smartfridge.vues.*;
 
 import javax.swing.*;
@@ -15,9 +14,9 @@ import java.awt.event.ActionListener;
 /** Gere le menu principal */
 public class ControleurMenuPrincipal implements ActionListener, Rafraichissable {
     /** La fenetre de l'application */
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
     /** La vue */
-    private VueMenuPrincipal vue;
+    private final VueMenuPrincipal vue;
     /** Le nombre de jours pour prevenir les produits proches de la peremption */
     private int nbJoursAlerte = 2;
 

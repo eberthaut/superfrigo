@@ -98,8 +98,8 @@ public class ServiceStock {
         Aliment aliment= new Aliment(article, datePeremption, quantite);
         BaseDAO.creerTransaction();
         AlimentDAO.persiste(aliment);
-        BaseDAO.faireTransactionSecurisee();
+        boolean res = BaseDAO.faireTransactionSecurisee();
         BaseDAO.detruirePersistence();
-        return true;
+        return res;
     }
 }

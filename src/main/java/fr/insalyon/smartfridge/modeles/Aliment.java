@@ -21,7 +21,7 @@ public class Aliment {
 
     /** Sa date d'ajout */
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateAjout;
+    private final Date dateAjout;
 
     /** Sa quantite */
     private int quantite;
