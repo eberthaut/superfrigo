@@ -7,14 +7,24 @@ import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import javax.swing.*;
 import java.awt.*;
 
+/** Vue ppour importer une recette */
 public class VueImportRecette extends VueSousPanneau {
+    /** Le controleur */
     private ControleurImportRecette controleur;
 
+    /** La liste des resultats de recherche */
     private JList propositionsList = new JList();
+    /** Le champ de recherche */
     private JTextField rechercheField = new JTextField();
+    /** Le bouton de recherche */
     private JButton rechercheButton = new JButton("Recherche", new ImageIcon(getClass().getResource("/icones/recherche.png")));
+    /** Le bouton d'import */
     private JButton importButton = new JButton("Importer", new ImageIcon(getClass().getResource("/icones/import.png")));
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     */
     public VueImportRecette(Fenetre fenetre) {
         super(fenetre);
         controleur = new ControleurImportRecette(fenetre, this);
@@ -34,18 +44,34 @@ public class VueImportRecette extends VueSousPanneau {
 
     }
 
+    /** Retourne La liste des resultats de recherche
+     *
+     * @return La liste des resultats de recherche
+     */
     public JList getPropositionsList() {
         return propositionsList;
     }
 
+    /** Retourne Le champ de recherche
+     *
+     * @return Le champ de recherche
+     */
     public JTextField getRechercheField() {
         return rechercheField;
     }
 
+    /** Retourne Le bouton de recherche
+     *
+     * @return Le bouton de recherche
+     */
     public JButton getRechercheButton() {
         return rechercheButton;
     }
 
+    /** Retourne Le bouton d'import
+     *
+     * @return Le bouton d'import
+     */
     public JButton getImportButton() {
         return importButton;
     }

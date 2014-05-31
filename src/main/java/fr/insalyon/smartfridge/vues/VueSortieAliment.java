@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurSortieAliment;
-import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.VueChangeable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -10,7 +10,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class VueSortieAliment extends VueSousPanneau implements Changeable {
+public class VueSortieAliment extends VueSousPanneau implements VueChangeable {
     private ControleurSortieAliment controleur;
 
     private JList alimentsList = new JList();

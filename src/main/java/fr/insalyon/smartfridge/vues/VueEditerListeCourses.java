@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurEditerListeCourses;
-import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.VueChangeable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class VueEditerListeCourses extends VueSousPanneau implements Changeable {
+public class VueEditerListeCourses extends VueSousPanneau implements VueChangeable {
     private ControleurEditerListeCourses controleur;
 
     private JList listeDeCourses = new JList();

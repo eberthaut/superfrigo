@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurMenuPrincipal;
-import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.VueChangeable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -9,7 +9,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class VueMenuPrincipal extends JPanel implements Changeable {
+public class VueMenuPrincipal extends JPanel implements VueChangeable {
 // c'est le contenu de la fenetre par defaut
     private ControleurMenuPrincipal controleur;
 

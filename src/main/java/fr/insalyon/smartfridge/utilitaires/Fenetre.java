@@ -6,36 +6,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/** Utilitaire gerant la fenetre de l'application pour le multi-vue */
 public class Fenetre extends JApplet {
-// cree pour plus facilement changer le contenu de la fenetre
-
-    // historique de toutes les fenetres par lesquelles on est passe
+    /** Historique des vues */
     private ArrayList<JPanel> historique = new ArrayList<JPanel>();
 
+    /** Constructeur
+     *
+     * Lance le menu principal
+     */
     public Fenetre() {
         historique.add(new VueMenuPrincipal(this));
-        try {
-            jbInit();
-            afficherDernier();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void jbInit() throws Exception {
         this.setSize(new Dimension(1000, 700));
         this.setBackground(Color.WHITE);
     }
 
+    /** Affiche la derniere fenetre de l'historique */
     private void afficherDernier() { // obtient la derniere vue de l'historique
         this.setContentPane(historique.get(historique.size() - 1));
         this.getContentPane().setSize(new Dimension(1000,700));
-        if(this.getContentPane() instanceof Changeable) {
-            ((Changeable)this.getContentPane()).mettreAJour();
+        if(this.getContentPane() instanceof VueChangeable) {
+            ((VueChangeable)this.getContentPane()).mettreAJour();
         }
 
     }
 
+    /** Revient a la racine */
     public void revenirDebut() {
         JPanel debut = historique.get(0);
         historique.clear();
@@ -43,11 +39,16 @@ public class Fenetre extends JApplet {
         afficherDernier(); // affiche debut
     }
 
+    /** Empile une nouvelle vue
+     *
+     * @param nouveau La nouvelle vue
+     */
     public void allerA(JPanel nouveau) {
         historique.add(nouveau);
         afficherDernier(); // affiche la nouvelle fenetre
     }
 
+    /** Remonte un niveau d'historique */
     public void retourArriere() {
         historique.remove(historique.size() - 1);
         afficherDernier(); // affiche la fenetre juste avant

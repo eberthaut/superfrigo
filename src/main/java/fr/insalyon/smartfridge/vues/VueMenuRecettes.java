@@ -1,14 +1,14 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurMenuRecettes;
-import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.VueChangeable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VueMenuRecettes extends VueSousPanneau implements Changeable {
+public class VueMenuRecettes extends VueSousPanneau implements VueChangeable {
     private ControleurMenuRecettes controleur;
 
     private JList recettesList = new JList();

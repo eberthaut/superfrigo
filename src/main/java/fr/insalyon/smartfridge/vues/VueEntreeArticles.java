@@ -2,7 +2,7 @@ package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurEntreeArticles;
 import fr.insalyon.smartfridge.modeles.Type;
-import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.VueChangeable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -11,13 +11,23 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class VueEntreeArticles extends VueSousPanneau implements Changeable {
+/** La vue pour ajouter un article */
+public class VueEntreeArticles extends VueSousPanneau implements VueChangeable {
+    /** Le controleur */
     private ControleurEntreeArticles controleur;
 
+    /** La liste des articles */
     private JList articlesList = new JList();
+    /** Le bouton d'ajout */
     private JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
+    /** Le spinner de quantite */
     private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param type Le Type d'Article a afficher
+     */
     public VueEntreeArticles(Fenetre fenetre, Type type) {
         super(fenetre);
         controleur = new ControleurEntreeArticles(fenetre, this, type);
@@ -43,17 +53,27 @@ public class VueEntreeArticles extends VueSousPanneau implements Changeable {
         controleur.creerListe();
     }
 
+    /** Retourne La liste des Articles
+     *
+     * @return La liste des Articles
+     */
     public JList getArticlesList() {
         return articlesList;
     }
 
+    /** Retourne Le bouton d'ajout
+     *
+     * @return Le bouton d'ajout
+     */
     public JButton getAjouterButton() {
         return ajouterButton;
     }
 
+    /** Retourne Le spinner de quantite
+     *
+     * @return Le spinner de quantite
+     */
     public JSpinner getQuantiteSpinner() {
         return quantiteSpinner;
     }
-
-
 }
