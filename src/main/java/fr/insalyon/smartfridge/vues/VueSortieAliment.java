@@ -47,7 +47,7 @@ public class VueSortieAliment extends VueSousPanneau implements Rafraichissable 
 
     @Override
     public void mettreAJour() {
-        controleur.rafraichirListe();
+        controleur.mettreAJour();
     }
 
     /** Retourne La liste d'aliments

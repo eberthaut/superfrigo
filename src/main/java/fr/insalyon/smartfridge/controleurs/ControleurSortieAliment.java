@@ -2,7 +2,9 @@ package fr.insalyon.smartfridge.controleurs;
 
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.services.ServiceStock;
-import fr.insalyon.smartfridge.utilitaires.*;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.ListModel;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueSortieAliment;
 
 import javax.swing.*;
@@ -11,12 +13,20 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControleurSortieAliment implements ActionListener, ListSelectionListener {
-    // On decouple la recuperation des actions des vues
+/** Gere la sortie des aliments */
+public class ControleurSortieAliment implements ActionListener, ListSelectionListener, Rafraichissable {
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** La vue */
     private VueSortieAliment vue;
-    private fr.insalyon.smartfridge.utilitaires.ListModel<Aliment> aliments;
+    /** La modele des aliments */
+    private ListModel<Aliment> aliments;
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurSortieAliment(Fenetre fenetre, VueSortieAliment vue) {
         this.fenetre = fenetre;
         this.vue = vue;
@@ -27,12 +37,13 @@ public class ControleurSortieAliment implements ActionListener, ListSelectionLis
         if(e.getSource() == vue.getEnleverButton()) {
             Aliment a = aliments.get(vue.getAlimentsList().getSelectedIndex()); // Recupere l'article selectionne dans la liste (en bleu)
             ServiceStock.retraitAliment(a, (Integer) vue.getQuantiteSpinner().getValue());
-            rafraichirListe();
+            mettreAJour();
         }
     }
 
-    public void rafraichirListe() {
-        aliments = new fr.insalyon.smartfridge.utilitaires.ListModel<Aliment>(ServiceStock.listerAliments());
+    @Override
+    public void mettreAJour() {
+        aliments = new ListModel<Aliment>(ServiceStock.listerAliments());
         vue.getAlimentsList().setModel(aliments);
     }
 

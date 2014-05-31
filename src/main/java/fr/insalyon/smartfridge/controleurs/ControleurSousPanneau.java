@@ -6,11 +6,18 @@ import fr.insalyon.smartfridge.vues.VueSousPanneau;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** Gere tout ce qui n'est pas le menu principal */
 public class ControleurSousPanneau implements ActionListener {
-    // On decouple la recuperation des actions des vues
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** La vue */
     private VueSousPanneau vue;
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurSousPanneau(Fenetre fenetre, VueSousPanneau vue) {
         this.fenetre = fenetre;
         this.vue = vue;

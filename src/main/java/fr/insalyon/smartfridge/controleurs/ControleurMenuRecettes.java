@@ -28,7 +28,11 @@ public class ControleurMenuRecettes implements ActionListener, ListSelectionList
     /** Le modele des ingredients contenus dans la recette */
     private ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
 
-
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurMenuRecettes(Fenetre fenetre, VueMenuRecettes vue) {
         this.fenetre = fenetre;
         this.vue = vue;
