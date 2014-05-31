@@ -1,11 +1,11 @@
-package fr.insalyon.smartfridge.controleurs;
+package fr.insalyon.smartfridge.utilitaires;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-class ListModel<E> extends DefaultListModel {
+public class ListModel<E> extends DefaultListModel {
     public ListModel() {
 
     }

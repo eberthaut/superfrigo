@@ -1,25 +1,28 @@
 package fr.insalyon.smartfridge.vues;
 
-import fr.insalyon.smartfridge.controleurs.MenuPrincipalControleur;
+import fr.insalyon.smartfridge.controleurs.ControleurMenuPrincipal;
+import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-public class MenuPrincipal extends JPanel implements Changeable {
+public class VueMenuPrincipal extends JPanel implements Changeable {
 // c'est le contenu de la fenetre par defaut
-    private MenuPrincipalControleur controleur;
+    private ControleurMenuPrincipal controleur;
 
     private JLabel temperatureLabel = new JLabel();
-    private JButton ajouterButton = new JButton("Ajouter des Articles", UtilitairesVues.icone("ajout-articles"));
-    private JButton retirerButton = new JButton("Retirer des articles", UtilitairesVues.icone("retrait-articles"));
-    private JButton coursesButton = new JButton("Generer une liste de courses", UtilitairesVues.icone("liste"));
+    private JButton ajouterButton = new JButton("Ajouter des Articles", Raccourcis.icone("ajout-articles"));
+    private JButton retirerButton = new JButton("Retirer des articles", Raccourcis.icone("retrait-articles"));
+    private JButton coursesButton = new JButton("Generer une liste de courses", Raccourcis.icone("liste"));
     private JButton alerteButton = new JButton();
     private JComboBox alerteCombo = new JComboBox();
-    private JButton recettesButton = new JButton("Gerer les Recettes", UtilitairesVues.icone("recettes"));
+    private JButton recettesButton = new JButton("Gerer les Recettes", Raccourcis.icone("recettes"));
 
-    public MenuPrincipal(Fenetre fenetre) {
-        controleur = new MenuPrincipalControleur(fenetre, this);
+    public VueMenuPrincipal(Fenetre fenetre) {
+        controleur = new ControleurMenuPrincipal(fenetre, this);
 
         ajouterButton.addActionListener(controleur);
         retirerButton.addActionListener(controleur);
@@ -39,7 +42,7 @@ public class MenuPrincipal extends JPanel implements Changeable {
 
         JPanel alertePanel = new JPanel(new GridLayout(3, 1));
         alertePanel.setBackground(Color.WHITE);
-        JLabel alerteLabel = new JLabel(UtilitairesVues.html("Nombre de jours avant d'alerter <br> une peremption proche :"));
+        JLabel alerteLabel = new JLabel(Raccourcis.html("Nombre de jours avant d'alerter <br> une peremption proche :"));
         alerteLabel.setHorizontalAlignment(SwingConstants.CENTER);
         alertePanel.add(alerteLabel);
         alertePanel.add(alerteCombo);

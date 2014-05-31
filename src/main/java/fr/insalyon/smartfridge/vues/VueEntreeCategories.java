@@ -1,20 +1,23 @@
 package fr.insalyon.smartfridge.vues;
 
-import fr.insalyon.smartfridge.controleurs.EntreeCategoriesControleur;
+import fr.insalyon.smartfridge.controleurs.ControleurEntreeCategories;
+import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-public class EntreeCategories extends SousPanneau implements Changeable {
-    private EntreeCategoriesControleur controleur;
+public class VueEntreeCategories extends VueSousPanneau implements Changeable {
+    private ControleurEntreeCategories controleur;
 
     private JList typesList = new JList();
-    private JButton choixButton = new JButton("Choisir", UtilitairesVues.icone("suivant"));
+    private JButton choixButton = new JButton("Choisir", Raccourcis.icone("suivant"));
 
-    public EntreeCategories(Fenetre fenetre) {
+    public VueEntreeCategories(Fenetre fenetre) {
         super(fenetre);
-        controleur = new EntreeCategoriesControleur(fenetre, this);
+        controleur = new ControleurEntreeCategories(fenetre, this);
 
         choixButton.addActionListener(controleur);
 

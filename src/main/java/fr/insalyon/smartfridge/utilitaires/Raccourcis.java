@@ -1,8 +1,8 @@
-package fr.insalyon.smartfridge.vues;
+package fr.insalyon.smartfridge.utilitaires;
 
 import javax.swing.*;
 
-public class UtilitairesVues {
+public class Raccourcis {
     public static Icon icone(String nom) {
         return new ImageIcon(JPanel.class.getResource("/icones/" + nom + ".png"));
     }

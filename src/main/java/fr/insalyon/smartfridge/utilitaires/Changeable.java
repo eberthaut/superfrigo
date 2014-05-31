@@ -1,4 +1,4 @@
-package fr.insalyon.smartfridge.vues;
+package fr.insalyon.smartfridge.utilitaires;
 
 public interface Changeable {
     public void mettreAJour();

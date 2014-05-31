@@ -1,19 +1,22 @@
 package fr.insalyon.smartfridge.vues;
 
-import fr.insalyon.smartfridge.controleurs.AlertePeremptionControleur;
+import fr.insalyon.smartfridge.controleurs.ControleurAlertePeremption;
+import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class AlertePeremption extends SousPanneau implements Changeable {
-    private AlertePeremptionControleur controleur;
+public class VueAlertePeremption extends VueSousPanneau implements Changeable {
+    private ControleurAlertePeremption controleur;
 
     private JList alimentsList = new JList();
-    private JButton enleverButton = new JButton("Enlever", UtilitairesVues.icone("suppression"));
+    private JButton enleverButton = new JButton("Enlever", Raccourcis.icone("suppression"));
 
-    public AlertePeremption(Fenetre fenetre, int nbJours) {
+    public VueAlertePeremption(Fenetre fenetre, int nbJours) {
         super(fenetre);
-        controleur = new AlertePeremptionControleur(fenetre, this, nbJours);
+        controleur = new ControleurAlertePeremption(this, nbJours);
 
         enleverButton.addActionListener(controleur);
 

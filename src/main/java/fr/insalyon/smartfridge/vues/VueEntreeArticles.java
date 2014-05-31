@@ -1,23 +1,26 @@
 package fr.insalyon.smartfridge.vues;
 
-import fr.insalyon.smartfridge.controleurs.EntreeArticlesControleur;
+import fr.insalyon.smartfridge.controleurs.ControleurEntreeArticles;
 import fr.insalyon.smartfridge.modeles.Type;
+import fr.insalyon.smartfridge.utilitaires.Changeable;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class EntreeArticles extends SousPanneau implements Changeable {
-    private EntreeArticlesControleur controleur;
+public class VueEntreeArticles extends VueSousPanneau implements Changeable {
+    private ControleurEntreeArticles controleur;
 
     private JList articlesList = new JList();
-    private JButton ajouterButton = new JButton("Ajouter", UtilitairesVues.icone("ajout"));
+    private JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
     private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
-    public EntreeArticles(Fenetre fenetre, Type type) {
+    public VueEntreeArticles(Fenetre fenetre, Type type) {
         super(fenetre);
-        controleur = new EntreeArticlesControleur(fenetre, this, type);
+        controleur = new ControleurEntreeArticles(fenetre, this, type);
 
         ajouterButton.addActionListener(controleur);
 

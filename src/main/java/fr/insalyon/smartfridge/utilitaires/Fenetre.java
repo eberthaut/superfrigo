@@ -1,4 +1,6 @@
-package fr.insalyon.smartfridge.vues;
+package fr.insalyon.smartfridge.utilitaires;
+
+import fr.insalyon.smartfridge.vues.VueMenuPrincipal;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +13,7 @@ public class Fenetre extends JApplet {
     private ArrayList<JPanel> historique = new ArrayList<JPanel>();
 
     public Fenetre() {
-        historique.add(new MenuPrincipal(this));
+        historique.add(new VueMenuPrincipal(this));
         try {
             jbInit();
             afficherDernier();

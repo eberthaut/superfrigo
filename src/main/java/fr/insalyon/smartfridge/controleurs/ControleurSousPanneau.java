@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.controleurs;
 
-import fr.insalyon.smartfridge.vues.Fenetre;
-import fr.insalyon.smartfridge.vues.SousPanneau;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.vues.VueSousPanneau;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,18 +9,18 @@ import java.awt.event.ActionListener;
 public class ControleurSousPanneau implements ActionListener {
     // On decouple la recuperation des actions des vues
     private Fenetre fenetre;
-    private SousPanneau panneau;
+    private VueSousPanneau vue;
 
-    public ControleurSousPanneau(Fenetre fenetre, SousPanneau panneau) {
+    public ControleurSousPanneau(Fenetre fenetre, VueSousPanneau vue) {
         this.fenetre = fenetre;
-        this.panneau = panneau;
+        this.vue = vue;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == panneau.getButtonRetour()) {
+        if(e.getSource() == vue.getButtonRetour()) {
             fenetre.retourArriere();
-        } else if(e.getSource() == panneau.getButtonMenuPrincipal()) {
+        } else if(e.getSource() == vue.getButtonMenuPrincipal()) {
             fenetre.revenirDebut();
         }
     }

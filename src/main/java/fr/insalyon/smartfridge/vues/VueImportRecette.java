@@ -1,22 +1,23 @@
 package fr.insalyon.smartfridge.vues;
 
 
-import fr.insalyon.smartfridge.controleurs.ImportRecetteControleur;
+import fr.insalyon.smartfridge.controleurs.ControleurImportRecette;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ImportRecette extends SousPanneau {
-    private ImportRecetteControleur controleur;
+public class VueImportRecette extends VueSousPanneau {
+    private ControleurImportRecette controleur;
 
     private JList propositionsList = new JList();
     private JTextField rechercheField = new JTextField();
     private JButton rechercheButton = new JButton("Recherche", new ImageIcon(getClass().getResource("/icones/recherche.png")));
     private JButton importButton = new JButton("Importer", new ImageIcon(getClass().getResource("/icones/import.png")));
 
-    public ImportRecette(Fenetre fenetre) {
+    public VueImportRecette(Fenetre fenetre) {
         super(fenetre);
-        controleur = new ImportRecetteControleur(fenetre, this);
+        controleur = new ControleurImportRecette(fenetre, this);
 
         rechercheButton.addActionListener(controleur);
         importButton.addActionListener(controleur);

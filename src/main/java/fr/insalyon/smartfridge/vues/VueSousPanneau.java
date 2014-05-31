@@ -1,15 +1,17 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurSousPanneau;
+import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class SousPanneau extends JPanel {
-    private JButton buttonRetour = new JButton("Retour", UtilitairesVues.icone("retour"));
-    private JButton buttonMenuPrincipal = new JButton("Menu Principal", UtilitairesVues.icone("menu-principal"));
+public abstract class VueSousPanneau extends JPanel {
+    private JButton buttonRetour = new JButton("Retour", Raccourcis.icone("retour"));
+    private JButton buttonMenuPrincipal = new JButton("Menu Principal", Raccourcis.icone("menu-principal"));
 
-    public SousPanneau(Fenetre fenetre) {
+    public VueSousPanneau(Fenetre fenetre) {
         ControleurSousPanneau controleurPrincipal = new ControleurSousPanneau(fenetre, this);
 
         buttonRetour.addActionListener(controleurPrincipal);
