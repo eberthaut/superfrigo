@@ -7,7 +7,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class EntreeCategories extends SousPanneau {
-    EntreeCategoriesControleur controleur;
+    private EntreeCategoriesControleur controleur;
 
     private JList typesList = new JList();
     private JScrollPane scroll = new JScrollPane(typesList);

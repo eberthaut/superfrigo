@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class ChangerHabitudeControleur implements ActionListener, ListSelectionListener{
     private ChangerHabitude changerHabitude;
-    ListModel<Article> articles;
+    private ListModel<Article> articles;
 
     public ChangerHabitudeControleur(ChangerHabitude changerHabitude){
         this.changerHabitude = changerHabitude;

@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ImportRecette extends SousPanneau {
-    ImportRecetteControleur controleur;
+    private ImportRecetteControleur controleur;
 
     private JList propositionsList = new JList();
     private JTextField rechercheField = new JTextField();

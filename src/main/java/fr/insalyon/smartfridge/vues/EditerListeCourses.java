@@ -7,7 +7,7 @@ import java.awt.*;
 
 
 public class EditerListeCourses extends SousPanneau implements Changeable {
-    EditerListeCoursesControleur controleur;
+    private EditerListeCoursesControleur controleur;
 
     private JList listeDeCourses = new JList();
     private JScrollPane scroll = new JScrollPane(listeDeCourses);

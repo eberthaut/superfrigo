@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by agabriel on 17/04/14.
  */
 public class MenuRecettes extends SousPanneau implements Changeable {
-    MenuRecettesControleur controleur;
+    private MenuRecettesControleur controleur;
 
     private JList recettesList = new JList();
     private JScrollPane scroll = new JScrollPane(recettesList);

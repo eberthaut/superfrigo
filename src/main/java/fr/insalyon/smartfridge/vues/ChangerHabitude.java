@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by fannygallais on 27/04/2014.
  */
 public class ChangerHabitude extends SousPanneau {
-    ChangerHabitudeControleur controleur;
+    private ChangerHabitudeControleur controleur;
 
     private JList articlesList = new JList();
     private JScrollPane scroll = new JScrollPane(articlesList);

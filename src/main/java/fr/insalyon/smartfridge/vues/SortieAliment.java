@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.JSpinner;
 
 public class SortieAliment extends SousPanneau {
-    SortieAlimentControleur controleur;
+    private SortieAlimentControleur controleur;
 
     private JList alimentsList = new JList();
     private JScrollPane scroll = new JScrollPane(alimentsList);

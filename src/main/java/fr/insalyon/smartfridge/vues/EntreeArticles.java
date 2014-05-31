@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.JSpinner;
 
 public class EntreeArticles extends SousPanneau {
-    EntreeArticlesControleur controleur;
+    private EntreeArticlesControleur controleur;
     private JList articlesList = new JList();
     private JScrollPane scroll = new JScrollPane(articlesList);
     private JButton ajouterButton = new JButton();

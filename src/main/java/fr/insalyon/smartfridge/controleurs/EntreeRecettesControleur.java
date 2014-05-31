@@ -19,10 +19,10 @@ import java.awt.event.ActionListener;
  */
 public class EntreeRecettesControleur implements ActionListener, ListSelectionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    EntreeRecettes entreeRecettes;
-    ListModel<Article> articles;
-    ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
+    private Fenetre fenetre;
+    private EntreeRecettes entreeRecettes;
+    private ListModel<Article> articles;
+    private ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
 
     public EntreeRecettesControleur(Fenetre fenetre, EntreeRecettes entreeRecettes) {
         this.fenetre = fenetre;

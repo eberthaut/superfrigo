@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-public class ListModel<E> extends DefaultListModel {
+class ListModel<E> extends DefaultListModel {
     public ListModel() {
 
     }

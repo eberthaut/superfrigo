@@ -4,10 +4,13 @@ import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.modeles.Recette;
-import fr.insalyon.smartfridge.modeles.dao.*;
+import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
+import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
+import fr.insalyon.smartfridge.modeles.dao.IngredientDAO;
+import fr.insalyon.smartfridge.modeles.dao.RecetteDAO;
 
-import java.awt.print.PrinterJob;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Service de gestion des habitudes dans le frigo.

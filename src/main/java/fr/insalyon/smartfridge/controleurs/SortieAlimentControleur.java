@@ -13,9 +13,9 @@ import java.awt.event.ActionListener;
 
 public class SortieAlimentControleur implements ActionListener, ListSelectionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    SortieAliment sortieAliment;
-    ListModel<Aliment> aliments;
+    private Fenetre fenetre;
+    private SortieAliment sortieAliment;
+    private ListModel<Aliment> aliments;
 
     public SortieAlimentControleur(Fenetre fenetre, SortieAliment sortieAliment) {
         this.fenetre = fenetre;

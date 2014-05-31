@@ -18,7 +18,6 @@ import java.util.List;
 
 public class ServiceImportMarmiton implements ServiceImportInternet {
     private final String BASE_MARMITON = "http://www.marmiton.org";
-    private final String BASE_RECHERCHE = "/recettes/recherche.aspx?aqt=";
     private final String[] INFLEXIONS = {
             "Maïs",
             "Ananas"
@@ -28,7 +27,7 @@ public class ServiceImportMarmiton implements ServiceImportInternet {
     public List<PropositionRecherche> rechercherRecettes(String recherche) {
         ArrayList<PropositionRecherche> propositions = new ArrayList<PropositionRecherche>();
         try {
-            Document pageRecherche = Jsoup.parse(new URL(BASE_MARMITON + BASE_RECHERCHE + recherche), 2000);
+            Document pageRecherche = Jsoup.parse(new URL(BASE_MARMITON + "/recettes/recherche.aspx?aqt=" + recherche), 2000);
             Elements liens = pageRecherche.select("div.m_search_titre_recette a");
             for(Element lien : liens) {
                 propositions.add(new PropositionRecherche(lien.text(), lien.attr("href")));
@@ -84,8 +83,8 @@ public class ServiceImportMarmiton implements ServiceImportInternet {
         mot = Character.toUpperCase(mot.charAt(0)) + mot.substring(1);
         char dernierChar = mot.charAt(mot.length() - 1);
         boolean inflexion = false;
-        for(int i = 0; i < INFLEXIONS.length; i ++) {
-            if(mot == INFLEXIONS[i]) {
+        for (String INFLEXION : INFLEXIONS) {
+            if (mot.equals(INFLEXION)) {
                 inflexion = true;
             }
         }

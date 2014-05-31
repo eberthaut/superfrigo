@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AlertePeremption extends SousPanneau {
-    AlertePeremptionControleur controleur;
+    private AlertePeremptionControleur controleur;
 
     private JList alimentsList = new JList();
     private JScrollPane scroll = new JScrollPane(alimentsList);

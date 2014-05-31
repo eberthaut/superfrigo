@@ -10,7 +10,7 @@ import java.awt.*;
  * Created by fannygallais on 20/04/2014.
  */
 public class EntreeRecettes extends SousPanneau {
-    EntreeRecettesControleur controleur;
+    private EntreeRecettesControleur controleur;
 
     private JPanel principal = new JPanel();
     private JPanel milieu = new JPanel();

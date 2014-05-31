@@ -6,16 +6,15 @@ import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.vues.AlertePeremption;
 import fr.insalyon.smartfridge.vues.Fenetre;
 
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 public class AlertePeremptionControleur implements ActionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    AlertePeremption alertePeremption;
-    ListModel<Aliment> aliments;
+    private Fenetre fenetre;
+    private AlertePeremption alertePeremption;
+    private ListModel<Aliment> aliments;
 
     int nbJours;
 

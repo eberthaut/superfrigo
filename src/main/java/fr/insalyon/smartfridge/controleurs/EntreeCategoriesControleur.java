@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
 
 public class EntreeCategoriesControleur implements ActionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    EntreeCategories entreeCategories;
-    ListModel<Type> types;
+    private Fenetre fenetre;
+    private EntreeCategories entreeCategories;
+    private ListModel<Type> types;
 
     public EntreeCategoriesControleur(Fenetre fenetre, EntreeCategories entreeCategories) {
         this.fenetre = fenetre;

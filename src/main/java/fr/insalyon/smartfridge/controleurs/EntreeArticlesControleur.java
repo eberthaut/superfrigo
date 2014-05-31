@@ -12,9 +12,9 @@ import java.awt.event.ActionListener;
 
 public class EntreeArticlesControleur implements ActionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    EntreeArticles entreeArticles;
-    ListModel<Article> articles;
+    private Fenetre fenetre;
+    private EntreeArticles entreeArticles;
+    private ListModel<Article> articles;
 
     public EntreeArticlesControleur(Fenetre fenetre, EntreeArticles entreeArticles, Type type) {
         this.fenetre = fenetre;

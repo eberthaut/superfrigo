@@ -61,7 +61,7 @@ public class AlimentDAO extends BaseDAO {
         List<Object[]> produitEtCompte = q.getResultList();
         List<Aliment> aliments = new ArrayList<Aliment>();
         for(Object[] pec : produitEtCompte) {
-            aliments.add(new Aliment((Article) pec[0], Integer.parseInt(((Long) pec[1]).toString())));
+            aliments.add(new Aliment((Article) pec[0], Integer.parseInt(pec[1].toString())));
         }
         return aliments;
     }

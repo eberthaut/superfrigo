@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 
 public class MenuPrincipalControleur implements ActionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    MenuPrincipal menu;
+    private Fenetre fenetre;
+    private MenuPrincipal menu;
 
     private int nbJoursAlerte = 2;
 

@@ -13,17 +13,16 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
 
 /**
  * Created by agabriel on 17/04/14.
  */
 public class MenuRecettesControleur implements ActionListener, ListSelectionListener {
 
-    Fenetre fenetre;
-    MenuRecettes menuRecettes;
-    ListModel<Recette> recettes;
-    ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
+    private Fenetre fenetre;
+    private MenuRecettes menuRecettes;
+    private ListModel<Recette> recettes;
+    private ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
 
 
     public MenuRecettesControleur(Fenetre fenetre, MenuRecettes menuRecettes) {
@@ -87,8 +86,7 @@ public class MenuRecettesControleur implements ActionListener, ListSelectionList
         else {
             int i = menuRecettes.getRecettesList().getSelectedIndex();
             Recette r = recettes.get(i);
-            ListModel ingredients = new ListModel(ServiceCourses.listerIngredients(r)) ;
-            this.ingredients = ingredients;
+            this.ingredients = new ListModel(ServiceCourses.listerIngredients(r));
             rafraichirListeIngredients();
             if(r.isActif()) {
                 menuRecettes.getToggleButton().setText("Desactiver");

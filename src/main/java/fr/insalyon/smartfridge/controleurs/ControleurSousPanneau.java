@@ -1,8 +1,5 @@
 package fr.insalyon.smartfridge.controleurs;
 
-
-import fr.insalyon.smartfridge.vues.ChangerHabitude;
-import fr.insalyon.smartfridge.vues.EditerListeCourses;
 import fr.insalyon.smartfridge.vues.Fenetre;
 import fr.insalyon.smartfridge.vues.SousPanneau;
 
@@ -11,8 +8,8 @@ import java.awt.event.ActionListener;
 
 public class ControleurSousPanneau implements ActionListener {
     // On decouple la recuperation des actions des vues
-    Fenetre fenetre;
-    SousPanneau panneau;
+    private Fenetre fenetre;
+    private SousPanneau panneau;
 
     public ControleurSousPanneau(Fenetre fenetre, SousPanneau panneau) {
         this.fenetre = fenetre;

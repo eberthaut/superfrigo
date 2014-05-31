@@ -3,10 +3,11 @@ package fr.insalyon.smartfridge.services;
 import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Type;
-import fr.insalyon.smartfridge.modeles.dao.*;
+import fr.insalyon.smartfridge.modeles.dao.AlimentDAO;
+import fr.insalyon.smartfridge.modeles.dao.ArticleDAO;
+import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
+import fr.insalyon.smartfridge.modeles.dao.TypeDAO;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
