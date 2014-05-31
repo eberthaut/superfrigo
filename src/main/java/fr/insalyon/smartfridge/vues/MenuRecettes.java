@@ -54,7 +54,7 @@ public class MenuRecettes extends SousPanneau implements Changeable {
         supprimerButton.setIcon(new ImageIcon(getClass().getResource("/icones/suppression.png")));
         supprimerButton.addActionListener(controleur);
         options.add(supprimerButton);
-        importButton.setText("Importer depuis Internet");
+        importButton.setText("Importer depuis Marmiton.org");
         importButton.setIcon(new ImageIcon(getClass().getResource("/icones/internet.png")));
         importButton.addActionListener(controleur);
         options.add(importButton);
