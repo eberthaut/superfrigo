@@ -20,7 +20,6 @@ public class ImportRecette extends SousPanneau {
 
         rechercheButton.addActionListener(controleur);
         importButton.addActionListener(controleur);
-        propositionsList.addListSelectionListener(controleur);
 
         JScrollPane scroll = new JScrollPane(propositionsList);
         this.add(scroll, BorderLayout.CENTER);

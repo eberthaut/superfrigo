@@ -32,5 +32,11 @@ public class ArticleDAO extends BaseDAO{
         Query q = getEntityManager().createQuery("SELECT article FROM Article article ORDER BY article.habitude DESC");
         return q.getResultList();
     }
+
+    public static Article trouve(String nom) {
+        Query q = getEntityManager().createQuery("SELECT a FROM Article a WHERE a.nom = :nom");
+        q.setParameter("nom", nom);
+        return (Article)q.getSingleResult();
+    }
 }
 

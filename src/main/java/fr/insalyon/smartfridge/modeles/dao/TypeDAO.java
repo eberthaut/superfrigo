@@ -30,4 +30,10 @@ public class TypeDAO extends BaseDAO {
     public static List<Type> tous() {
         return (List<Type>) tous("Type");
     }
+
+    public static Type trouve(String nom) {
+        Query q = getEntityManager().createQuery("SELECT t FROM Type t WHERE t.nom = :nom");
+        q.setParameter("nom", nom);
+        return (Type)q.getSingleResult();
+    }
 }

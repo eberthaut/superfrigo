@@ -11,7 +11,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ImportRecetteControleur implements ActionListener, ListSelectionListener {
+public class ImportRecetteControleur implements ActionListener {
     private ImportRecette importRecette;
     private Fenetre fenetre;
     private ListModel<PropositionRecherche> liensRecettes;
@@ -29,11 +29,8 @@ public class ImportRecetteControleur implements ActionListener, ListSelectionLis
             String recherche = importRecette.getRechercheField().getText();
             liensRecettes = new ListModel<PropositionRecherche>(serviceImport.rechercherRecettes(recherche));
             importRecette.getPropositionsList().setModel(liensRecettes);
+        } else if(e.getSource().equals(importRecette.getImportButton())) {
+            serviceImport.importRecette((PropositionRecherche)importRecette.getPropositionsList().getSelectedValue());
         }
-    }
-
-    @Override
-    public void valueChanged(ListSelectionEvent listSelectionEvent) {
-
     }
 }

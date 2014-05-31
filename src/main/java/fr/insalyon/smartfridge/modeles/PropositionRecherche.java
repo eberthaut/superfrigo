@@ -16,4 +16,8 @@ public class PropositionRecherche {
     public String getId() {
         return id;
     }
+
+    public String toString() {
+        return nom;
+    }
 }
