@@ -12,11 +12,12 @@ import java.util.Date;
 import java.util.List;
 
 
-/**
- * S'occupe de la gestion de stock.
- */
+/** S'occupe de la gestion de stock */
 public class ServiceStock {
-
+    /** Liste tous les Type
+     *
+     * @return Les Type
+     */
     public static List<Type> listerTypes() {
         BaseDAO.initialiserPersistence();
         List<Type> types = TypeDAO.tous();
@@ -24,6 +25,10 @@ public class ServiceStock {
         return types;
     }
 
+    /** Liste tous les Aliment
+     *
+     * @return Les Aliment
+     */
     public static List<Aliment> listerAliments() {
         BaseDAO.initialiserPersistence();
         List<Aliment> aliments = AlimentDAO.tousUniques();
@@ -31,6 +36,11 @@ public class ServiceStock {
         return aliments;
     }
 
+    /** Liste tous les Article pour un Type
+     *
+     * @param type Le Type
+     * @return Les Aliment
+     */
     public static List<Article> listerArticles(Type type) {
         BaseDAO.initialiserPersistence();
         List<Article> articles = ArticleDAO.listerArticlesType(type);
@@ -38,6 +48,10 @@ public class ServiceStock {
         return articles;
     }
 
+    /** Liste tous les Article
+     *
+     * @return Les Article
+     */
     public static List<Article> listerArticles() {
         BaseDAO.initialiserPersistence();
         List<Article> articles = ArticleDAO.tous();
@@ -45,6 +59,12 @@ public class ServiceStock {
         return articles;
     }
 
+    /** Retire un Aliment a une certaine quantite
+     *
+     * @param aliment L'Aliment
+     * @param quantite La quantite
+     * @return Le succes de l'operation
+     */
     public static boolean retraitAliment (Aliment aliment, int quantite) {
         BaseDAO.initialiserPersistence();
         List<Aliment> aliments = AlimentDAO.tousTriesParPeremption(aliment.getArticle());
@@ -59,11 +79,17 @@ public class ServiceStock {
                 break;
             }
         }
-        BaseDAO.faireTransactionSecurisee();
+        boolean res = BaseDAO.faireTransactionSecurisee();
         BaseDAO.detruirePersistence();
-        return true;
+        return res;
     }
 
+    /** Ajoute un Aliment a une certaine quantite
+     *
+     * @param article L'Article
+     * @param quantite La quantite
+     * @return Le succes de l'operation
+     */
     public static boolean ajouterAliment (Article article, int quantite) {
         BaseDAO.initialiserPersistence();
         long maintenant = new Date().getTime();
@@ -76,6 +102,4 @@ public class ServiceStock {
         BaseDAO.detruirePersistence();
         return true;
     }
-
-
 }

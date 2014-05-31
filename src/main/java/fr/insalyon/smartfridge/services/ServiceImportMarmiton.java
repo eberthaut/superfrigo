@@ -16,8 +16,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Importe des recettes depuis marmiton.org */
 public class ServiceImportMarmiton implements ServiceImportInternet {
+    /** L'URL de base du service */
     private final String BASE_MARMITON = "http://www.marmiton.org";
+    /** Les inflexions au singulier non pluriel de certains mots */
     private final String[] INFLEXIONS = {
             "Maïs",
             "Ananas"
@@ -79,6 +82,13 @@ public class ServiceImportMarmiton implements ServiceImportInternet {
         return null;
     }
 
+    /** Utilitaire de passage au singulier
+     *
+     * TODO: Mettre cette methode plus accessible
+     *
+     * @param mot Le mot a passer au singulier
+     * @return Le mot au singulier
+     */
     private String singulier(String mot) {
         mot = Character.toUpperCase(mot.charAt(0)) + mot.substring(1);
         char dernierChar = mot.charAt(mot.length() - 1);

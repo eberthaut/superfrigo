@@ -6,7 +6,12 @@ import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 
 import java.util.List;
 
+/** Gere la temperature du frigo */
 public class ServiceThermodynamique {
+    /** Met a jour la temperature
+     *
+     * @return La nouvelle temperature
+     */
     public static double mettreAJourTemperature() {
         BaseDAO.initialiserPersistence();
         List<Aliment> aliments = AlimentDAO.tous();

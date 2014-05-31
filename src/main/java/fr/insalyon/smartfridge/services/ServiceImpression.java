@@ -7,9 +7,15 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.util.Arrays;
 import java.util.List;
 
+/** Effectue des impressions */
 public class ServiceImpression {
+    /** Imprime une liste d'aliments
+     *
+     * @param aliments La liste de courses
+     */
     public static void imprimer(final List<Aliment> aliments) {
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setPrintable(new Printable() {
@@ -35,7 +41,7 @@ public class ServiceImpression {
             try {
                 job.print();
             } catch (PrinterException e) {
-                System.out.println(e.getStackTrace());
+                System.out.println(Arrays.toString(e.getStackTrace()));
             }
         }
     }

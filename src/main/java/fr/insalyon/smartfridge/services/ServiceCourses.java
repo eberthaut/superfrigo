@@ -12,10 +12,15 @@ import fr.insalyon.smartfridge.modeles.dao.RecetteDAO;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Service de gestion des habitudes dans le frigo.
- */
+/** Service de gestion des habitudes dans le frigo */
 public class ServiceCourses {
+    /** Ajoute une recette
+     *
+     * @param nom Son nom
+     * @param pour Pour combien de personnes ?
+     * @param ingredients Avec quoi ?
+     * @return Le succes de l'operation
+     */
     public static boolean ajoutRecette(String nom, int pour, List<Ingredient> ingredients) {
         BaseDAO.initialiserPersistence();
         Recette recette = new Recette(nom, ingredients, pour);
@@ -26,12 +31,17 @@ public class ServiceCourses {
             ingredient.setRecette(recette);
             IngredientDAO.persiste(ingredient);
         }
-        BaseDAO.faireTransactionSecurisee();
+        boolean res = BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
-        return true;
+        return res;
     }
 
+    /** Retire une recette
+     *
+     * @param nom Son nom
+     * @return Le succes de l'operation
+     */
     public static boolean retraitRecette(String nom) {
         BaseDAO.initialiserPersistence();
         Recette recette = RecetteDAO.trouveNom(nom);
@@ -41,13 +51,18 @@ public class ServiceCourses {
             IngredientDAO.supprime(ingredient);
         }
         RecetteDAO.supprime(recette);
-        BaseDAO.faireTransactionSecurisee();
+        boolean res = BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
-        return true;
+        return res;
     }
 
-
+    /** Change une habitude
+     *
+     * @param article L'Article en question
+     * @param habitude La nouvelle habitude
+     * @return Le succes de l'operation
+     */
     public static boolean changerHabitude(Article article, int habitude) {
         BaseDAO.initialiserPersistence();
 
@@ -56,12 +71,16 @@ public class ServiceCourses {
 
         BaseDAO.creerTransaction();
         ArticleDAO.miseAJour(article);
-        BaseDAO.faireTransactionSecurisee();
+        boolean res = BaseDAO.faireTransactionSecurisee();
 
         BaseDAO.detruirePersistence();
-        return true;
+        return res;
     }
 
+    /** Liste toutes les Recette
+     *
+     * @return Les Recette
+     */
     public static List<Recette> listerRecettes() {
         BaseDAO.initialiserPersistence();
         List<Recette> recettes = RecetteDAO.tous();
@@ -69,6 +88,12 @@ public class ServiceCourses {
         return recettes;
     }
 
+    /** Active une Recette
+     *
+     * @param recette La Recette
+     * @param pour Pour combien de personnes ?
+     * @return Le succes de l'operation
+     */
     public static boolean activerRecette(Recette recette, int pour) {
 
         if(recette.isActif()) {
@@ -79,13 +104,17 @@ public class ServiceCourses {
 
             BaseDAO.creerTransaction();
             RecetteDAO.miseAJour(recette);
-            BaseDAO.faireTransactionSecurisee();
+            boolean res = BaseDAO.faireTransactionSecurisee();
             BaseDAO.detruirePersistence();
-
-            return true;
+            return res;
         }
     }
 
+    /** Desactive une Recette
+     *
+     * @param recette La Recette
+     * @return Le succes de l'operation
+     */
     public static boolean desactiverRecette(Recette recette) {
         if(! recette.isActif()) {
             return false;
@@ -96,13 +125,18 @@ public class ServiceCourses {
 
             BaseDAO.creerTransaction();
             RecetteDAO.miseAJour(recette);
-            BaseDAO.faireTransactionSecurisee();
+            boolean res = BaseDAO.faireTransactionSecurisee();
             BaseDAO.detruirePersistence();
 
-            return true;
+            return res;
         }
     }
 
+    /** Donne le prix d'une liste
+     *
+     * @param listeCourses La liste de course
+     * @return Le prix
+     */
     public static double calculPrixListe (List<Article> listeCourses) {
         double prixListe=0;
         for(Article article : listeCourses) {
@@ -111,6 +145,10 @@ public class ServiceCourses {
         return prixListe;
     }
 
+    /** Genere une liste de courses
+     *
+     * @return La liste de courses
+     */
     public static List<Aliment> genererListeCourses() {
         // TODO: A opt
 
@@ -125,14 +163,14 @@ public class ServiceCourses {
 
         for (Aliment lAliment : lAli) {
             long id = lAliment.getArticle().getId();
-            for (int j = 0; j < listeArticle.size(); j++) {
-                if (id == listeArticle.get(j).getId()) {
-                    Article a = listeArticle.get(j);
-                    if(lAliment.getQuantite() < a.getHabitude()) {
-                        lCourses.add(new Aliment(a, a.getHabitude()-lAliment.getQuantite()));
+            for (Article aListeArticle : listeArticle) {
+                if (id == aListeArticle.getId()) {
+                    Article a = aListeArticle;
+                    if (lAliment.getQuantite() < a.getHabitude()) {
+                        lCourses.add(new Aliment(a, a.getHabitude() - lAliment.getQuantite()));
                     }
-                    if(lAliment.getQuantite() == a.getHabitude()){
-                        lCourses.add(new Aliment(a, a.getHabitude()-lAliment.getQuantite()));
+                    if (lAliment.getQuantite() == a.getHabitude()) {
+                        lCourses.add(new Aliment(a, a.getHabitude() - lAliment.getQuantite()));
                     }
                 }
             }
@@ -185,6 +223,11 @@ public class ServiceCourses {
         return lCourses;
     }
 
+    /** Liste les ingredients d'une Recette
+     *
+     * @param r La Recette
+     * @return Les Ingredients
+     */
     public static List<Ingredient> listerIngredients(Recette r){
         BaseDAO.initialiserPersistence();
         List<Ingredient> ingredients = r.getIngredients();

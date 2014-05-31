@@ -6,9 +6,7 @@ import fr.insalyon.smartfridge.modeles.dao.BaseDAO;
 
 import java.util.*;
 
-/**
- * S'occupe des aliments périmés.
- */
+/** Determine les aliments perimes ou proches de la peremption */
 public class ServiceAlerte {
 
     private static Date computeLimite(int nbJours) {
@@ -16,6 +14,11 @@ public class ServiceAlerte {
         return new Date(aujourdhui.getTime() + (long)nbJours * 60 * 60 * 24 * 1000);
     }
 
+    /** Determine le type d'alerte
+     *
+     * @param nombreLimiteJoursVoulu A combien de jour commence t'on a prevenir de la peremption proche ?
+     * @return 0 si tout va bien, 1 si des aliments vont bientot perimer et 2 si il y a des aliments perimes
+     */
     public static int statusAlerte (int nombreLimiteJoursVoulu) {
         BaseDAO.initialiserPersistence();
         int statusAlerte= 0;
@@ -32,6 +35,11 @@ public class ServiceAlerte {
         return statusAlerte;
     }
 
+    /** Donne les aliments qui vont bientot perimer
+     *
+     * @param nombreLimiteJoursVoulu A combien de jours ?
+     * @return Les aliments qui periment bientot
+     */
     public static List<Aliment> listeAlimentsProchePeremption (int nombreLimiteJoursVoulu) {
         BaseDAO.initialiserPersistence();
         List<Aliment> proches = AlimentDAO.tousAvant(computeLimite(nombreLimiteJoursVoulu));
@@ -40,6 +48,10 @@ public class ServiceAlerte {
 
     }
 
+    /** Donne les aliments perimes
+     *
+     * @return Les aliments qui ont perime
+     */
     public static List<Aliment> listeAlimentsPerimes () {
         BaseDAO.initialiserPersistence();
         List<Aliment> perimes = AlimentDAO.tousAvant(computeLimite(0));
