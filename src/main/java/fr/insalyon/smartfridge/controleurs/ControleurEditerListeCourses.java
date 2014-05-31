@@ -4,6 +4,7 @@ import fr.insalyon.smartfridge.modeles.Aliment;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.services.ServiceImpression;
 import fr.insalyon.smartfridge.utilitaires.ListModel;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueChangerHabitude;
 import fr.insalyon.smartfridge.vues.VueEditerListeCourses;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
@@ -12,18 +13,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class ControleurEditerListeCourses implements ActionListener{
-
+/** Gere la generation de la liste de courses */
+public class ControleurEditerListeCourses implements ActionListener, Rafraichissable {
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** La vue */
     private VueEditerListeCourses vue;
+    /** Le modele des aliments dans la liste */
     private List<Aliment> aliments;
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurEditerListeCourses(Fenetre fenetre, VueEditerListeCourses vue){
         this.fenetre = fenetre;
         this.vue = vue;
-        this.creerListe();
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vue.getChangerHabitudesButton())) {
             fenetre.allerA(new VueChangerHabitude(fenetre));
@@ -32,7 +41,8 @@ public class ControleurEditerListeCourses implements ActionListener{
         }
     }
 
-    public void creerListe() {
+    @Override
+    public void mettreAJour() {
         aliments = ServiceCourses.genererListeCourses();
         vue.getListeDeCourses().setModel(new ListModel<Aliment>(aliments));
     }

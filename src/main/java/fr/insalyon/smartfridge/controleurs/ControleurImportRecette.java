@@ -10,15 +10,23 @@ import fr.insalyon.smartfridge.vues.VueImportRecette;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** Gere l'import depuis un service Internet */
 public class ControleurImportRecette implements ActionListener {
+    /** La vue */
     private VueImportRecette vue;
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** Le service d'import */
     private ServiceImportInternet serviceImport = new ServiceImportMarmiton();
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurImportRecette(Fenetre fenetre, VueImportRecette vue) {
         this.fenetre = fenetre;
         this.vue = vue;
-
     }
 
     @Override

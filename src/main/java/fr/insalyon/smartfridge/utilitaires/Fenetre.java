@@ -19,14 +19,15 @@ public class Fenetre extends JApplet {
         historique.add(new VueMenuPrincipal(this));
         this.setSize(new Dimension(1000, 700));
         this.setBackground(Color.WHITE);
+        revenirDebut();
     }
 
     /** Affiche la derniere fenetre de l'historique */
     private void afficherDernier() { // obtient la derniere vue de l'historique
         this.setContentPane(historique.get(historique.size() - 1));
         this.getContentPane().setSize(new Dimension(1000,700));
-        if(this.getContentPane() instanceof VueChangeable) {
-            ((VueChangeable)this.getContentPane()).mettreAJour();
+        if(this.getContentPane() instanceof Rafraichissable) {
+            ((Rafraichissable)this.getContentPane()).mettreAJour();
         }
 
     }

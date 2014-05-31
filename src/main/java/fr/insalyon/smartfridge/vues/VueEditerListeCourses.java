@@ -1,22 +1,29 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurEditerListeCourses;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
 import javax.swing.*;
 import java.awt.*;
 
-
-public class VueEditerListeCourses extends VueSousPanneau implements VueChangeable {
+/** Vue d'edition de liste de courses */
+public class VueEditerListeCourses extends VueSousPanneau implements Rafraichissable {
+    /** Le controleur */
     private ControleurEditerListeCourses controleur;
 
+    /** La liste de courses */
     private JList listeDeCourses = new JList();
-    private JScrollPane scroll = new JScrollPane(listeDeCourses);
+    /** Bouton de changement d'habtude */
     private JButton changerHabitudesButton = new JButton("Changer mes habitudes", Raccourcis.icone("utilisateur"));
+    /** Bouton d'impression */
     private JButton impressionButton = new JButton("Imprimer", Raccourcis.icone("imprimer"));
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     */
     public VueEditerListeCourses(Fenetre fenetre) {
         super(fenetre);
         controleur = new ControleurEditerListeCourses(fenetre, this);
@@ -24,6 +31,7 @@ public class VueEditerListeCourses extends VueSousPanneau implements VueChangeab
         changerHabitudesButton.addActionListener(controleur);
         impressionButton.addActionListener(controleur);
 
+        JScrollPane scroll = new JScrollPane(listeDeCourses);
         this.add(scroll, BorderLayout.CENTER);
 
         JPanel options = new JPanel(new GridLayout(1, 2));
@@ -34,11 +42,25 @@ public class VueEditerListeCourses extends VueSousPanneau implements VueChangeab
 
     @Override
     public void mettreAJour() {
-        controleur.creerListe();
+        controleur.mettreAJour();
     }
 
+    /** Retourne La liste de courses
+     *
+     * @return La liste de courses
+     */
     public JButton getChangerHabitudesButton() { return changerHabitudesButton; }
+
+    /** Retourne Bouton de changement d'habtude
+     *
+     * @return Bouton de changement d'habtude
+     */
     public JButton getImpressionButton() { return impressionButton; }
+
+    /** Retourne Bouton d'impression
+     *
+     * @return Bouton d'impression
+     */
     public JList getListeDeCourses() { return listeDeCourses; }
 }
 

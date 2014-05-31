@@ -3,6 +3,7 @@ package fr.insalyon.smartfridge.controleurs;
 import fr.insalyon.smartfridge.services.ServiceAlerte;
 import fr.insalyon.smartfridge.services.ServiceThermodynamique;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueEntreeCategories;
 import fr.insalyon.smartfridge.vues.*;
 
@@ -11,13 +12,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControleurMenuPrincipal implements ActionListener {
-    // On decouple la recuperation des actions des vues
+/** Gere le menu principal */
+public class ControleurMenuPrincipal implements ActionListener, Rafraichissable {
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** La vue */
     private VueMenuPrincipal vue;
-
+    /** Le nombre de jours pour prevenir les produits proches de la peremption */
     private int nbJoursAlerte = 2;
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurMenuPrincipal(Fenetre fenetre, VueMenuPrincipal vue) {
         this.fenetre = fenetre;
         this.vue = vue;
@@ -42,11 +50,12 @@ public class ControleurMenuPrincipal implements ActionListener {
             fenetre.allerA(new VueAlertePeremption(fenetre, this.nbJoursAlerte));
         } else if(e.getSource().equals(vue.getAlerteCombo())) {
             this.nbJoursAlerte = (Integer) vue.getAlerteCombo().getSelectedItem();
-            gererAlerte();
+            mettreAJour();
         }
     }
 
-    public void gererAlerte() {
+    @Override
+    public void mettreAJour() {
         int status = ServiceAlerte.statusAlerte(nbJoursAlerte);
         switch(status) {
             case 0:
@@ -72,9 +81,6 @@ public class ControleurMenuPrincipal implements ActionListener {
                 vue.getAlerteButton().addActionListener(this);
                 break;
         }
-    }
-
-    public void gererTemperature() {
         vue.getTemperatureLabel().setText(String.format("%.2f degres Celcius",ServiceThermodynamique.mettreAJourTemperature()));
     }
 }

@@ -6,6 +6,7 @@ import fr.insalyon.smartfridge.modeles.Ingredient;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.utilitaires.*;
+import fr.insalyon.smartfridge.utilitaires.ListModel;
 import fr.insalyon.smartfridge.vues.VueEntreeRecettes;
 
 import javax.swing.*;
@@ -14,23 +15,28 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by fannygallais on 20/04/2014.
- */
-public class ControleurEntreeRecettes implements ActionListener, ListSelectionListener {
-    // On decouple la recuperation des actions des vues
+/** Gere la saisie d'une recette */
+public class ControleurEntreeRecettes implements ActionListener, ListSelectionListener, Rafraichissable {
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** La vue */
     private VueEntreeRecettes vue;
-    private fr.insalyon.smartfridge.utilitaires.ListModel<Article> articles;
-    private fr.insalyon.smartfridge.utilitaires.ListModel<Ingredient> ingredients = new fr.insalyon.smartfridge.utilitaires.ListModel<Ingredient>();
+    /** Le modele des articles disponibles */
+    private ListModel<Article> articles;
+    /** Le modele des ingredients ajoutes */
+    private ListModel<Ingredient> ingredients = new ListModel<Ingredient>();
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurEntreeRecettes(Fenetre fenetre, VueEntreeRecettes vue) {
         this.fenetre = fenetre;
         this.vue = vue;
-        articles = new fr.insalyon.smartfridge.utilitaires.ListModel<Article>(ServiceStock.listerArticles());
     }
 
-
+    @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == vue.getAjouterIngredientButton()) {
             Article a = articles.get(vue.getArticlesList().getSelectedIndex());
@@ -46,7 +52,7 @@ public class ControleurEntreeRecettes implements ActionListener, ListSelectionLi
             if(!trouve) {
                 ingredients.addElement(new Ingredient(a, quantite));
             }
-            rafraichirListe();
+            mettreAJour();
         } else if(e.getSource() == vue.getValiderButton()) {
             String nom = vue.getNomRecetteTexte().getText();
             int pour = (Integer) vue.getPourSpinner().getValue();
@@ -72,21 +78,18 @@ public class ControleurEntreeRecettes implements ActionListener, ListSelectionLi
             } else {
                 ing.setQuantite(ing.getQuantite() - quantite);
             }
-            rafraichirListe();
+            mettreAJour();
         } else if(e.getSource() == vue.getEffacerButton()){
             ingredients.clear();
-            rafraichirListe();
+            mettreAJour();
         }
     }
 
-
-    public void rafraichirListe() {
-        vue.getIngredientsList().setModel(ingredients);
-    }
-
-    public void creerListe() {
-        vue.getIngredientsList().setModel(ingredients);
+    @Override
+    public void mettreAJour() {
+        articles = new ListModel<Article>(ServiceStock.listerArticles());
         vue.getArticlesList().setModel(articles);
+        vue.getIngredientsList().setModel(ingredients);
     }
 
     @Override

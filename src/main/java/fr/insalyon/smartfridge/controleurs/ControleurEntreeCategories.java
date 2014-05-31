@@ -3,6 +3,7 @@ package fr.insalyon.smartfridge.controleurs;
 import fr.insalyon.smartfridge.modeles.Type;
 import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.utilitaires.ListModel;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueEntreeArticles;
 import fr.insalyon.smartfridge.vues.VueEntreeCategories;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
@@ -10,16 +11,23 @@ import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControleurEntreeCategories implements ActionListener {
-    // On decouple la recuperation des actions des vues
+/** Gere le choix d'un type lors de l'ajout */
+public class ControleurEntreeCategories implements ActionListener, Rafraichissable {
+    /** La fenetre de l'application */
     private Fenetre fenetre;
+    /** La vue */
     private VueEntreeCategories vue;
+    /** Le modele des types */
     private ListModel<Type> types;
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     * @param vue La vue
+     */
     public ControleurEntreeCategories(Fenetre fenetre, VueEntreeCategories vue) {
         this.fenetre = fenetre;
         this.vue = vue;
-        types = new ListModel<Type>(ServiceStock.listerTypes()); // On récupère tous les types
     }
 
     @Override
@@ -30,7 +38,9 @@ public class ControleurEntreeCategories implements ActionListener {
         }
     }
 
-    public void creerListe() {
+    @Override
+    public void mettreAJour() {
+        types = new ListModel<Type>(ServiceStock.listerTypes()); // On récupère tous les types
         vue.getTypesList().setModel(types);
     }
 }

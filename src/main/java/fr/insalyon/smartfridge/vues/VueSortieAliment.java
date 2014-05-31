@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurSortieAliment;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -10,13 +10,22 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JSpinner;
 
-public class VueSortieAliment extends VueSousPanneau implements VueChangeable {
+/** Vue pour enlever des aliments */
+public class VueSortieAliment extends VueSousPanneau implements Rafraichissable {
+    /** Le constructeur */
     private ControleurSortieAliment controleur;
 
+    /** La liste d'aliments */
     private JList alimentsList = new JList();
+    /** Le bouton pour enlever */
     private JButton enleverButton = new JButton("Enlever", Raccourcis.icone("suppression"));
+    /** Le spinner de quantite */
     private JSpinner quantiteSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1)); // c'est le compteur de qte
 
+    /** Constructeur
+     *
+     * @param fenetre La fenetre de l'application
+     */
     public VueSortieAliment(Fenetre fenetre) {
         super(fenetre);
         controleur = new ControleurSortieAliment(fenetre, this);
@@ -41,14 +50,26 @@ public class VueSortieAliment extends VueSousPanneau implements VueChangeable {
         controleur.rafraichirListe();
     }
 
+    /** Retourne La liste d'aliments
+     *
+     * @return La liste d'aliments
+     */
     public JList getAlimentsList() {
         return alimentsList;
     }
 
+    /** Retourne Le bouton pour enlever
+     *
+     * @return Le bouton pour enlever
+     */
     public JButton getEnleverButton() {
         return enleverButton;
     }
 
+    /** Retourne Le spinner de quantite
+     *
+     * @return Le spinner de quantite
+     */
     public JSpinner getQuantiteSpinner() {
         return quantiteSpinner;
     }

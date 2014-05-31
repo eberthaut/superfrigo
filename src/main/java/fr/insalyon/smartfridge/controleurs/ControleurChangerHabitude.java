@@ -4,6 +4,7 @@ import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.services.ServiceCourses;
 import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.utilitaires.ListModel;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.vues.VueChangerHabitude;
 
 import javax.swing.event.ListSelectionEvent;
@@ -11,18 +12,22 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by fannygallais on 27/04/2014.
- */
-public class ControleurChangerHabitude implements ActionListener, ListSelectionListener{
+/** Gere les changements d'habitude */
+public class ControleurChangerHabitude implements ActionListener, ListSelectionListener, Rafraichissable {
+    /** La vue */
     private VueChangerHabitude vue;
+    /** Le modele des articles */
     private ListModel<Article> articles;
 
+    /** Constructeur
+     *
+     * @param vue La vue
+     */
     public ControleurChangerHabitude(VueChangerHabitude vue){
         this.vue = vue;
-        articles = new ListModel<Article>(ServiceStock.listerArticles());
     }
 
+    @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(vue.getChangerHabitudeButton())){
             Article a = articles.get(vue.getArticlesList().getSelectedIndex());
@@ -32,13 +37,11 @@ public class ControleurChangerHabitude implements ActionListener, ListSelectionL
         }
     }
 
-
-
-
-    public void creerListe() {
+    @Override
+    public void mettreAJour() {
+        articles = new ListModel<Article>(ServiceStock.listerArticles());
         vue.getArticlesList().setModel(articles);
     }
-
 
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {

@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurAlertePeremption;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /** Vue de l'alerte */
-public class VueAlertePeremption extends VueSousPanneau implements VueChangeable {
+public class VueAlertePeremption extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
     private ControleurAlertePeremption controleur;
 
@@ -37,7 +37,7 @@ public class VueAlertePeremption extends VueSousPanneau implements VueChangeable
 
     @Override
     public void mettreAJour() {
-        controleur.rafraichirListe();
+        controleur.mettreAJour();
     }
 
     /** Retourne La liste d'aliments

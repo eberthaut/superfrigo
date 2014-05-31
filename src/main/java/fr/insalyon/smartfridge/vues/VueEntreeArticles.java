@@ -2,7 +2,7 @@ package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurEntreeArticles;
 import fr.insalyon.smartfridge.modeles.Type;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.JSpinner;
 
 /** La vue pour ajouter un article */
-public class VueEntreeArticles extends VueSousPanneau implements VueChangeable {
+public class VueEntreeArticles extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
     private ControleurEntreeArticles controleur;
 
@@ -30,7 +30,7 @@ public class VueEntreeArticles extends VueSousPanneau implements VueChangeable {
      */
     public VueEntreeArticles(Fenetre fenetre, Type type) {
         super(fenetre);
-        controleur = new ControleurEntreeArticles(fenetre, this, type);
+        controleur = new ControleurEntreeArticles(this, type);
 
         ajouterButton.addActionListener(controleur);
 
@@ -50,7 +50,7 @@ public class VueEntreeArticles extends VueSousPanneau implements VueChangeable {
 
     @Override
     public void mettreAJour() {
-        controleur.creerListe();
+        controleur.mettreAJour();
     }
 
     /** Retourne La liste des Articles

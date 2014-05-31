@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurEntreeRecettes;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /** Vue pour saisir une recette */
-public class VueEntreeRecettes extends VueSousPanneau implements VueChangeable {
+public class VueEntreeRecettes extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
     private ControleurEntreeRecettes controleur;
 
@@ -80,7 +80,7 @@ public class VueEntreeRecettes extends VueSousPanneau implements VueChangeable {
 
     @Override
     public void mettreAJour() {
-        controleur.creerListe();
+        controleur.mettreAJour();
     }
 
     /** Retourne La liste des articles

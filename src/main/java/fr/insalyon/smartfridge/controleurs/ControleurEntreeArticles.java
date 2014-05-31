@@ -4,22 +4,30 @@ import fr.insalyon.smartfridge.modeles.Article;
 import fr.insalyon.smartfridge.modeles.Type;
 import fr.insalyon.smartfridge.services.ServiceStock;
 import fr.insalyon.smartfridge.utilitaires.*;
+import fr.insalyon.smartfridge.utilitaires.ListModel;
 import fr.insalyon.smartfridge.vues.VueEntreeArticles;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControleurEntreeArticles implements ActionListener {
-    // On decouple la recuperation des actions des vues
-    private Fenetre fenetre;
+/** Gere l'ajout d'articles */
+public class ControleurEntreeArticles implements ActionListener, Rafraichissable {
+    /** La vue */
     private VueEntreeArticles vue;
-    private fr.insalyon.smartfridge.utilitaires.ListModel<Article> articles;
+    /** Le type */
+    private Type type;
+    /** Le modele d'articles */
+    private ListModel<Article> articles;
 
-    public ControleurEntreeArticles(Fenetre fenetre, VueEntreeArticles vue, Type type) {
-        this.fenetre = fenetre;
+    /** Constructeur
+     *
+     * @param vue La vue
+     * @param type Le type pour lequel afficher les articles
+     */
+    public ControleurEntreeArticles(VueEntreeArticles vue, Type type) {
         this.vue = vue;
-        articles = new fr.insalyon.smartfridge.utilitaires.ListModel<Article>(ServiceStock.listerArticles(type)); // On récupère tous les types
+        this.type = type;
     }
 
     @Override
@@ -33,7 +41,9 @@ public class ControleurEntreeArticles implements ActionListener {
         }
     }
 
-    public void creerListe() {
+    @Override
+    public void mettreAJour() {
+        articles = new ListModel<Article>(ServiceStock.listerArticles(type));
         vue.getArticlesList().setModel(articles);
     }
 }

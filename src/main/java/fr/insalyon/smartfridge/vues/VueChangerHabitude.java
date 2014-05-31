@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurChangerHabitude;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /** Vue pour changer les habitudes utilisateur */
-public class VueChangerHabitude extends VueSousPanneau implements VueChangeable {
+public class VueChangerHabitude extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
     private ControleurChangerHabitude controleur;
 
@@ -45,7 +45,7 @@ public class VueChangerHabitude extends VueSousPanneau implements VueChangeable 
 
     @Override
     public void mettreAJour() {
-        controleur.creerListe();
+        controleur.mettreAJour();
     }
 
     /** Retourne La liste des Articles

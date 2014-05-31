@@ -1,7 +1,7 @@
 package fr.insalyon.smartfridge.vues;
 
 import fr.insalyon.smartfridge.controleurs.ControleurEntreeCategories;
-import fr.insalyon.smartfridge.utilitaires.VueChangeable;
+import fr.insalyon.smartfridge.utilitaires.Rafraichissable;
 import fr.insalyon.smartfridge.utilitaires.Fenetre;
 import fr.insalyon.smartfridge.utilitaires.Raccourcis;
 
@@ -10,7 +10,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /** La vue pour choisir un Type pour ajouter un Article */
-public class VueEntreeCategories extends VueSousPanneau implements VueChangeable {
+public class VueEntreeCategories extends VueSousPanneau implements Rafraichissable {
     /** Le controleur */
     private ControleurEntreeCategories controleur;
 
@@ -37,7 +37,7 @@ public class VueEntreeCategories extends VueSousPanneau implements VueChangeable
 
     @Override
     public void mettreAJour() {
-        controleur.creerListe();
+        controleur.mettreAJour();
     }
 
     /** Retourne La liste des types
