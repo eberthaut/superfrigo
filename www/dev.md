@@ -23,25 +23,37 @@ Bibliothèque permettant de manipuler des pages web depuis du code Java. Permet 
 
 ### Package `modeles`
 
+La representation objet des elements de la base de données. (Tous les modèles sauf `PropositionRecherche` sont des entités JPA `@Entity`).
+
 ![modeles](assets/export/modeles.png)
 
 ### Package `dao`
+
+La couche d'interaction entre la base de données et les objets Java en mémoire. (requêtage, enregistrement, mise à jour, suppressions, ...)
 
 ![daos](assets/export/daos.png)
 
 ### Package `services`
 
+La couche qui effectue les actions en utilisant les modèles et les DAOs.
+
 ![services](assets/export/services.png)
 
 ### Package `controleurs`
+
+Ils répondent aux évenements déclenchés par l'interface utilisateur (la vue). Ils utilisent les services pour récupérer les données à afficher et utilisent les vues pour effectuer l'affichage de ces données.
 
 ![controleurs](assets/export/controleurs.png)
 
 ### Package `vues`
 
+S'occupent de l'affichage et de l'aspect esthétique de l'application.
+
 ![vues](assets/export/vues.png)
 
 ### Package `utilitaires`
+
+Outils utilisés par les vues et les contrôleurs pour accélérer et simplifier le développement.
 
 ![utilitaires](assets/export/utilitaires.png)
 
