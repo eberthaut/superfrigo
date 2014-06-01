@@ -8,10 +8,10 @@
         <class>fr.insalyon.smartfridge.modeles.Recette</class>
         <class>fr.insalyon.smartfridge.modeles.Ingredient</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql4.freemysqlhosting.net:3306/sql435118"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://cipc-vmsql.insa-lyon.fr:3306/eberthaut"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="sql435118"/>
-            <property name="javax.persistence.jdbc.password" value="sN2%cW7*"/>
+            <property name="javax.persistence.jdbc.user" value="eberthaut@cipcnet.insa-lyon.fr"/>
+            <property name="javax.persistence.jdbc.password" value="frigo"/>
         </properties>
     </persistence-unit>
 </persistence>
