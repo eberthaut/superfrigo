@@ -60,3 +60,9 @@ Outils utilisés par les vues et les contrôleurs pour accélérer et simplifier
 <h1 class="content-subhead">Javadoc</h1>
 
 <p><a href="javadoc/index.html" class="pure-button">Aller à la Javadoc</a></p>
+
+<h1 class="content-subhead">Code source</h1>
+
+<p><a href="https://github.com/eberthaut/superfrigo" class="pure-button">Dernière version disponible sur Github</a></p>
+
+<p><a href="https://github.com/eberthaut/superfrigo/tree/gh-pages" class="pure-button">Code source de ce site</a></p>
