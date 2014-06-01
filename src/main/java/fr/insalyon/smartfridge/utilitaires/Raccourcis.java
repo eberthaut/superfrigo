@@ -10,7 +10,7 @@ public class Raccourcis {
      * @return L'icone
      */
     public static Icon icone(String nom) {
-        return new ImageIcon(JPanel.class.getResource("/icones/" + nom + ".png"));
+        return new ImageIcon(Raccourcis.class.getResource("/icones/" + nom + ".png"));
     }
 
     /** Transforme un texte pour qu'il soit considere comme du HTML dans les JLabel
