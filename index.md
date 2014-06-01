@@ -14,6 +14,8 @@ title: Application
   <param name="persistState" value="false" />
 </object>
 
+[Basculer en mode CIPC](cipc.html)
+
 <h1 class="content-subhead">Introduction</h1>
 
 Actuellement, la technologie et l'informatique sont de plus en plus présents dans le monde entier.
