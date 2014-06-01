@@ -56,7 +56,10 @@ public class Aliment {
         this.datePeremption = this.dateAjout;
     }
 
-    /** Retourne l'id */
+    /** Retourne l'id
+     *
+     * @return L'id
+     */
     public long getId() {
         return id;
     }
