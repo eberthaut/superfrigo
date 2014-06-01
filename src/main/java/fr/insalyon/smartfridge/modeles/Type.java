@@ -5,7 +5,7 @@ import java.util.List;
 
 
 /** Represente un type d'article du frigo */
-@Entity // Ce mot clé signifie que cette classe définit en même temps une table dans la base de données.
+@Entity // Ce mot cle signifie que cette classe definit en meme temps une table dans la base de donnees.
 public class Type {
     /** Les articles qui possedent ce type */
     @OneToMany(mappedBy = "type") // on peut avoir plusieurs articles pour un type

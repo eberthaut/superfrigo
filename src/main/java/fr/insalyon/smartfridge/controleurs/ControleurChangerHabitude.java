@@ -51,17 +51,17 @@ public class ControleurChangerHabitude implements ActionListener, ListSelectionL
         Article a = articles.get(vue.getArticlesList().getSelectedIndex());
         int i = (Integer) vue.getHabitudeSpinner().getValue();
         ServiceCourses.changerHabitude(a,i);
-        vue.getHabitudeEtat().setText(Raccourcis.html("L'habitude de l'article "+a.getNom()+" est "+i+".<br/>Habitude souhaitée : "));
+        vue.getHabitudeEtat().setText(Raccourcis.html("L'habitude de l'article "+a.getNom()+" est "+i+".<br/>Habitude souhaitee : "));
     }
 
     /** Quand on selectionne un article */
     private void selectionArticle() {
         if(vue.getArticlesList().isSelectionEmpty()){
-            vue.getHabitudeEtat().setText("Veuillez sélectionner un article");
+            vue.getHabitudeEtat().setText("Veuillez selectionner un article");
         } else {
             Article a =  articles.get(vue.getArticlesList().getSelectedIndex());
             int habitude = articles.get(vue.getArticlesList().getSelectedIndex()).getHabitude();
-            vue.getHabitudeEtat().setText(Raccourcis.html("L'habitude de l'article "+a.getNom()+" est "+habitude+".<br/>Habitude souhaitée :"));
+            vue.getHabitudeEtat().setText(Raccourcis.html("L'habitude de l'article "+a.getNom()+" est "+habitude+".<br/>Habitude souhaitee :"));
         }
     }
 }

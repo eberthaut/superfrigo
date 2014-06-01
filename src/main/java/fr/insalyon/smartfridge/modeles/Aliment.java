@@ -16,7 +16,7 @@ public class Aliment {
     private long id;
 
     /** Sa date de peremption */
-    @Temporal(javax.persistence.TemporalType.DATE) // Définit comment la date est stockée dans la BDD
+    @Temporal(javax.persistence.TemporalType.DATE) // Definit comment la date est stockee dans la BDD
     private Date datePeremption;
 
     /** Sa date d'ajout */
@@ -28,10 +28,10 @@ public class Aliment {
 
     /** Constructeur standard */
     public Aliment() {
-        dateAjout = new Date(); // Initialisé à la date du moment de la création de l'objet
+        dateAjout = new Date(); // Initialise a la date du moment de la creation de l'objet
     }
 
-    /** Constructeur avec paramètres
+    /** Constructeur avec parametres
      *
      * @param article L'article lie
      * @param datePeremption Sa date de peremption
@@ -44,7 +44,7 @@ public class Aliment {
         this.quantite = quantite;
     }
 
-    /** Constructeur avec paramètres
+    /** Constructeur avec parametres
      *
      * @param article L'article lie
      * @param quantite Sa quantite

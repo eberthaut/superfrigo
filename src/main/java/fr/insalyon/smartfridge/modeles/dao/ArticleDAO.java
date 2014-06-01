@@ -26,7 +26,7 @@ public class ArticleDAO extends BaseDAO{
         return (List<Article>)q.getResultList();
     }
 
-    /** Trouve tous les Aliment classes par habitudes de façon descendante
+    /** Trouve tous les Aliment classes par habitudes de facon descendante
      *
      * @return Toutes les entites de Article
      */

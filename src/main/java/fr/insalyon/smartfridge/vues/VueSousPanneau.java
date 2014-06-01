@@ -9,7 +9,7 @@ import java.awt.*;
 
 /** Vue dont herite les autres (sauf la VueMenuPrincipal) qui apporte des boutons de navigaion.
  *
- * Des lors, la partie NORTH du layout est occupée par la navigation.
+ * Des lors, la partie NORTH du layout est occupee par la navigation.
  */
 public abstract class VueSousPanneau extends JPanel {
     /** Le bouton pour remonter un niveau */

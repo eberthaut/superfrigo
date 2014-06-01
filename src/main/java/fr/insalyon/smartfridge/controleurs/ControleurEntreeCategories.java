@@ -39,7 +39,7 @@ public class ControleurEntreeCategories implements ActionListener, Rafraichissab
 
     @Override
     public void mettreAJour() {
-        types = new ListModel<Type>(ServiceStock.listerTypes()); // On récupère tous les types
+        types = new ListModel<Type>(ServiceStock.listerTypes()); // On recupere tous les types
         vue.getTypesList().setModel(types);
     }
 

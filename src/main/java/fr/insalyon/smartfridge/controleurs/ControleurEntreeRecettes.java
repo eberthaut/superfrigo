@@ -91,7 +91,7 @@ public class ControleurEntreeRecettes implements ActionListener, ListSelectionLi
             JOptionPane.showMessageDialog(null, "Entrez un nom de recette !", "Invalide !",
                     JOptionPane.ERROR_MESSAGE);
         } else if(pour < 1){
-            JOptionPane.showMessageDialog(null, "Donnez le nombre de personnes correspondant à la recette !", "Invalide !",
+            JOptionPane.showMessageDialog(null, "Donnez le nombre de personnes correspondant a la recette !", "Invalide !",
                     JOptionPane.ERROR_MESSAGE);
         } else if(ingredients.getSize() == 0){
             JOptionPane.showMessageDialog(null, "Ajoutez des ingredients !", "Invalide !",

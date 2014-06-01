@@ -22,7 +22,7 @@ public class ServiceImportMarmiton implements ServiceImportInternet {
     private final String BASE_MARMITON = "http://www.marmiton.org";
     /** Les inflexions au singulier non pluriel de certains mots */
     private final String[] INFLEXIONS = {
-            "Maïs",
+            "Mais",
             "Ananas"
     };
 

@@ -18,7 +18,7 @@ public class ServiceThermodynamique {
 
         double masseTotale = 0;
 
-        for(Aliment aliment : aliments) { // equivaut à for(int i = 0; i < aliments.size(); i ++) { Aliment aliment = aliments.get(i); // ... }
+        for(Aliment aliment : aliments) { // equivaut a for(int i = 0; i < aliments.size(); i ++) { Aliment aliment = aliments.get(i); // ... }
             masseTotale += aliment.getArticle().getMasse() * aliment.getQuantite();
         }
 

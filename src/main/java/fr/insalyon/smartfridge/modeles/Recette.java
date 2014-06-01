@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Représente une Recette */
+/** Represente une Recette */
 @Entity
 public class Recette {
     /** Les ingredients */
@@ -138,6 +138,6 @@ public class Recette {
      * @return Le resume
      */
     public String toString() {
-        return (isActif()?"✓ ":"   ") + nom;
+        return (isActif()?(char)0x2713+" ":"   ") + nom;
     }
 }

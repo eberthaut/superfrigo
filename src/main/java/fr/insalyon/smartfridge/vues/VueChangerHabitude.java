@@ -18,7 +18,7 @@ public class VueChangerHabitude extends VueSousPanneau implements Rafraichissabl
     /** Le bouton pour changer les habitudes */
     private final JButton changerHabitudeButton = new JButton("Appliquer", Raccourcis.icone("ok"));
     /** L'affichage de l'etat des habitudes */
-    private final JLabel habitudeEtat = new JLabel("Veuillez sélectionner un article");
+    private final JLabel habitudeEtat = new JLabel("Veuillez selectionner un article");
     /** Le spinner de selection de l'habitude */
     private final JSpinner habitudeSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1));
 
