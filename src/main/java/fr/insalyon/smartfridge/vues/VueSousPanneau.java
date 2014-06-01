@@ -29,10 +29,8 @@ public abstract class VueSousPanneau extends JPanel {
 
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(1000,700));
-        this.setBackground(Color.WHITE);
 
         JPanel retours = new JPanel(new GridLayout(1, 2));
-        retours.setBackground(Color.WHITE);
         retours.add(buttonRetour);
         retours.add(buttonMenuPrincipal);
         this.add(retours, BorderLayout.NORTH);

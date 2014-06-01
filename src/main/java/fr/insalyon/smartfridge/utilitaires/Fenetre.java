@@ -3,7 +3,9 @@ package fr.insalyon.smartfridge.utilitaires;
 import fr.insalyon.smartfridge.vues.VueMenuPrincipal;
 
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.awt.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /** Utilitaire gerant la fenetre de l'application pour le multi-vue */
@@ -18,8 +20,7 @@ public class Fenetre extends JApplet {
     public Fenetre() {
         historique.add(new VueMenuPrincipal(this));
         this.setSize(new Dimension(1000, 700));
-        this.setBackground(Color.WHITE);
-        revenirDebut();
+        afficherDernier();
     }
 
     /** Affiche la derniere fenetre de l'historique */

@@ -43,7 +43,6 @@ public class VueMenuPrincipal extends JPanel implements Rafraichissable {
         recettesButton.addActionListener(controleur);
 
         this.setLayout(new GridLayout(2, 3));
-        this.setBackground(Color.WHITE);
 
         temperatureLabel.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(temperatureLabel);
@@ -53,7 +52,6 @@ public class VueMenuPrincipal extends JPanel implements Rafraichissable {
         this.add(retirerButton);
 
         JPanel alertePanel = new JPanel(new GridLayout(3, 1));
-        alertePanel.setBackground(Color.WHITE);
         JLabel alerteLabel = new JLabel(Raccourcis.html("Nombre de jours avant d'alerter <br> une peremption proche :"));
         alerteLabel.setHorizontalAlignment(SwingConstants.CENTER);
         alertePanel.add(alerteLabel);
