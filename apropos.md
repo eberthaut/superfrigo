@@ -4,11 +4,11 @@ title: A Propos
 ---
 <h1 class="content-subhead">A Propos de nous</h1>
 
-Nous sommes quatre élèves de deuxième année de la filière Eurinsa à l'INSA de Lyon et nous devons réaliser un projet de fin d'année en informatique.
+Nous sommes quatre élèves de deuxième année de la filière Eurinsa à l’INSA de Lyon et nous devons réaliser un projet de fin d'année en informatique.
 
 Après avoir réfléchi pendant plusieurs sessions nous avons décidé de créer une applet qui pourrait servir de programme pour un réfrigérateur intelligent. Nous pensons que cela pourrait être un complément idéal pour créer un appareil qui puisse nous aider régulièrement dans notre quotidien.
 
-Les créateurs de cet applet sont :
+Les créateurs de cet applet sont :
 
 - Aurélie Gabriel
 - Elsa Berthaut

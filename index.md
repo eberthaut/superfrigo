@@ -16,10 +16,10 @@ title: Application
 
 <h1 class="content-subhead">Introduction</h1>
 
-Actuellement, il y a de plus en plus de technologie et informatique présente dans le monde entière, soit mélangé avec des appareils qui ont été toujours analogiques ou soit en nouvelles formes (des ordinateurs, des Smartphones ...).
+Actuellement, la technologie et l'informatique sont de plus en plus présents dans le monde entier.
 
-C'est pour cette raison que nous avons réfléchi où il manquait encore de l'informatique ou un programme pour nous faciliter la vie, car actuellement la plupart des électrodomestiques de notre maison ou de notre vie quotidienne ont au moins des fonctions basiques aidés par un petit ordinateur qui nous simplifie son fonctionnement.
+C’est pour cette raison que nous nous sommes demandé où est-ce qu'il manquait encore de l’informatique ou un programme pour nous faciliter la vie. En effet, actuellement la plupart des objets domestiques de notre maison ou de notre vie quotidienne ont des fonctions commandées par un petit ordinateur pour simplifier leur utilisation.
 
-Après d'avoir réfléchi pendant plusieurs jours nous avons conclu que la besoin la plus intéressante d'un programme informatique c'était celle pour convertir un frigorifique en intelligent.
+Après avoir réfléchi pendant plusieurs jours nous avons conclu que l'idée la plus intéressante était celle d'intégrer un programme informatique à un réfrigérateur afin de créer un nouveau type de « frigos intelligents ».
 
-Si vous cliquez aux différents onglets disponibles au dessus du site nous allons vous expliquer comment nous avons conçu l'idée, quels sont ses buts et notre partenariat avec l'entreprise international Samson.
+Vous pouvez cliquer sur les différents onglets pour découvrir notre projet. Si vous souhaitez tester l'application, vous pouvez lire le manuel disponible sur ce site.
