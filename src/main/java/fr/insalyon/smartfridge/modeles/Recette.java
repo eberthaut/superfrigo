@@ -138,6 +138,6 @@ public class Recette {
      * @return Le resume
      */
     public String toString() {
-        return (isActif()?"✓ ":"   ") + nom + " (prevu pour " + prevuPour + " personnes" + (isActif()?", active pour " + activePour + " personnes":"") + ")";
+        return (isActif()?"✓ ":"   ") + nom;
     }
 }

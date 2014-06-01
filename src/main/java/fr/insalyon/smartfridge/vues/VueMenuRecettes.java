@@ -19,6 +19,8 @@ public class VueMenuRecettes extends VueSousPanneau implements Rafraichissable {
     private final JList ingredientsList = new JList();
     /** Le bouton de changement */
     private final JButton toggleButton = new JButton("Activer", Raccourcis.icone("ok"));
+    /** Le texte d'etat */
+    private final JLabel etatLabel = new JLabel("...");
     /** Le bouton d'ajout */
     private final JButton ajouterButton = new JButton("Ajouter", Raccourcis.icone("ajout"));
     /** Le bouton de suppression */
@@ -43,8 +45,12 @@ public class VueMenuRecettes extends VueSousPanneau implements Rafraichissable {
         JPanel panneauCentre = new JPanel(new GridLayout(1, 2));
         JScrollPane recettesScroll = new JScrollPane(recettesList);
         panneauCentre.add(recettesScroll);
+        JPanel panneauInfo = new JPanel(new GridLayout(2, 1));
         JScrollPane ingredientsScroll = new JScrollPane(ingredientsList);
-        panneauCentre.add(ingredientsScroll);
+        panneauInfo.add(ingredientsScroll);
+        etatLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        panneauInfo.add(etatLabel);
+        panneauCentre.add(panneauInfo);
         this.add(panneauCentre, BorderLayout.CENTER);
 
         JPanel options = new JPanel(new GridLayout(1, 4));
@@ -104,6 +110,14 @@ public class VueMenuRecettes extends VueSousPanneau implements Rafraichissable {
      */
     public JButton getImportButton() {
         return importButton;
+    }
+
+    /** Retourne Le texte d'etat
+     *
+     * @return Le texte d'etat
+     */
+    public JLabel getEtatLabel() {
+        return etatLabel;
     }
 }
 

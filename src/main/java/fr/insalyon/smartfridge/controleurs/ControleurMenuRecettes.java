@@ -115,9 +115,20 @@ public class ControleurMenuRecettes implements ActionListener, ListSelectionList
             if(r.isActif()) {
                 vue.getToggleButton().setText("Desactiver");
                 vue.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/desactiver.png")));
+                vue.getEtatLabel().setText(Raccourcis.html(
+                    "Recette prevue pour "
+                    + r.getPrevuPour()
+                    + " personne(s).<br/>"
+                    + "Activee pour "
+                    + r.getActivePour()
+                    + " personne(s)."));
             } else {
                 vue.getToggleButton().setText("Activer");
                 vue.getToggleButton().setIcon(new ImageIcon(getClass().getResource("/icones/ok.png")));
+                vue.getEtatLabel().setText(
+                    "Recette prevue pour "
+                    + r.getPrevuPour()
+                    + " personne(s).");
             }
         }
     }
