@@ -24,3 +24,6 @@ target/
 *.jpr
 
 *_site/
+
+.classpath
+.project

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="fr.insalyon.smartfridge.utilitaires.ListModel" project="SmartFridge" 
+    file="/SmartFridge/src/main/java/fr/insalyon/smartfridge/utilitaires/ListModel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="134" width="154" x="168" y="264"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="fr.insalyon.smartfridge.utilitaires.Rafraichissable" project="SmartFridge" 
+    file="/SmartFridge/src/main/java/fr/insalyon/smartfridge/utilitaires/Rafraichissable.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="80" width="154" x="362" y="264"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="fr.insalyon.smartfridge.utilitaires.Fenetre" project="SmartFridge" 
+    file="/SmartFridge/src/main/java/fr/insalyon/smartfridge/utilitaires/Fenetre.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="170" width="186" x="556" y="264"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="fr.insalyon.smartfridge.utilitaires.Raccourcis" project="SmartFridge" 
+    file="/SmartFridge/src/main/java/fr/insalyon/smartfridge/utilitaires/Raccourcis.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="154" x="782" y="264"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
