@@ -17,8 +17,7 @@ Les créateurs de cet applet sont :
 
 <h1 class="content-subhead">Le Partenariat</h1>
 
-
-<img alt="superfrigo" src="assets/superfrigo.png" height="100px" /><img alt="and" src="assets/and.png" height="75px" /><img alt="samson" src="assets/samson.png" height="100px" />
+<img alt="superfrigo" src="assets/superfrigo.png" class="min" /><img alt="and" src="assets/and.png" class="min" /><img alt="samson" src="assets/samson.png" class="min" />
 
 
 Samson est leader dans le secteur électronique dans le monde entier. Il est présent dans la production de télévisions, d'ordinateurs, de smartphones... mais aussi et surtout sur le marché des réfrigérateurs.

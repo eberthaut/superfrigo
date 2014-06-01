@@ -184,6 +184,16 @@ h3 {
     background: none;
 }
 
+img {
+  display: block;
+  width: 100%;
+}
+
+.posts img.min {
+  display: inline-block;
+  width: 20%;
+}
+
 @media (min-width: 48em) {
     .content {
         padding: 2em 3em 0;
